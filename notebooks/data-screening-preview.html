@@ -72,7 +72,7 @@
       }      
     </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script>
+    <script>
     window.document.addEventListener("DOMContentLoaded", function () {
 
       var header = window.document.querySelector("#quarto-embed-header");
@@ -123,17 +123,12 @@
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
      <script async="" src="https://hypothes.is/embed.js"></script>
 <script>
   window.document.addEventListener("DOMContentLoaded", function (_event) {
     document.body.classList.add('hypothesis-enabled');
   });
-</script>  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-
-<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>  
+</script>  
       </head>
 
   <body class="quarto-notebook">
@@ -158,10 +153,9 @@
         <div class="quarto-title-meta">
 
                 <div>
-            <div class="quarto-title-meta-heading">Authors</div>
+            <div class="quarto-title-meta-heading">Author</div>
             <div class="quarto-title-meta-contents">
-                        <p>Steve Purves <a href="https://orcid.org/0000-0002-0760-5497" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-                        <p>Charlotte Wickham </p>
+                        <p>Philipp Pelz <a href="https://orcid.org/0000-0002-8009-4515" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
                       </div>
           </div>
                 
@@ -179,324 +173,16 @@
     </div>  </div>
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#filter" id="toc-filter" class="nav-link active" data-scroll-target="#filter">Filter</a></li>
-  <li><a href="#spatial-plot" id="toc-spatial-plot" class="nav-link" data-scroll-target="#spatial-plot">Spatial Plot</a></li>
-  <li><a href="#timeline-plot" id="toc-timeline-plot" class="nav-link" data-scroll-target="#timeline-plot">Timeline Plot</a></li>
-  </ul>
-</nav>
+  
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-       <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="9bf2b25e" class="cell" data-execution_count="1">
+     <div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="41e2c7f6" class="cell" data-execution_count="1">
 <pre><code>import pandas as pd
 import matplotlib.pyplot as plt</code></pre>
 </div></div>
-<div id="1dad5fe9" class="cell markdown">
-<p>Import <code>la-palma.csv</code> - a clean subset of <a href="https://github.com/Notebooks-Now/submission-quarto-full/blob/main/data/catalogoComunSV_1663233588717.csv"><code>catalogoComunSV_1663233588717.csv</code></a>:</p>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="fb598106" class="cell" data-execution_count="2">
-<pre><code>df = pd.read_csv('la-palma.csv')
-df['DateTime'] = pd.to_datetime(df['DateTime'])
-df = df.sort_values(by=['DateTime'], ascending=True)
-df.head()</code></pre>
-<div class="cell-output cell-output-display" data-execution_count="30">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Longitude</th>
-<th data-quarto-table-cell-role="th">Latitude</th>
-<th data-quarto-table-cell-role="th">Depth(km)</th>
-<th data-quarto-table-cell-role="th">Magnitude</th>
-<th data-quarto-table-cell-role="th">DateTime</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">11346</td>
-<td>-17.8349</td>
-<td>28.5346</td>
-<td>26.0</td>
-<td>1.6</td>
-<td>2017-03-09 23:44:06+00:00</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11343</td>
-<td>-17.8459</td>
-<td>28.5491</td>
-<td>27.0</td>
-<td>2.0</td>
-<td>2017-03-10 00:16:10+00:00</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">11344</td>
-<td>-17.8863</td>
-<td>28.5008</td>
-<td>20.0</td>
-<td>2.1</td>
-<td>2017-03-10 00:16:11+00:00</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11345</td>
-<td>-17.8657</td>
-<td>28.5204</td>
-<td>30.0</td>
-<td>1.6</td>
-<td>2017-03-10 03:20:26+00:00</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">11342</td>
-<td>-17.7156</td>
-<td>28.5985</td>
-<td>0.0</td>
-<td>1.6</td>
-<td>2017-08-21 02:06:55+00:00</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="ca26cdd6" class="cell" data-execution_count="3">
-<pre><code>df.describe()</code></pre>
-<div class="cell-output cell-output-display" data-execution_count="31">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Longitude</th>
-<th data-quarto-table-cell-role="th">Latitude</th>
-<th data-quarto-table-cell-role="th">Depth(km)</th>
-<th data-quarto-table-cell-role="th">Magnitude</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">count</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">mean</td>
-<td>-17.844062</td>
-<td>28.568893</td>
-<td>14.089345</td>
-<td>2.432423</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">std</td>
-<td>0.027345</td>
-<td>0.021899</td>
-<td>8.624787</td>
-<td>0.705282</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">min</td>
-<td>-17.995800</td>
-<td>28.310200</td>
-<td>0.000000</td>
-<td>0.200000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25%</td>
-<td>-17.854100</td>
-<td>28.558000</td>
-<td>10.100000</td>
-<td>1.900000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">50%</td>
-<td>-17.838700</td>
-<td>28.564000</td>
-<td>11.300000</td>
-<td>2.600000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">75%</td>
-<td>-17.829700</td>
-<td>28.574300</td>
-<td>13.900000</td>
-<td>2.900000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">max</td>
-<td>-17.705700</td>
-<td>28.697800</td>
-<td>46.900000</td>
-<td>5.100000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="0fa9195a" class="cell" data-execution_count="4">
-<pre><code>df.plot.scatter(x="Longitude", y="Latitude", figsize=(12,12), grid="on");</code></pre>
-<div class="cell-output cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="data-screening_files/figure-html/cell-5-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="data-screening_files/figure-html/cell-5-output-1.png" width="978" height="947" class="figure-img"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<div id="b694362b" class="cell markdown">
-<section id="filter" class="level3">
-<h3 class="anchored" data-anchor-id="filter">Filter</h3>
-<p>Also some rows seem to be missing depth measurements, (see differences in the <strong>count</strong> for columns above) - take only rows with valid depths</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="a5f803a8" class="cell" data-execution_count="5">
-<pre><code>df = df[df['Depth(km)'].notna()]
-df.describe()</code></pre>
-<div class="cell-output cell-output-display" data-execution_count="33">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">Longitude</th>
-<th data-quarto-table-cell-role="th">Latitude</th>
-<th data-quarto-table-cell-role="th">Depth(km)</th>
-<th data-quarto-table-cell-role="th">Magnitude</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">count</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-<td>11347.000000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">mean</td>
-<td>-17.844062</td>
-<td>28.568893</td>
-<td>14.089345</td>
-<td>2.432423</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">std</td>
-<td>0.027345</td>
-<td>0.021899</td>
-<td>8.624787</td>
-<td>0.705282</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">min</td>
-<td>-17.995800</td>
-<td>28.310200</td>
-<td>0.000000</td>
-<td>0.200000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25%</td>
-<td>-17.854100</td>
-<td>28.558000</td>
-<td>10.100000</td>
-<td>1.900000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">50%</td>
-<td>-17.838700</td>
-<td>28.564000</td>
-<td>11.300000</td>
-<td>2.600000</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">75%</td>
-<td>-17.829700</td>
-<td>28.574300</td>
-<td>13.900000</td>
-<td>2.900000</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">max</td>
-<td>-17.705700</td>
-<td>28.697800</td>
-<td>46.900000</td>
-<td>5.100000</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="8ce3a103" class="cell" data-execution_count="6">
-<pre><code>plt.figure(figsize=(20,6))
-plt.subplot(1,3,1)
-df["Latitude"].plot.hist(bins=20, density=True)
-plt.subplot(1,3,2)
-df["Longitude"].plot.hist(bins=20, density=True)
-plt.subplot(1,3,3)
-df["Depth(km)"].plot.hist(bins=50, density=True)</code></pre>
-<div class="cell-output cell-output-display">
-<div class="">
-<figure class="figure">
-<p class=""><a href="data-screening_files/figure-html/cell-7-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="data-screening_files/figure-html/cell-7-output-1.png" width="1565" height="485" class="figure-img"></a></p>
-</figure>
-</div>
-</div>
-</div></div>
-<div id="4cada905" class="cell markdown">
-<section id="spatial-plot" class="level2">
-<h2 class="anchored" data-anchor-id="spatial-plot">Spatial Plot</h2>
-<p>Scatter plot the spatial locations of events</p>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-fig-spatial-plot" class="cell" data-execution_count="7">
-<pre><code>#| label: fig-spatial-plot
-#| fig-cap: Locations of earthquakes on La Palma since 2017.
-#| fig-alt: A scatterplot of earthquake locations plotting latitude against longitude.
-from matplotlib import colormaps
-cmap = colormaps['viridis_r']
-ax = df.plot.scatter(x="Longitude", y="Latitude", 
-                     s=47-df["Depth(km)"], c=df["Magnitude"], 
-                     figsize=(12,10), grid="on", cmap=cmap)
-colorbar = ax.collections[0].colorbar
-colorbar.set_label("Magnitude")
-
-plt.show()</code></pre>
-<div class="cell-output cell-output-display">
-<div id="fig-spatial-plot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="A scatterplot of earthquake locations plotting latitude against longitude.">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="">
-<a href="data-screening_files/figure-html/fig-spatial-plot-output-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Locations of earthquakes on La Palma since 2017."><img src="data-screening_files/figure-html/fig-spatial-plot-output-1.png" alt="A scatterplot of earthquake locations plotting latitude against longitude." width="917" height="799" class="figure-img"></a>
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spatial-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Locations of earthquakes on La Palma since 2017.
-</figcaption>
-</figure>
-</div>
-</div>
-</div></div>
-<div id="b427d1e0" class="cell markdown">
-<section id="timeline-plot" class="level3">
-<h3 class="anchored" data-anchor-id="timeline-plot">Timeline Plot</h3>
-<p>Scatter plot the event time series and look for any quantization issues. Have times &amp; dates been loaded correctly?</p>
-<p>ax = df.plot.scatter(x=‘DateTime’, y=‘Depth(km)’, figsize=(20,8)) ax.set_ylim(50,0);</p>
-</section>
-</div>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -917,37 +603,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"loop":false,"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script> 
+</script>  </div> <!-- /content --> 
   
 </body></html>
