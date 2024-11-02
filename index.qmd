@@ -28,15 +28,18 @@ citation:
 number-sections: true
 jupyter: python3
 ---
-- [Pelz Lab website](pelzlab.science)
+- [Pelz Lab website](https://pelzlab.science)
 - [Studon Link](https://www.studon.fau.de/campo/course/421992)
   
 
-## Lecture 1: Intro
 
+
+
+
+## Lecture 1: Intro
+<!-- @marrero2019 -->
 - Introduction
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
-
 
 ## Lecture 2 {#sec-lecture2}
 
@@ -54,7 +57,7 @@ jupyter: python3
 
 ## Lecture 9 {#sec-lecture9}
 
-## References {.unnumbered}
+<!-- ## References {.unnumbered} -->
 
-::: {#refs}
-:::
+<!-- ::: {#refs}
+::: -->
