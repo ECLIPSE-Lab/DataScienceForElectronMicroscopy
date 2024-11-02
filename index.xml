@@ -65,7 +65,7 @@ Lecture</p>
     <list list-type="bullet">
       <list-item>
         <p>
-          <ext-link ext-link-type="uri" xlink:href="pelzlab.science">Pelz
+          <ext-link ext-link-type="uri" xlink:href="https://pelzlab.science">Pelz
     Lab website</ext-link>
         </p>
       </list-item>
@@ -125,13 +125,11 @@ Lecture</p>
     </front-stub>
     <body>
       <sec id="cell-4144c129-nb-1" specific-use="notebook-content">
-        <p>:label:<monospace>sec_autograd</monospace></p>
-        <p>Recall from :numref:<monospace>sec_calculus</monospace> that
-calculating derivatives is the crucial step in all the optimization
-algorithms that we will use to train deep networks. While the
-calculations are straightforward, working them out by hand can be
-tedious and error-prone, and these issues only grow as our models become
-more complex.</p>
+        <p>Recall from Section Calculus that calculating derivatives is the
+crucial step in all the optimization algorithms that we will use to
+train deep networks. While the calculations are straightforward, working
+them out by hand can be tedious and error-prone, and these issues only
+grow as our models become more complex.</p>
         <p>Fortunately all modern deep learning frameworks take this work off
 our plates by offering <italic>automatic differentiation</italic> (often
 shortened to <italic>autograd</italic>). As we pass data through each
