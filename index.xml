@@ -62,77 +62,61 @@ Lecture</p>
     </article-meta>
   </front>
   <body>
+    <list list-type="bullet">
+      <list-item>
+        <p>
+          <ext-link ext-link-type="uri" xlink:href="pelzlab.science">Pelz
+    Lab website</ext-link>
+        </p>
+      </list-item>
+      <list-item>
+        <p>
+          <ext-link ext-link-type="uri" xlink:href="https://www.studon.fau.de/campo/course/421992">Studon
+    Link</ext-link>
+        </p>
+      </list-item>
+    </list>
     <sec id="lecture-1-intro">
       <title>1 Lecture 1: Intro</title>
-      <p>Marrero et al.
-  (<xref alt="2019" rid="ref-marrero2019" ref-type="bibr">2019</xref>)
-  ## Lecture 2 {#sec-lecture2}</p>
+      <list list-type="bullet">
+        <list-item>
+          <p>Introduction</p>
+        </list-item>
+        <list-item>
+          <p>
+            <ext-link ext-link-type="uri" xlink:href="https://d2l.ai/chapter_preliminaries/index.html">d2l
+      Chapter 2: Preliminaries</ext-link>
+          </p>
+        </list-item>
+      </list>
+    </sec>
+    <sec id="sec-lecture2">
+      <title>2 Lecture 2</title>
     </sec>
     <sec id="sec-lecture3">
-      <title>2 Lecture 3</title>
+      <title>3 Lecture 3</title>
     </sec>
     <sec id="sec-lecture4">
-      <title>3 Lecture 4</title>
+      <title>4 Lecture 4</title>
     </sec>
     <sec id="sec-lecture5">
-      <title>4 Lecture 5</title>
+      <title>5 Lecture 5</title>
     </sec>
     <sec id="sec-lecture6">
-      <title>5 Lecture 6</title>
+      <title>6 Lecture 6</title>
     </sec>
     <sec id="sec-lecture7">
-      <title>6 Lecture 7</title>
+      <title>7 Lecture 7</title>
     </sec>
     <sec id="sec-lecture8">
-      <title>7 Lecture 8</title>
+      <title>8 Lecture 8</title>
     </sec>
     <sec id="sec-lecture9">
-      <title>8 Lecture 9</title>
+      <title>9 Lecture 9</title>
     </sec>
   </body>
   <back>
-    <ref-list>
-      <title>References</title>
-      <ref id="ref-marrero2019">
-        <element-citation publication-type="article-journal">
-          <person-group person-group-type="author">
-            <name>
-              <surname>Marrero</surname>
-              <given-names>José</given-names>
-            </name>
-            <name>
-              <surname>García</surname>
-              <given-names>Alicia</given-names>
-            </name>
-            <name>
-              <surname>Berrocoso</surname>
-              <given-names>Manuel</given-names>
-            </name>
-            <name>
-              <surname>Llinares</surname>
-              <given-names>Ángeles</given-names>
-            </name>
-            <name>
-              <surname>Rodríguez-Losada</surname>
-              <given-names>Antonio</given-names>
-            </name>
-            <name>
-              <surname>Ortiz</surname>
-              <given-names>R.</given-names>
-            </name>
-          </person-group>
-          <article-title>Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands)</article-title>
-          <source>Journal of Applied Volcanology</source>
-          <year iso-8601-date="2019-07">2019</year>
-          <month>07</month>
-          <volume>8</volume>
-          <pub-id pub-id-type="doi">10.1186/s13617-019-0085-5</pub-id>
-          <fpage/>
-          <lpage/>
-        </element-citation>
-      </ref>
-    </ref-list>
-  </back>
+</back>
   <sub-article article-type="notebook" id="nb-2-nb-1">
     <front-stub>
       <title-group>
