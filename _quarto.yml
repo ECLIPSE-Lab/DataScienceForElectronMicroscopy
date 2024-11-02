@@ -8,7 +8,7 @@ format:
   html:
     toc: true
     comments:
-      hypothesis: true
+      hypothesis: false
   docx: default
   jats: default
   agu-pdf: default

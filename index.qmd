@@ -1,5 +1,5 @@
 ---
-title: Lecture Data Science for Electron Microscopy
+title: Lecture Data Science for Electron Microscopy Winter 2024
 author:
   - name: Philipp Pelz
     orcid: 0000-0002-8009-4515
@@ -24,18 +24,18 @@ key-points:
 date: last-modified
 bibliography: references.bib
 citation:
-  container-title: Earth and Space Science
+  container-title: Friedrich-Alexander Universitaet Erlangen-Nuernberg
 number-sections: true
 jupyter: python3
 ---
+- [Pelz Lab website](pelzlab.science)
+- [Studon Link](https://www.studon.fau.de/campo/course/421992)
+  
 
 ## Lecture 1: Intro
 
-```{python}
-import matplotlib.pyplot as plt
-import numpy as np
-eruptions = [1492, 1585, 1646, 1677, 1712, 1949, 1971, 2021]
-```
+- Introduction
+- [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
 
 ## Lecture 2 {#sec-lecture2}
@@ -51,6 +51,8 @@ eruptions = [1492, 1585, 1646, 1677, 1712, 1949, 1971, 2021]
 ## Lecture 7 {#sec-lecture7}
 
 ## Lecture 8 {#sec-lecture8}
+
+## Lecture 9 {#sec-lecture9}
 
 ## References {.unnumbered}
 
