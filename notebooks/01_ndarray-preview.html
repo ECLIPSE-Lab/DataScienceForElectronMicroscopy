@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.32">
+    <meta name="generator" content="quarto-1.5.57">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>Data Manipulation</title>
+    <title>01.1 Data Manipulation</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -152,10 +152,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-31a2f722d5f60c7c32074e0b9f018429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
       <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
       </head>
 
@@ -163,7 +163,7 @@
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
       <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> Data Manipulation</h6>
+      <h6><i class="bi bi-journal-code"></i> 01.1 Data Manipulation</h6>
 
             <a href="../notebooks/01_ndarray.ipynb" class="btn btn-primary quarto-download-embed" download="01_ndarray.ipynb">Download Notebook</a>
           </div>
@@ -171,7 +171,7 @@
      <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Data Manipulation</h1>
+      <h1 class="title">01.1 Data Manipulation</h1>
           </div>
 
     
@@ -212,7 +212,6 @@
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
        <div id="0de623d7" class="cell markdown">
-<p>:label:<code>sec_ndarray</code></p>
 <p>In order to get anything done, we need some way to store and manipulate data. Generally, there are two important things we need to do with data: (i) acquire them; and (ii) process them once they are inside the computer. There is no point in acquiring data without some way to store it, so to start, let’s get our hands dirty with <span class="math inline">\(n\)</span>-dimensional arrays, which we also call <em>tensors</em>. If you already know the NumPy scientific computing package, this will be a breeze. For all modern deep learning frameworks, the <em>tensor class</em> (<code>ndarray</code> in MXNet, <code>Tensor</code> in PyTorch and TensorFlow) resembles NumPy’s <code>ndarray</code>, with a few killer features added. First, the tensor class supports automatic differentiation. Second, it leverages GPUs to accelerate numerical computation, whereas NumPy only runs on CPUs. These properties make neural networks both easy to code and fast to run.</p>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
@@ -230,7 +229,7 @@
 <div id="1a471639" class="cell markdown">
 <p>PyTorch provides a variety of functions for creating new tensors prepopulated with values. For example, by invoking <code>arange(n)</code>, we can create a vector of evenly spaced values, starting at 0 (included) and ending at <code>n</code> (not included). By default, the interval size is <span class="math inline">\(1\)</span>. Unless otherwise specified, new tensors are stored in main memory and designated for CPU-based computation.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="b6aa30a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.056039Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.055276Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.089028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.088195Z&quot;}" data-origin_pos="14" data-tab="[&quot;pytorch&quot;]" data-outputid="1306a523-f421-41ab-a4ae-cecba676f704">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="b6aa30a9" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.056039Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.055276Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.089028Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.088195Z&quot;}" data-origin_pos="14" data-outputid="1306a523-f421-41ab-a4ae-cecba676f704" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">12</span>, dtype<span class="op">=</span>torch.float32)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
@@ -240,7 +239,7 @@
 <div id="1a12b5d8" class="cell markdown">
 <p>Each of these values is called an <em>element</em> of the tensor. The tensor <code>x</code> contains 12 elements. We can inspect the total number of elements in a tensor via its <code>numel</code> method.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="640cadaf" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.093138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.092473Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.098450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.097452Z&quot;}" data-origin_pos="21" data-tab="[&quot;pytorch&quot;]" data-outputid="17fc0da2-56d1-4bb6-e2e3-96723cd36338">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="640cadaf" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.093138Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.092473Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.098450Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.097452Z&quot;}" data-origin_pos="21" data-outputid="17fc0da2-56d1-4bb6-e2e3-96723cd36338" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x.numel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>12</code></pre>
@@ -249,7 +248,7 @@
 <div id="d50c7483" class="cell markdown">
 <p>(<strong>We can access a tensor’s <em>shape</em></strong>) (the length along each axis) by inspecting its <code>shape</code> attribute. Because we are dealing with a vector here, the <code>shape</code> contains just a single element and is identical to the size.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="6e0a9616" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.102194Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.101575Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.107424Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.106501Z&quot;}" data-origin_pos="24" data-tab="[&quot;pytorch&quot;]" data-outputid="6d10f079-7c31-4266-b659-082d25222563">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="6e0a9616" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.102194Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.101575Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.107424Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.106501Z&quot;}" data-origin_pos="24" data-outputid="6d10f079-7c31-4266-b659-082d25222563" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>torch.Size([12])</code></pre>
@@ -258,7 +257,7 @@
 <div id="5c60413a" class="cell markdown">
 <p>We can [<strong>change the shape of a tensor without altering its size or values</strong>], by invoking <code>reshape</code>. For example, we can transform our vector <code>x</code> whose shape is (12,) to a matrix <code>X</code> with shape (3, 4). This new tensor retains all elements but reconfigures them into a matrix. Notice that the elements of our vector are laid out one row at a time and thus <code>x[3] == X[0, 3]</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="6092207c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.111467Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.110749Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.117759Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.116917Z&quot;}" data-origin_pos="26" data-tab="[&quot;pytorch&quot;]" data-outputid="fae038b7-05a7-4669-c470-4398985c419e">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="6092207c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.111467Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.110749Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.117759Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.116917Z&quot;}" data-origin_pos="26" data-outputid="fae038b7-05a7-4669-c470-4398985c419e" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> x.reshape(<span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -271,7 +270,7 @@
 <p>Note that specifying every shape component to <code>reshape</code> is redundant. Because we already know our tensor’s size, we can work out one component of the shape given the rest. For example, given a tensor of size <span class="math inline">\(n\)</span> and target shape (<span class="math inline">\(h\)</span>, <span class="math inline">\(w\)</span>), we know that <span class="math inline">\(w = n/h\)</span>. To automatically infer one component of the shape, we can place a <code>-1</code> for the shape component that should be inferred automatically. In our case, instead of calling <code>x.reshape(3, 4)</code>, we could have equivalently called <code>x.reshape(-1, 4)</code> or <code>x.reshape(3, -1)</code>.</p>
 <p>Practitioners often need to work with tensors initialized to contain all 0s or 1s. [<strong>We can construct a tensor with all elements set to 0</strong>] (<del>or one</del>) and a shape of (2, 3, 4) via the <code>zeros</code> function.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="383cafca" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.122018Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.121194Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.128294Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.127285Z&quot;}" data-origin_pos="30" data-tab="[&quot;pytorch&quot;]" data-outputid="d1033ebb-c901-4d98-b333-782c43fdfadb">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="383cafca" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.122018Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.121194Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.128294Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.127285Z&quot;}" data-origin_pos="30" data-outputid="d1033ebb-c901-4d98-b333-782c43fdfadb" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>torch.zeros((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([[[0., 0., 0., 0.],
@@ -286,7 +285,7 @@
 <div id="1e967d02" class="cell markdown">
 <p>Similarly, we can create a tensor with all 1s by invoking <code>ones</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="0ea249d4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.132534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.131716Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.139029Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.138135Z&quot;}" data-origin_pos="35" data-tab="[&quot;pytorch&quot;]" data-outputid="295fb3b2-0c1b-47c9-be8e-b16f27fbf7fc">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="0ea249d4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.132534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.131716Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.139029Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.138135Z&quot;}" data-origin_pos="35" data-outputid="295fb3b2-0c1b-47c9-be8e-b16f27fbf7fc" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>torch.ones((<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>tensor([[[1., 1., 1., 1.],
@@ -301,7 +300,7 @@
 <div id="0615f2d6" class="cell markdown">
 <p>We often wish to [<strong>sample each element randomly (and independently)</strong>] from a given probability distribution. For example, the parameters of neural networks are often initialized randomly. The following snippet creates a tensor with elements drawn from a standard Gaussian (normal) distribution with mean 0 and standard deviation 1.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="2254595d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.143051Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.142388Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.149695Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.148813Z&quot;}" data-origin_pos="40" data-tab="[&quot;pytorch&quot;]" data-outputid="0e069922-7b57-45bb-f8d2-9af959c13b89">
+<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="2254595d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.143051Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.142388Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.149695Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.148813Z&quot;}" data-origin_pos="40" data-outputid="0e069922-7b57-45bb-f8d2-9af959c13b89" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>torch.randn(<span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>tensor([[ 0.1351, -0.9099, -0.2028,  2.1937],
@@ -312,7 +311,7 @@
 <div id="d35eda39" class="cell markdown">
 <p>Finally, we can construct tensors by [<strong>supplying the exact values for each element</strong>] by supplying (possibly nested) Python list(s) containing numerical literals. Here, we construct a matrix with a list of lists, where the outermost list corresponds to axis 0, and the inner list corresponds to axis 1.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="b26863d8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.153567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.153222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.160436Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.159548Z&quot;}" data-origin_pos="45" data-tab="[&quot;pytorch&quot;]" data-outputid="f832b911-6573-4384-d66e-d459ef4e7e2c">
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="b26863d8" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.153567Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.153222Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.160436Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.159548Z&quot;}" data-origin_pos="45" data-outputid="f832b911-6573-4384-d66e-d459ef4e7e2c" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>torch.tensor([[<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>tensor([[2, 1, 4, 3],
@@ -326,7 +325,7 @@
 <p>As with Python lists, we can access tensor elements by indexing (starting with 0). To access an element based on its position relative to the end of the list, we can use negative indexing. Finally, we can access whole ranges of indices via slicing (e.g., <code>X[start:stop]</code>), where the returned value includes the first index (<code>start</code>) <em>but not the last</em> (<code>stop</code>). Finally, when only one index (or slice) is specified for a <span class="math inline">\(k^\textrm{th}\)</span>-order tensor, it is applied along axis 0. Thus, in the following code, [<strong><code>[-1]</code> selects the last row and <code>[1:3]</code> selects the second and third rows</strong>].</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="d9049a53" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.164537Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.163812Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.171699Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.170451Z&quot;}" data-origin_pos="49" data-tab="[&quot;pytorch&quot;]" data-outputid="7927b279-a900-42d9-9335-b073c4618d8e">
+<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="d9049a53" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.164537Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.163812Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.171699Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.170451Z&quot;}" data-origin_pos="49" data-outputid="7927b279-a900-42d9-9335-b073c4618d8e" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>X[<span class="op">-</span><span class="dv">1</span>], X[<span class="dv">1</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(tensor([ 8.,  9., 10., 11.]),
@@ -337,7 +336,7 @@
 <div id="5450673b" class="cell markdown">
 <p>Beyond reading them, (<strong>we can also <em>write</em> elements of a matrix by specifying indices.</strong>)</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="9246619c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.176047Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.175685Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.182893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.181890Z&quot;}" data-origin_pos="52" data-tab="[&quot;pytorch&quot;]" data-outputid="5799f12e-3394-48f6-f159-0c5c40fd9d79">
+<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="9246619c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.176047Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.175685Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.182893Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.181890Z&quot;}" data-origin_pos="52" data-outputid="5799f12e-3394-48f6-f159-0c5c40fd9d79" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">1</span>, <span class="dv">2</span>] <span class="op">=</span> <span class="dv">17</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
@@ -349,7 +348,7 @@
 <div id="31f06903" class="cell markdown">
 <p>If we want [<strong>to assign multiple elements the same value, we apply the indexing on the left-hand side of the assignment operation.</strong>] For instance, <code>[:2, :]</code> accesses the first and second rows, where <code>:</code> takes all the elements along axis 1 (column). While we discussed indexing for matrices, this also works for vectors and for tensors of more than two dimensions.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="0532f024" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.186970Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.186270Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.193303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.192338Z&quot;}" data-origin_pos="56" data-tab="[&quot;pytorch&quot;]" data-outputid="e7a4c050-40e9-4e5c-82dd-3144eea02486">
+<div class="cell-container"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="0532f024" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.186970Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.186270Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.193303Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.192338Z&quot;}" data-origin_pos="56" data-outputid="e7a4c050-40e9-4e5c-82dd-3144eea02486" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>X[:<span class="dv">2</span>, :] <span class="op">=</span> <span class="dv">12</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>X</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
@@ -365,7 +364,7 @@
 <p>In mathematical notation, we denote such <em>unary</em> scalar operators (taking one input) by the signature <span class="math inline">\(f: \mathbb{R} \rightarrow \mathbb{R}\)</span>. This just means that the function maps from any real number onto some other real number. Most standard operators, including unary ones like <span class="math inline">\(e^x\)</span>, can be applied elementwise.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [28]:</pre></div><div id="6dd6724c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.197301Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.196599Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.206136Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.205188Z&quot;}" data-origin_pos="61" data-tab="[&quot;pytorch&quot;]" data-outputid="8b319940-fecc-46ad-9e0a-ee4918a8e8b7">
+<div class="cell-container"><div class="cell-decorator"><pre>In [28]:</pre></div><div id="6dd6724c" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.197301Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.196599Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.206136Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.205188Z&quot;}" data-origin_pos="61" data-outputid="8b319940-fecc-46ad-9e0a-ee4918a8e8b7" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>torch.exp(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor([162754.7969, 162754.7969, 162754.7969, 162754.7969, 162754.7969,
@@ -376,7 +375,7 @@
 <div id="b70f353f" class="cell markdown">
 <p>Likewise, we denote <em>binary</em> scalar operators, which map pairs of real numbers to a (single) real number via the signature <span class="math inline">\(f: \mathbb{R}, \mathbb{R} \rightarrow \mathbb{R}\)</span>. Given any two vectors <span class="math inline">\(\mathbf{u}\)</span> and <span class="math inline">\(\mathbf{v}\)</span> <em>of the same shape</em>, and a binary operator <span class="math inline">\(f\)</span>, we can produce a vector <span class="math inline">\(\mathbf{c} = F(\mathbf{u},\mathbf{v})\)</span> by setting <span class="math inline">\(c_i \gets f(u_i, v_i)\)</span> for all <span class="math inline">\(i\)</span>, where <span class="math inline">\(c_i, u_i\)</span>, and <span class="math inline">\(v_i\)</span> are the <span class="math inline">\(i^\textrm{th}\)</span> elements of vectors <span class="math inline">\(\mathbf{c}, \mathbf{u}\)</span>, and <span class="math inline">\(\mathbf{v}\)</span>. Here, we produced the vector-valued <span class="math inline">\(F: \mathbb{R}^d, \mathbb{R}^d \rightarrow \mathbb{R}^d\)</span> by <em>lifting</em> the scalar function to an elementwise vector operation. The common standard arithmetic operators for addition (<code>+</code>), subtraction (<code>-</code>), multiplication (<code>*</code>), division (<code>/</code>), and exponentiation (<code>**</code>) have all been <em>lifted</em> to elementwise operations for identically-shaped tensors of arbitrary shape.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="89bc996d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.210417Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.209741Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.219298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.218318Z&quot;}" data-origin_pos="66" data-tab="[&quot;pytorch&quot;]" data-outputid="5c5cba5a-fbae-4a4f-d326-bfb0c312ace1">
+<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="89bc996d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.210417Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.209741Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.219298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.218318Z&quot;}" data-origin_pos="66" data-outputid="5c5cba5a-fbae-4a4f-d326-bfb0c312ace1" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor([<span class="fl">1.0</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">8</span>])</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor([<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>])</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">+</span> y, x <span class="op">-</span> y, x <span class="op">*</span> y, x <span class="op">/</span> y, x <span class="op">**</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -389,10 +388,10 @@
 </div>
 </div></div>
 <div id="04ae1d38" class="cell markdown">
-<p>In addition to elementwise computations, we can also perform linear algebraic operations, such as dot products and matrix multiplications. We will elaborate on these in :numref:<code>sec_linear-algebra</code>.</p>
+<p>In addition to elementwise computations, we can also perform linear algebraic operations, such as dot products and matrix multiplications. We will elaborate on these in the Linear Algebra Section.</p>
 <p>We can also [<strong><em>concatenate</em> multiple tensors,</strong>] stacking them end-to-end to form a larger one. We just need to provide a list of tensors and tell the system along which axis to concatenate. The example below shows what happens when we concatenate two matrices along rows (axis 0) instead of columns (axis 1). We can see that the first output’s axis-0 length (<span class="math inline">\(6\)</span>) is the sum of the two input tensors’ axis-0 lengths (<span class="math inline">\(3 + 3\)</span>); while the second output’s axis-1 length (<span class="math inline">\(8\)</span>) is the sum of the two input tensors’ axis-1 lengths (<span class="math inline">\(4 + 4\)</span>).</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [32]:</pre></div><div id="43aa9012" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.223534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.222711Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.233166Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.232145Z&quot;}" data-origin_pos="71" data-tab="[&quot;pytorch&quot;]" data-outputid="2fbe190c-0a7b-4f06-d14f-dcc9c33bd650">
+<div class="cell-container"><div class="cell-decorator"><pre>In [32]:</pre></div><div id="43aa9012" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.223534Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.222711Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.233166Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.232145Z&quot;}" data-origin_pos="71" data-outputid="2fbe190c-0a7b-4f06-d14f-dcc9c33bd650" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.arange(<span class="dv">12</span>, dtype<span class="op">=</span>torch.float32).reshape((<span class="dv">3</span>,<span class="dv">4</span>))</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> torch.tensor([[<span class="fl">2.0</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">1</span>]])</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>torch.cat((X, Y), dim<span class="op">=</span><span class="dv">0</span>), torch.cat((X, Y), dim<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -411,7 +410,7 @@
 <div id="346adeed" class="cell markdown">
 <p>Sometimes, we want to [<strong>construct a binary tensor via <em>logical statements</em>.</strong>] Take <code>X == Y</code> as an example. For each position <code>i, j</code>, if <code>X[i, j]</code> and <code>Y[i, j]</code> are equal, then the corresponding entry in the result takes value <code>1</code>, otherwise it takes value <code>0</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="91d39e58" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.237276Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.236485Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.243133Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.242117Z&quot;}" data-origin_pos="75" data-tab="[&quot;pytorch&quot;]" data-outputid="5bbe89b2-44c0-45ec-bf72-b90110a10c24">
+<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="91d39e58" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.237276Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.236485Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.243133Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.242117Z&quot;}" data-origin_pos="75" data-outputid="5bbe89b2-44c0-45ec-bf72-b90110a10c24" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">==</span> Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>tensor([[False,  True, False,  True],
@@ -422,7 +421,7 @@
 <div id="00448db5" class="cell markdown">
 <p>[<strong>Summing all the elements in the tensor</strong>] yields a tensor with only one element.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [36]:</pre></div><div id="080b0125" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.247142Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.246480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.253117Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.252212Z&quot;}" data-origin_pos="77" data-tab="[&quot;pytorch&quot;]" data-outputid="447ffb68-81ac-4f57-d57f-4c098f0f9428">
+<div class="cell-container"><div class="cell-decorator"><pre>In [36]:</pre></div><div id="080b0125" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.247142Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.246480Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.253117Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.252212Z&quot;}" data-origin_pos="77" data-outputid="447ffb68-81ac-4f57-d57f-4c098f0f9428" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>X.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>tensor(66.)</code></pre>
@@ -431,11 +430,10 @@
 <div id="e6a78360" class="cell markdown">
 <section id="broadcasting" class="level2">
 <h2 class="anchored" data-anchor-id="broadcasting">Broadcasting</h2>
-<p>:label:<code>subsec_broadcasting</code></p>
 <p>By now, you know how to perform elementwise binary operations on two tensors of the same shape. Under certain conditions, even when shapes differ, we can still [<strong>perform elementwise binary operations by invoking the <em>broadcasting mechanism</em>.</strong>] Broadcasting works according to the following two-step procedure: (i) expand one or both arrays by copying elements along axes with length 1 so that after this transformation, the two tensors have the same shape; (ii) perform an elementwise operation on the resulting arrays.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [38]:</pre></div><div id="be37d2de" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.256932Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.256264Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.263823Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.262881Z&quot;}" data-origin_pos="81" data-tab="[&quot;pytorch&quot;]" data-outputid="e65b1e5b-fbea-4cab-eba6-58202b988ada">
+<div class="cell-container"><div class="cell-decorator"><pre>In [38]:</pre></div><div id="be37d2de" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.256932Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.256264Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.263823Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.262881Z&quot;}" data-origin_pos="81" data-outputid="e65b1e5b-fbea-4cab-eba6-58202b988ada" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.arange(<span class="dv">3</span>).reshape((<span class="dv">3</span>, <span class="dv">1</span>))</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> torch.arange(<span class="dv">2</span>).reshape((<span class="dv">1</span>, <span class="dv">2</span>))</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>a, b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -449,7 +447,7 @@
 <div id="6c7e8410" class="cell markdown">
 <p>Since <code>a</code> and <code>b</code> are <span class="math inline">\(3\times1\)</span> and <span class="math inline">\(1\times2\)</span> matrices, respectively, their shapes do not match up. Broadcasting produces a larger <span class="math inline">\(3\times2\)</span> matrix by replicating matrix <code>a</code> along the columns and matrix <code>b</code> along the rows before adding them elementwise.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="9f62e827" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.267856Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.267172Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.273497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.272587Z&quot;}" data-origin_pos="85" data-tab="[&quot;pytorch&quot;]" data-outputid="2016b3f0-88ae-4581-fe24-66aa3f53ce35">
+<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="9f62e827" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.267856Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.267172Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.273497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.272587Z&quot;}" data-origin_pos="85" data-outputid="2016b3f0-88ae-4581-fe24-66aa3f53ce35" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>tensor([[0, 1],
@@ -463,7 +461,7 @@
 <p>[<strong>Running operations can cause new memory to be allocated to host results.</strong>] For example, if we write <code>Y = X + Y</code>, we dereference the tensor that <code>Y</code> used to point to and instead point <code>Y</code> at the newly allocated memory. We can demonstrate this issue with Python’s <code>id()</code> function, which gives us the exact address of the referenced object in memory. Note that after we run <code>Y = Y + X</code>, <code>id(Y)</code> points to a different location. That is because Python first evaluates <code>Y + X</code>, allocating new memory for the result and then points <code>Y</code> to this new location in memory.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="754a7433" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.277697Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.277047Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.283549Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.282613Z&quot;}" data-origin_pos="87" data-tab="[&quot;pytorch&quot;]" data-outputid="af739076-95a9-4f92-cdcc-a4f7aa70756e">
+<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="754a7433" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.277697Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.277047Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.283549Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.282613Z&quot;}" data-origin_pos="87" data-outputid="af739076-95a9-4f92-cdcc-a4f7aa70756e" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> <span class="bu">id</span>(Y)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>Y <span class="op">=</span> Y <span class="op">+</span> X</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(Y) <span class="op">==</span> before</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -477,7 +475,7 @@
 <div id="82880947" class="cell markdown">
 <p>Fortunately, (<strong>performing in-place operations</strong>) is easy. We can assign the result of an operation to a previously allocated array <code>Y</code> by using slice notation: <code>Y[:] = &lt;expression&gt;</code>. To illustrate this concept, we overwrite the values of tensor <code>Z</code>, after initializing it, using <code>zeros_like</code>, to have the same shape as <code>Y</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [45]:</pre></div><div id="c4d62609" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.287695Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.286964Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.293078Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.292048Z&quot;}" data-origin_pos="92" data-tab="[&quot;pytorch&quot;]" data-outputid="00a541a7-f34a-4c9d-87c6-b2fab8cb935a">
+<div class="cell-container"><div class="cell-decorator"><pre>In [45]:</pre></div><div id="c4d62609" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.287695Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.286964Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.293078Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.292048Z&quot;}" data-origin_pos="92" data-outputid="00a541a7-f34a-4c9d-87c6-b2fab8cb935a" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>Z <span class="op">=</span> torch.zeros_like(Y)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'id(Z):'</span>, <span class="bu">id</span>(Z))</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>Z[:] <span class="op">=</span> X <span class="op">+</span> Y</span>
@@ -490,7 +488,7 @@ id(Z): 140381179266448</code></pre>
 <div id="d745b125" class="cell markdown">
 <p>[<strong>If the value of <code>X</code> is not reused in subsequent computations, we can also use <code>X[:] = X + Y</code> or <code>X += Y</code> to reduce the memory overhead of the operation.</strong>]</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [47]:</pre></div><div id="b8c13447" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.296911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.296361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.302754Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.301805Z&quot;}" data-origin_pos="97" data-tab="[&quot;pytorch&quot;]" data-outputid="601c43ad-08ac-4563-e4f9-9ec0b75a1f7c">
+<div class="cell-container"><div class="cell-decorator"><pre>In [47]:</pre></div><div id="b8c13447" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.296911Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.296361Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.302754Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.301805Z&quot;}" data-origin_pos="97" data-outputid="601c43ad-08ac-4563-e4f9-9ec0b75a1f7c" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>before <span class="op">=</span> <span class="bu">id</span>(X)</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">+=</span> Y</span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(X) <span class="op">==</span> before</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -506,7 +504,7 @@ id(Z): 140381179266448</code></pre>
 <div id="cd057d04" class="cell markdown">
 <p>[<strong>Converting to a NumPy tensor (<code>ndarray</code>)</strong>], or vice versa, is easy. The torch tensor and NumPy array will share their underlying memory, and changing one through an in-place operation will also change the other.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [50]:</pre></div><div id="576963aa" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.306812Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.306088Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.312356Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.311478Z&quot;}" data-origin_pos="103" data-tab="[&quot;pytorch&quot;]" data-outputid="99d0de0a-2c84-4c1c-bd06-7b7a44ea3538">
+<div class="cell-container"><div class="cell-decorator"><pre>In [50]:</pre></div><div id="576963aa" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.306812Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.306088Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.312356Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.311478Z&quot;}" data-origin_pos="103" data-outputid="99d0de0a-2c84-4c1c-bd06-7b7a44ea3538" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> X.numpy()</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> torch.from_numpy(A)</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(A), <span class="bu">type</span>(B)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -517,7 +515,7 @@ id(Z): 140381179266448</code></pre>
 <div id="b2def017" class="cell markdown">
 <p>To (<strong>convert a size-1 tensor to a Python scalar</strong>), we can invoke the <code>item</code> function or Python’s built-in functions.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [52]:</pre></div><div id="388c5252" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.316471Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.315825Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.322867Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.322007Z&quot;}" data-origin_pos="108" data-tab="[&quot;pytorch&quot;]" data-outputid="9be47dd0-c5b6-49ff-d933-1bc75fdd2f42">
+<div class="cell-container"><div class="cell-decorator"><pre>In [52]:</pre></div><div id="388c5252" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:32:57.316471Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:32:57.315825Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:32:57.322867Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:32:57.322007Z&quot;}" data-origin_pos="108" data-outputid="9be47dd0-c5b6-49ff-d933-1bc75fdd2f42" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.tensor([<span class="fl">3.5</span>])</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>a, a.item(), <span class="bu">float</span>(a), <span class="bu">int</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -536,9 +534,6 @@ id(Z): 140381179266448</code></pre>
 <li>Replace the two tensors that operate by element in the broadcasting mechanism with other shapes, e.g., 3-dimensional tensors. Is the result the same as expected?</li>
 </ol>
 </section>
-</div>
-<div id="d2776415" class="cell markdown">
-<p><a href="https://discuss.d2l.ai/t/27">Discussions</a></p>
 </div>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">

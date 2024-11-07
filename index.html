@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.32">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2024-11-02">
+<meta name="dcterms.date" content="2024-11-07">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
 <title>Lecture Data Science for Electron Microscopy Winter 2024</title>
@@ -32,10 +32,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-31a2f722d5f60c7c32074e0b9f018429.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 <meta name="citation_title" content="Lecture Data Science for Electron Microscopy Winter 2024">
@@ -43,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2024-11-02">
-<meta name="citation_cover_date" content="2024-11-02">
+<meta name="citation_publication_date" content="2024-11-07">
+<meta name="citation_cover_date" content="2024-11-07">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-11-02">
+<meta name="citation_online_date" content="2024-11-07">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -83,7 +83,7 @@ ul.task-list li input[type="checkbox"] {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 2, 2024</p>
+              <p class="date">November 7, 2024</p>
             </div>
           </div>
           
@@ -116,17 +116,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#lecture-1-intro" id="toc-lecture-1-intro" class="nav-link active" data-scroll-target="#lecture-1-intro"><span class="header-section-number">1</span> Lecture 1: Intro</a></li>
-  <li><a href="#sec-lecture2" id="toc-sec-lecture2" class="nav-link" data-scroll-target="#sec-lecture2"><span class="header-section-number">2</span> Lecture 2</a></li>
-  <li><a href="#sec-lecture3" id="toc-sec-lecture3" class="nav-link" data-scroll-target="#sec-lecture3"><span class="header-section-number">3</span> Lecture 3</a></li>
-  <li><a href="#sec-lecture4" id="toc-sec-lecture4" class="nav-link" data-scroll-target="#sec-lecture4"><span class="header-section-number">4</span> Lecture 4</a></li>
-  <li><a href="#sec-lecture5" id="toc-sec-lecture5" class="nav-link" data-scroll-target="#sec-lecture5"><span class="header-section-number">5</span> Lecture 5</a></li>
-  <li><a href="#sec-lecture6" id="toc-sec-lecture6" class="nav-link" data-scroll-target="#sec-lecture6"><span class="header-section-number">6</span> Lecture 6</a></li>
+  <li><a href="#lecture-1-intro-25.10.2024" id="toc-lecture-1-intro-25.10.2024" class="nav-link active" data-scroll-target="#lecture-1-intro-25.10.2024"><span class="header-section-number">1</span> Lecture 1: Intro (25.10.2024)</a></li>
+  <li><a href="#sec-lecture2" id="toc-sec-lecture2" class="nav-link" data-scroll-target="#sec-lecture2"><span class="header-section-number">2</span> Lecture 2 (8.11.2024)</a></li>
+  <li><a href="#sec-lecture3" id="toc-sec-lecture3" class="nav-link" data-scroll-target="#sec-lecture3"><span class="header-section-number">3</span> Lecture 3 (15.11.2024)</a></li>
+  <li><a href="#sec-lecture4" id="toc-sec-lecture4" class="nav-link" data-scroll-target="#sec-lecture4"><span class="header-section-number">4</span> Lecture 4 (22.11.2024)</a></li>
+  <li><a href="#sec-lecture5" id="toc-sec-lecture5" class="nav-link" data-scroll-target="#sec-lecture5"><span class="header-section-number">5</span> Lecture 5 (29.11.2024)</a></li>
+  <li><a href="#sec-lecture6" id="toc-sec-lecture6" class="nav-link" data-scroll-target="#sec-lecture6"><span class="header-section-number">6</span> Lecture 6 ()</a></li>
   <li><a href="#sec-lecture7" id="toc-sec-lecture7" class="nav-link" data-scroll-target="#sec-lecture7"><span class="header-section-number">7</span> Lecture 7</a></li>
   <li><a href="#sec-lecture8" id="toc-sec-lecture8" class="nav-link" data-scroll-target="#sec-lecture8"><span class="header-section-number">8</span> Lecture 8</a></li>
   <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 9</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>Automatic Differentiation</a></li><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>Linear Algebra</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -141,8 +141,8 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://pelzlab.science">Pelz Lab website</a></li>
 <li><a href="https://www.studon.fau.de/campo/course/421992">Studon Link</a></li>
 </ul>
-<section id="lecture-1-intro" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="lecture-1-intro"><span class="header-section-number">1</span> Lecture 1: Intro</h2>
+<section id="lecture-1-intro-25.10.2024" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="lecture-1-intro-25.10.2024"><span class="header-section-number">1</span> Lecture 1: Intro (25.10.2024)</h2>
 <!-- @marrero2019 -->
 <ul>
 <li>Introduction</li>
@@ -150,19 +150,23 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </section>
 <section id="sec-lecture2" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="sec-lecture2"><span class="header-section-number">2</span> Lecture 2</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="sec-lecture2"><span class="header-section-number">2</span> Lecture 2 (8.11.2024)</h2>
+<ul>
+<li><a href="https://d2l.ai/chapter_linear-regression/index.html">d2l Chapter 3: Regression</a></li>
+<li>Sensor Fusion Slides</li>
+</ul>
 </section>
 <section id="sec-lecture3" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="sec-lecture3"><span class="header-section-number">3</span> Lecture 3</h2>
+<h2 data-number="3" class="anchored" data-anchor-id="sec-lecture3"><span class="header-section-number">3</span> Lecture 3 (15.11.2024)</h2>
 </section>
 <section id="sec-lecture4" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="sec-lecture4"><span class="header-section-number">4</span> Lecture 4</h2>
+<h2 data-number="4" class="anchored" data-anchor-id="sec-lecture4"><span class="header-section-number">4</span> Lecture 4 (22.11.2024)</h2>
 </section>
 <section id="sec-lecture5" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Lecture 5</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Lecture 5 (29.11.2024)</h2>
 </section>
 <section id="sec-lecture6" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 6</h2>
+<h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 6 ()</h2>
 </section>
 <section id="sec-lecture7" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="sec-lecture7"><span class="header-section-number">7</span> Lecture 7</h2>
@@ -181,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
   author = {Pelz, Philipp},
   title = {Lecture {Data} {Science} for {Electron} {Microscopy} {Winter}
     2024},
-  date = {2024-11-02},
+  date = {2024-11-07},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
@@ -189,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2024. <span>“Lecture Data Science for Electron Microscopy
 Winter 2024.”</span> Friedrich-Alexander Universitaet
-Erlangen-Nuernberg. November 2, 2024.
+Erlangen-Nuernberg. November 7, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
