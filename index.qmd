@@ -36,20 +36,23 @@ jupyter: python3
 
 
 
-## Lecture 1: Intro
+## Lecture 1: Intro (25.10.2024)
 <!-- @marrero2019 -->
-- Introduction
+- Introduction 
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
-## Lecture 2 {#sec-lecture2}
+## Lecture 2: Regression and Sensor Fusion (8.11.2024) {#sec-lecture2}
 
-## Lecture 3 {#sec-lecture3}
+- [d2l Chapter 3: Regression](https://d2l.ai/chapter_linear-regression/index.html)
+- Sensor Fusion Slides
 
-## Lecture 4 {#sec-lecture4}
+## Lecture 3 (15.11.2024) {#sec-lecture3}
 
-## Lecture 5 {#sec-lecture5}
+## Lecture 4 (22.11.2024) {#sec-lecture4}
 
-## Lecture 6 {#sec-lecture6}
+## Lecture 5 (29.11.2024) {#sec-lecture5}
+
+## Lecture 6 () {#sec-lecture6}
 
 ## Lecture 7 {#sec-lecture7}
 
