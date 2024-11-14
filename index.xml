@@ -45,10 +45,10 @@ administration</role>
       <author-notes>
         <corresp id="cor-1">philipp.pelz@fau.de</corresp>
       </author-notes>
-      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-07">
+      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-14">
         <year>2024</year>
         <month>11</month>
-        <day>7</day>
+        <day>14</day>
       </pub-date>
       <history/>
       <abstract>
@@ -105,7 +105,21 @@ Lecture</p>
       </list>
     </sec>
     <sec id="sec-lecture3">
-      <title>3 Lecture 3 (15.11.2024)</title>
+      <title>3 Lecture 3: CNNs (15.11.2024)</title>
+      <list list-type="bullet">
+        <list-item>
+          <p>
+            <ext-link ext-link-type="uri" xlink:href="https://d2l.ai/chapter_convolutional-neural-networks/index.html">d2l
+      Chapter 7: CNNs</ext-link>
+          </p>
+        </list-item>
+        <list-item>
+          <p>
+            <ext-link ext-link-type="uri" xlink:href="https://d2l.ai/chapter_convolutional-modern/index.html">d2l
+      Chapter 8: CNNs</ext-link>
+          </p>
+        </list-item>
+      </list>
     </sec>
     <sec id="sec-lecture4">
       <title>4 Lecture 4 (22.11.2024)</title>
