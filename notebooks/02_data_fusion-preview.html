@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.6.33">
+    <meta name="generator" content="quarto-1.5.57">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-    <title>02.2 Regression example: Sensor Fusion EDX + HAADF</title>
+    <title>Regression example - sensor fusion</title>
     <style>
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -152,10 +152,10 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-07ba0ad10f5680c660e360ac31d2f3b6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-27262f0026302d056883bfd2faaf8757.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
      
       </head>
 
@@ -163,7 +163,7 @@
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
       <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
-      <h6><i class="bi bi-journal-code"></i> 02.2 Regression example: Sensor Fusion EDX + HAADF</h6>
+      <h6><i class="bi bi-journal-code"></i> Regression example - sensor fusion</h6>
 
             <a href="../notebooks/02_data_fusion.ipynb" class="btn btn-primary quarto-download-embed" download="02_data_fusion.ipynb">Download Notebook</a>
           </div>
@@ -171,7 +171,7 @@
      <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">02.2 Regression example: Sensor Fusion EDX + HAADF</h1>
+      <h1 class="title">Regression example - sensor fusion</h1>
           </div>
 
     
@@ -195,13 +195,28 @@
     </div>  </div>
 </header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
 <div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#regression-example-sensor-fusion-edx-haadf" id="toc-regression-example-sensor-fusion-edx-haadf" class="nav-link active" data-scroll-target="#regression-example-sensor-fusion-edx-haadf">Regression example: Sensor Fusion EDX + HAADF</a></li>
+  <li><a href="#load-python-modules-and-chemical-images" id="toc-load-python-modules-and-chemical-images" class="nav-link" data-scroll-target="#load-python-modules-and-chemical-images">Load Python modules and Chemical Images</a></li>
+  <li><a href="#define-the-total-variation-denoiser-module" id="toc-define-the-total-variation-denoiser-module" class="nav-link" data-scroll-target="#define-the-total-variation-denoiser-module">Define the Total Variation Denoiser Module</a></li>
+  <li><a href="#define-the-total-variation-denoising-function" id="toc-define-the-total-variation-denoising-function" class="nav-link" data-scroll-target="#define-the-total-variation-denoising-function">Define the Total Variation Denoising Function</a></li>
+  <li><a href="#denoise-the-chemical-maps-with-total-variation-regularization-only" id="toc-denoise-the-chemical-maps-with-total-variation-regularization-only" class="nav-link" data-scroll-target="#denoise-the-chemical-maps-with-total-variation-regularization-only">Denoise the Chemical Maps with Total Variation Regularization Only</a></li>
+  <li><a href="#load-the-haadf-signal" id="toc-load-the-haadf-signal" class="nav-link" data-scroll-target="#load-the-haadf-signal">Load the HAADF Signal</a></li>
+  <li><a href="#perform-multi-modal-data-fusion" id="toc-perform-multi-modal-data-fusion" class="nav-link" data-scroll-target="#perform-multi-modal-data-fusion">Perform Multi-Modal Data Fusion</a></li>
+  <li><a href="#display-cost-functions-and-descent-parameters" id="toc-display-cost-functions-and-descent-parameters" class="nav-link" data-scroll-target="#display-cost-functions-and-descent-parameters">Display Cost Functions and Descent Parameters</a></li>
+  <li><a href="#show-reconstructed-signal" id="toc-show-reconstructed-signal" class="nav-link" data-scroll-target="#show-reconstructed-signal">Show Reconstructed Signal</a></li>
+  </ul>
+</nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
 <main class="content quarto-banner-title-block" id="quarto-document-content">      
 
-     <div id="cell-1" class="cell markdown">
+       <section id="regression-example-sensor-fusion-edx-haadf" class="level2">
+<h2 class="anchored" data-anchor-id="regression-example-sensor-fusion-edx-haadf">Regression example: Sensor Fusion EDX + HAADF</h2>
 <br>
 <h2 class="anchored">
 Data Science in Electron Microscopy
@@ -217,188 +232,312 @@ Philipp Pelz
 <h3 class="anchored">
 &nbsp; <a href="https://github.com/ECLIPSE-Lab/WS24_DataScienceForEM">https://github.com/ECLIPSE-Lab/WS24_DataScienceForEM</a>
 </h3>
-<section id="load-python-modules" class="level2">
-<h2 class="anchored" data-anchor-id="load-python-modules">Load Python modules</h2>
-<p>:::</p>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-2" class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.sparse <span class="im">import</span> spdiags</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fusion_utils <span class="im">as</span> utils</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># import sys</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># raise RuntimeError(sys.executable)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="load-python-modules-and-chemical-images" class="level2">
+<h2 class="anchored" data-anchor-id="load-python-modules-and-chemical-images">Load Python modules and Chemical Images</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [1]:</pre></div><div id="cell-1" class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Data handling</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Deep learning</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch <span class="im">as</span> th</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> kornia</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Image processing</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualization</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Local utilities</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> fusion_utils <span class="im">as</span> utils</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">## Load Chemical Maps </span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="st">'CoSX_maps.h5'</span><span class="op">;</span> mapNum <span class="op">=</span> <span class="st">'map7/'</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse Chemical Maps</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>elementList <span class="op">=</span> [<span class="st">'Co'</span>, <span class="st">'O'</span>, <span class="st">'S'</span>]</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Raw Data and Reshape</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> h5py.File(fname, <span class="st">'r'</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Available EDX Maps: '</span>, <span class="bu">list</span>(<span class="bu">file</span>))</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> []</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ee <span class="kw">in</span> elementList:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read Chemical Map for Element "ee"</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    edsMap <span class="op">=</span> <span class="bu">file</span>[mapNum<span class="op">+</span>ee][:,:]</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set Noise Floor to Zero and Normalize Chemical Maps</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    edsMap <span class="op">-=</span> np.<span class="bu">min</span>(edsMap)<span class="op">;</span> edsMap <span class="op">/=</span> np.<span class="bu">max</span>(edsMap)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenate Chemical Map to Variable of Interest</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    x.append(edsMap)</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> np.stack(x)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'x0 shape </span><span class="sc">{</span>x0<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 </section>
-<div id="cell-3" class="cell markdown">
-<section id="load-chemical-maps" class="level2">
-<h2 class="anchored" data-anchor-id="load-chemical-maps">Load Chemical Maps</h2>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-4" class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="st">'CoSX_maps.h5'</span><span class="op">;</span> mapNum <span class="op">=</span> <span class="st">'map7/'</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Parse Chemical Maps</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>elementList <span class="op">=</span> [<span class="st">'Co'</span>, <span class="st">'O'</span>, <span class="st">'S'</span>]</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Raw Data and Reshape</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">file</span> <span class="op">=</span> h5py.File(fname, <span class="st">'r'</span>)</span>
+<section id="define-the-total-variation-denoiser-module" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-total-variation-denoiser-module">Define the Total Variation Denoiser Module</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="cell-3" class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TVDenoise(th.nn.Module):</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Total variation denoising implemented as a neural network module.</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">    This class implements an optimization-based denoising approach that minimizes</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    a combination of:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    1) Mean squared error between the clean and noisy images</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">    2) Total variation of the clean image weighted by lambdaTV</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Available EDX Maps: '</span>, <span class="bu">list</span>(<span class="bu">file</span>))</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>xx <span class="op">=</span> np.array([],dtype<span class="op">=</span>np.float32)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ee <span class="kw">in</span> elementList:</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read Chemical Map for Element "ee"</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    edsMap <span class="op">=</span> <span class="bu">file</span>[mapNum<span class="op">+</span>ee][:,:]</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Set Noise Floor to Zero and Normalize Chemical Maps</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    edsMap <span class="op">-=</span> np.<span class="bu">min</span>(edsMap)<span class="op">;</span> edsMap <span class="op">/=</span> np.<span class="bu">max</span>(edsMap)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Concatenate Chemical Map to Variable of Interest</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    xx <span class="op">=</span> np.concatenate([xx,edsMap.flatten()])</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Make Copy of Raw Measurements for Poisson Maximum Likelihood Term </span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>xx0 <span class="op">=</span> xx.copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">    noisy_image : torch.Tensor</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">        The input noisy image to be denoised</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">    lambdaTV : float</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Weight coefficient for the total variation regularization term</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">    Methods</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">    forward()</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">        Computes the combined loss: MSE(clean, noisy) + lambdaTV * TV(clean)</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">    get_clean_image()</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns the optimized clean image tensor</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, noisy_image, lambdaTV):</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(TVDenoise, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lambdaTV <span class="op">=</span> lambdaTV</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.l2_term <span class="op">=</span> th.nn.MSELoss(reduction<span class="op">=</span><span class="st">'mean'</span>)</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.regularization_term <span class="op">=</span> kornia.losses.TotalVariation()</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="co"># create the variable which will be optimized to produce the noise free image</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.clean_image <span class="op">=</span> th.nn.Parameter(data<span class="op">=</span>noisy_image.clone(), requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.noisy_image <span class="op">=</span> noisy_image</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>):</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.l2_term(<span class="va">self</span>.clean_image, <span class="va">self</span>.noisy_image) <span class="op">+</span> <span class="va">self</span>.lambdaTV <span class="op">*</span> <span class="va">self</span>.regularization_term(<span class="va">self</span>.clean_image)</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_clean_image(<span class="va">self</span>):</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.clean_image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-5" class="cell markdown">
-<section id="parse-meta-data-prepare-reconstruction-and-display-raw-chemical-maps" class="level2">
-<h2 class="anchored" data-anchor-id="parse-meta-data-prepare-reconstruction-and-display-raw-chemical-maps">Parse Meta Data, Prepare Reconstruction and Display Raw Chemical Maps</h2>
 </section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-6" class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Image Dimensions</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>(nx, ny) <span class="op">=</span> edsMap.shape<span class="op">;</span> nPix <span class="op">=</span> nx <span class="op">*</span> ny</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>nz <span class="op">=</span> <span class="bu">len</span>(elementList)<span class="op">;</span> lambdaHAADF <span class="op">=</span> <span class="dv">1</span><span class="op">/</span>nz</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> kornia</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> TVDenoise(torch.nn.Module):</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, noisy_image, lambdaTV):</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(TVDenoise, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.lambdaTV <span class="op">=</span> lambdaTV</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.l2_term <span class="op">=</span> torch.nn.MSELoss(reduction<span class="op">=</span><span class="st">'mean'</span>)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.regularization_term <span class="op">=</span> kornia.losses.TotalVariation()</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># create the variable which will be optimized to produce the noise free image</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.clean_image <span class="op">=</span> torch.nn.Parameter(data<span class="op">=</span>noisy_image.clone(), requires_grad<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.noisy_image <span class="op">=</span> noisy_image</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>):</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.l2_term(<span class="va">self</span>.clean_image, <span class="va">self</span>.noisy_image) <span class="op">+</span> lambdaTV <span class="op">*</span> <span class="va">self</span>.regularization_term(<span class="va">self</span>.clean_image)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_clean_image(<span class="va">self</span>):</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.clean_image</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> reg(x, lambda_TV, ng):</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read the image with OpenCV</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  img <span class="op">=</span> x</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert to torch tensor</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  noisy_image: torch.tensor <span class="op">=</span> kornia.image_to_tensor(img).squeeze()  <span class="co"># CxHxW</span></span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define the total variation denoising network</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  tv_denoiser <span class="op">=</span> TVDenoise(noisy_image, lambda_TV)</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define the optimizer to optimize the 1 parameter of tv_denoiser</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  optimizer <span class="op">=</span> torch.optim.SGD(tv_denoiser.parameters(), lr<span class="op">=</span><span class="fl">0.1</span>, momentum<span class="op">=</span><span class="fl">0.9</span>)</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the optimization loop</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(ng):</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      optimizer.zero_grad()</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      loss <span class="op">=</span> tv_denoiser()</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>      <span class="co"># if i % 25 == 0:</span></span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>      <span class="co">#     print("Loss in iteration {} of {}: {:.3f}".format(i, ng, loss.item()))</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      loss.backward()</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      optimizer.step()</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert back to numpy</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  img_clean: np.ndarray <span class="op">=</span> kornia.tensor_to_image(tv_denoiser.get_clean_image())</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> img_clean, loss.item()</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="co"># HAADF Signal (Measurements)</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">file</span>[mapNum<span class="op">+</span><span class="st">'HAADF'</span>][:].flatten()</span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Subtraction and Normalization </span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>b <span class="op">-=</span> np.<span class="bu">min</span>(b)<span class="op">;</span> b <span class="op">/=</span> np.<span class="bu">max</span>(b)</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Summation Matrix</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> utils.create_measurement_matrix(nx,ny,nz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="define-the-total-variation-denoising-function" class="level2">
+<h2 class="anchored" data-anchor-id="define-the-total-variation-denoising-function">Define the Total Variation Denoising Function</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [3]:</pre></div><div id="cell-5" class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> denoise_total_variation(x, lambda_TV, ng):</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">"""Denoise an image using total variation regularization.</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">  This function takes a noisy image and performs total variation denoising by optimizing</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">  a combination of mean squared error and total variation regularization terms.</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">  Parameters</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">  ----------</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">  x : torch.Tensor</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">      Input noisy image tensor to be denoised</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">  lambda_TV : float </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">      Weight coefficient for the total variation regularization term</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">  ng : int</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">      Number of gradient descent iterations to run the optimization</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">  Returns</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">  -------</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">  tuple</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">      A tuple containing:</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">      - numpy.ndarray: The denoised image</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">      - float: The final loss value after optimization</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co">  """</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># read the image with OpenCV</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  img <span class="op">=</span> x</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert to torch tensor</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  noisy_image <span class="op">=</span> img</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define the total variation denoising network</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>  tv_denoiser <span class="op">=</span> TVDenoise(noisy_image, lambda_TV)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="co"># define the optimizer to optimize the 1 parameter of tv_denoiser</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  optimizer <span class="op">=</span> th.optim.SGD(tv_denoiser.parameters(), lr<span class="op">=</span><span class="fl">0.1</span>, momentum<span class="op">=</span><span class="fl">0.9</span>)</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># run the optimization loop</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(ng):</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>      optimizer.zero_grad()</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>      loss <span class="op">=</span> tv_denoiser()</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>      loss.backward()</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>      optimizer.step()</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>  <span class="co"># convert back to numpy</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  img_clean: np.ndarray <span class="op">=</span> kornia.tensor_to_image(tv_denoiser.get_clean_image())</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> img_clean, loss.item()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-7" class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show Raw Data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>utils.plot_elemental_images(xx, b, elementList, nx, ny, <span class="dv">2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div id="cell-8" class="cell markdown">
-<section id="plot-regularization" class="level2">
-<h2 class="anchored" data-anchor-id="plot-regularization">Plot Regularization</h2>
 </section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-9" class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>regularize <span class="op">=</span> <span class="va">True</span><span class="op">;</span> ng <span class="op">=</span> <span class="dv">15</span><span class="op">;</span> lambdaTV <span class="op">=</span> <span class="fl">0.1</span><span class="op">;</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>r, cost <span class="op">=</span> reg(edsMap, lambdaTV, ng)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>ax.imshow(r)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="denoise-the-chemical-maps-with-total-variation-regularization-only" class="level2">
+<h2 class="anchored" data-anchor-id="denoise-the-chemical-maps-with-total-variation-regularization-only">Denoise the Chemical Maps with Total Variation Regularization Only</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="cell-7" class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>lambda_TV <span class="op">=</span> <span class="fl">5e-2</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>ng <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">'cuda'</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> th.as_tensor(x0).to(device)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>x0_den, loss0 <span class="op">=</span> denoise_total_variation(x0[<span class="dv">0</span>], lambda_TV, ng)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>x1_den, loss1 <span class="op">=</span> denoise_total_variation(x0[<span class="dv">1</span>], lambda_TV, ng)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x2_den, loss2 <span class="op">=</span> denoise_total_variation(x0[<span class="dv">2</span>], lambda_TV, ng)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">15</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>axs <span class="op">=</span> ax.ravel()</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>title_list <span class="op">=</span> [<span class="st">'x_0'</span>,<span class="st">'x_0 denoised'</span>,<span class="st">'x_1'</span>,<span class="st">'x_1 denoised'</span>,<span class="st">'x_2'</span>,<span class="st">'x_2 denoised'</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> axi, xi, li <span class="kw">in</span> <span class="bu">zip</span>(axs, [x[<span class="dv">0</span>],x0_den,x[<span class="dv">1</span>],x1_den,x[<span class="dv">2</span>],x2_den], title_list):</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  axi.imshow(xi, cmap<span class="op">=</span><span class="st">'bone'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  axi.set_xticks([])</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  axi.set_yticks([])</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  axi.set_title(li) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-10" class="cell markdown">
+</section>
+<section id="load-the-haadf-signal" class="level2">
+<h2 class="anchored" data-anchor-id="load-the-haadf-signal">Load the HAADF Signal</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [5]:</pre></div><div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># HAADF Signal (Measurements)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">file</span>[mapNum<span class="op">+</span><span class="st">'HAADF'</span>] </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Data Subtraction and Normalization </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">-=</span> np.<span class="bu">min</span>(b)<span class="op">;</span> b <span class="op">/=</span> np.<span class="bu">max</span>(b)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>ax.imshow(b)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>ax.set_xticks([])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>ax.set_yticks([])</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'HAADF image'</span>) </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
 <section id="perform-multi-modal-data-fusion" class="level2">
 <h2 class="anchored" data-anchor-id="perform-multi-modal-data-fusion">Perform Multi-Modal Data Fusion</h2>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-11" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="cell-11" class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convergence Parameters</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.6</span><span class="op">;</span> lambdaEDS <span class="op">=</span> <span class="fl">5e-6</span><span class="op">;</span> nIter <span class="op">=</span> <span class="dv">30</span><span class="op">;</span> bkg <span class="op">=</span> <span class="fl">1e-1</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>gamma <span class="op">=</span> <span class="fl">1.6</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># TV Min Parameters</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>regularize <span class="op">=</span> <span class="va">True</span><span class="op">;</span> ng <span class="op">=</span> <span class="dv">15</span><span class="op">;</span> lambdaTV <span class="op">=</span> <span class="fl">0.1</span><span class="op">;</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>nIter <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>bkg <span class="op">=</span> <span class="fl">1e-3</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Auxiliary Functions</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>lsqFun <span class="op">=</span> <span class="kw">lambda</span> inData : <span class="fl">0.5</span> <span class="op">*</span> np.linalg.norm(A.dot(inData<span class="op">**</span>gamma) <span class="op">-</span> b) <span class="op">**</span><span class="dv">2</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>poissonFun <span class="op">=</span> <span class="kw">lambda</span> inData : np.<span class="bu">sum</span>(xx0 <span class="op">*</span> np.log(inData <span class="op">+</span> <span class="fl">1e-8</span>) <span class="op">-</span> inData)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># TV Min Parameters</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>regularize <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>ng <span class="op">=</span> <span class="dv">30</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Main Loop</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>costHAADF <span class="op">=</span> np.zeros(nIter,dtype<span class="op">=</span>np.float32)<span class="op">;</span> costEDS <span class="op">=</span> np.zeros(nIter, dtype<span class="op">=</span>np.float32)<span class="op">;</span> costTV <span class="op">=</span> np.zeros(nIter, dtype<span class="op">=</span>np.float32)<span class="op">;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> kk <span class="kw">in</span> tqdm(<span class="bu">range</span>(nIter)):</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># HAADF Update</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    xx <span class="op">-=</span>  gamma <span class="op">*</span> spdiags(xx<span class="op">**</span>(gamma <span class="op">-</span> <span class="dv">1</span>), [<span class="dv">0</span>], nz<span class="op">*</span>nx<span class="op">*</span>ny, nz<span class="op">*</span>nx<span class="op">*</span>ny) <span class="op">*</span> lambdaHAADF <span class="op">*</span> A.transpose() <span class="op">*</span> (A.dot(xx<span class="op">**</span>gamma) <span class="op">-</span> b) <span class="op">\</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>            <span class="op">+</span> lambdaEDS <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> xx0 <span class="op">/</span> (xx <span class="op">+</span> bkg))</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    xx[xx<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Regularization </span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> regularize:</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> zz <span class="kw">in</span> <span class="bu">range</span>(nz):</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>            w, cost <span class="op">=</span> reg( xx[zz<span class="op">*</span>nPix:(zz<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>nPix].reshape(ny,nx), lambdaTV, ng)</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>            xx[zz<span class="op">*</span>nPix:(zz<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>nPix] <span class="op">=</span> w.reshape((nPix,))</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure Cost Function</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    costHAADF[kk] <span class="op">=</span> lsqFun(xx)<span class="op">;</span> costEDS[kk] <span class="op">=</span> poissonFun(xx)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Image Dimensions</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>(nx, ny) <span class="op">=</span> edsMap.shape</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>nPix <span class="op">=</span> nx <span class="op">*</span> ny</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>nz <span class="op">=</span> <span class="bu">len</span>(elementList)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>lambdaHAADF <span class="op">=</span> <span class="fl">3e-2</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>lambdaEDS <span class="op">=</span> <span class="fl">5e-6</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>lambdaTV <span class="op">=</span> <span class="fl">5e-3</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>fusion_loss <span class="op">=</span> th.nn.MSELoss() </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># noise_loss = th.nn.PoissonNLLLoss(log_input=False, eps=bkg)</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>noise_loss <span class="op">=</span> th.nn.MSELoss() </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a><span class="co">#create arrays to store the loss function</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>costHAADF <span class="op">=</span> np.zeros(nIter,dtype<span class="op">=</span>np.float32)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>costEDS <span class="op">=</span> np.zeros(nIter, dtype<span class="op">=</span>np.float32)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>costTV <span class="op">=</span> np.zeros(nIter, dtype<span class="op">=</span>np.float32)<span class="op">;</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure Isotropic TV </span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> regularize:</span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> zz <span class="kw">in</span> <span class="bu">range</span>(nz):</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>            w, cost <span class="op">=</span> reg( xx[zz<span class="op">*</span>nPix:(zz<span class="op">+</span><span class="dv">1</span>)<span class="op">*</span>nPix].reshape(ny,nx), lambdaTV, ng)</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>            costTV[kk] <span class="op">+=</span> cost </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> th.as_tensor(x0, dtype<span class="op">=</span>th.float32).to(device)</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> th.as_tensor(b, dtype<span class="op">=</span>th.float32).to(device)</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> th.nn.Parameter(th.clone(x0)).to(device)</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> th.optim.SGD([x], lr<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Main Loop</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> kk <span class="kw">in</span> tqdm(<span class="bu">range</span>(nIter)):</span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add small epsilon to prevent numerical instability</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>    eps <span class="op">=</span> <span class="fl">1e-8</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clip x values to prevent extreme values</span></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> th.no_grad():</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>        x.clamp_(<span class="bu">min</span><span class="op">=</span>eps)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="co"># More stable power operation</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    powered_sum <span class="op">=</span> th.<span class="bu">pow</span>(x[<span class="dv">0</span>] <span class="op">+</span> eps, gamma) <span class="op">+</span> th.<span class="bu">pow</span>(x[<span class="dv">1</span>] <span class="op">+</span> eps, gamma) <span class="op">+</span> th.<span class="bu">pow</span>(x[<span class="dv">2</span>] <span class="op">+</span> eps, gamma)</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    loss1 <span class="op">=</span> lambdaHAADF <span class="op">*</span> fusion_loss(powered_sum, b)</span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    loss2 <span class="op">=</span> lambdaEDS <span class="op">*</span> noise_loss(x, x0)</span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    loss <span class="op">=</span> loss1 <span class="op">+</span> loss2 </span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>    loss.backward()</span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    optimizer.step()</span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Clamp values after optimization step</span></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> th.no_grad():</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>        x.clamp_(<span class="bu">min</span><span class="op">=</span>eps)</span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure Cost Function</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>    costHAADF[kk] <span class="op">=</span> loss1.item()</span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    costEDS[kk] <span class="op">=</span> loss2.item()</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> th.no_grad():</span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>        x[x<span class="op">&lt;</span><span class="dv">0</span>] <span class="op">=</span> <span class="fl">1e-2</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Regularization </span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> regularize:</span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a>      <span class="co"># print(f"2 Number of NaN elements in x: {th.isnan(x).sum().item()}")</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>      x0_den, loss0 <span class="op">=</span> denoise_total_variation(x[<span class="dv">0</span>].detach(), lambda_TV, ng)</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a>      x1_den, loss1 <span class="op">=</span> denoise_total_variation(x[<span class="dv">1</span>].detach(), lambda_TV, ng)</span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a>      x2_den, loss2 <span class="op">=</span> denoise_total_variation(x[<span class="dv">2</span>].detach(), lambda_TV, ng)</span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>      <span class="co"># print(f"3 Number of NaN elements in x: {th.isnan(x).sum().item()}")</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>      <span class="cf">with</span> th.no_grad():</span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a>        x[<span class="dv">0</span>, ...] <span class="op">=</span> th.as_tensor(x0_den)</span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>        x[<span class="dv">1</span>, ...] <span class="op">=</span> th.as_tensor(x1_den)</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>        x[<span class="dv">2</span>, ...] <span class="op">=</span> th.as_tensor(x2_den)   </span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>        <span class="co"># x[x==0] = 1e-2 </span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>      costTV[kk] <span class="op">=</span> loss0 <span class="op">+</span> loss1 <span class="op">+</span> loss2</span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="ss">f'λHAADF=</span><span class="sc">{</span>lambdaHAADF<span class="sc">}</span><span class="ss">, λEDS=</span><span class="sc">{</span>lambdaEDS<span class="sc">}</span><span class="ss">, λTV=</span><span class="sc">{</span>lambdaTV<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original data (x0)</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].imshow(x0[i].cpu().detach().numpy().reshape(nx,ny), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].set_title(<span class="ss">f'Original - Element </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].axis(<span class="st">'off'</span>)</span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot reconstructed data (x) </span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].imshow(x[i].data.cpu().detach().numpy(), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].set_title(<span class="ss">f'Reconstructed - Element </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].axis(<span class="st">'off'</span>)</span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a>utils.plot_convergence(costHAADF, lambdaHAADF, costEDS, lambdaEDS, costTV, lambdaTV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-<div id="cell-12" class="cell markdown">
-<section id="show-reconstructed-signal" class="level2">
-<h2 class="anchored" data-anchor-id="show-reconstructed-signal">Show Reconstructed Signal</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [7]:</pre></div><div id="cell-12" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x.<span class="bu">max</span>(), x.<span class="bu">min</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 </section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [13]:</pre></div><div id="cell-13" class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>utils.plot_elemental_images(xx,A.dot(xx<span class="op">**</span>gamma),elementList,nx,ny,<span class="dv">2</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div></div>
-<div id="cell-14" class="cell markdown">
 <section id="display-cost-functions-and-descent-parameters" class="level2">
 <h2 class="anchored" data-anchor-id="display-cost-functions-and-descent-parameters">Display Cost Functions and Descent Parameters</h2>
-</section>
-</div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [15]:</pre></div><div id="cell-15" class="cell">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="cell-14" class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>utils.plot_convergence(costHAADF, lambdaHAADF, costEDS, lambdaEDS, costTV, lambdaTV)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
-</div>
+</section>
+<section id="show-reconstructed-signal" class="level2">
+<h2 class="anchored" data-anchor-id="show-reconstructed-signal">Show Reconstructed Signal</h2>
+<div class="cell-container"><div class="cell-decorator"><pre>In [9]:</pre></div><div id="cell-16" class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="ss">f'λHAADF=</span><span class="sc">{</span>lambdaHAADF<span class="sc">}</span><span class="ss">, λEDS=</span><span class="sc">{</span>lambdaEDS<span class="sc">}</span><span class="ss">, λTV=</span><span class="sc">{</span>lambdaTV<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot original data (x0)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].imshow(x0[i].cpu().detach().numpy().reshape(nx,ny), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].set_title(<span class="ss">f'Original - Element </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">0</span>,i].axis(<span class="st">'off'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot reconstructed data (x) </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].imshow(x[i].cpu().detach().numpy().reshape(nx,ny), cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].set_title(<span class="ss">f'Reconstructed - Element </span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    axes[<span class="dv">1</span>,i].axis(<span class="st">'off'</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
