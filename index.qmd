@@ -46,19 +46,41 @@ jupyter: python3
 - [d2l Chapter 3: Regression](https://d2l.ai/chapter_linear-regression/index.html)
 - Sensor Fusion Slides
 
-## Lecture 3 (15.11.2024) {#sec-lecture3}
+## Lecture 3: CNNs (15.11.2024) {#sec-lecture3}
 
-## Lecture 4 (22.11.2024) {#sec-lecture4}
+- [d2l Chapter 7: CNNs](https://d2l.ai/chapter_convolutional-neural-networks/index.html)
+- [d2l Chapter 8: CNNs](https://d2l.ai/chapter_convolutional-modern/index.html)
 
-## Lecture 5 (29.11.2024) {#sec-lecture5}
+## Lecture 4: Classification, Segmentation, AutoEncoders (22.11.2024) {#sec-lecture4}
 
-## Lecture 6 () {#sec-lecture6}
+- [d2l Chapter 4: Classification](https://d2l.ai/chapter_linear-classification/index.html)
+- [d2l Chapter 14.9: Segmentation](https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html)
+- Segmentation
+- Dimensionality Reduction
+  - PCA
+  - Autoencoder
+  - Variational Autoencoder
 
-## Lecture 7 {#sec-lecture7}
+## Miniproject (29.11. - 13.12.2024) {#sec-lecture5}
 
-## Lecture 8 {#sec-lecture8}
+1. Segmentation
+2. VAE & Dimensionality Reduction
+3. Denoising
+4. Image-to-Image Translation
 
-## Lecture 9 {#sec-lecture9}
+## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
+
+- Project presentation
+- Generative Adversarial Networks
+- Gaussian Processes 1
+
+## Lecture 6: GPs (17.1.2025) {#sec-lecture7}
+
+## Lecture 7: Bayesian Optimization, Active Learning, Deep Kernel Learning (24.1.2025) {#sec-lecture8}
+
+## Lecture 8: Inverse Imaging Problems 1: Tomography, Deconvolution (31.1.2025) {#sec-lecture9}
+
+## Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025) {#sec-lecture10}
 
 <!-- ## References {.unnumbered} -->
 
