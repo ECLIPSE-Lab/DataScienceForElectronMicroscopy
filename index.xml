@@ -45,10 +45,10 @@ administration</role>
       <author-notes>
         <corresp id="cor-1">philipp.pelz@fau.de</corresp>
       </author-notes>
-      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-14">
+      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-15">
         <year>2024</year>
         <month>11</month>
-        <day>14</day>
+        <day>15</day>
       </pub-date>
       <history/>
       <abstract>
@@ -122,22 +122,85 @@ Lecture</p>
       </list>
     </sec>
     <sec id="sec-lecture4">
-      <title>4 Lecture 4 (22.11.2024)</title>
+      <title>4 Lecture 4: Classification, Segmentation, AutoEncoders
+  (22.11.2024)</title>
+      <list list-type="bullet">
+        <list-item>
+          <p>
+            <ext-link ext-link-type="uri" xlink:href="https://d2l.ai/chapter_linear-classification/index.html">d2l
+      Chapter 4: Classification</ext-link>
+          </p>
+        </list-item>
+        <list-item>
+          <p>
+            <ext-link ext-link-type="uri" xlink:href="https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html">d2l
+      Chapter 14.9: Segmentation</ext-link>
+          </p>
+        </list-item>
+        <list-item>
+          <p>Segmentation</p>
+        </list-item>
+        <list-item>
+          <p>Dimensionality Reduction</p>
+          <list list-type="bullet">
+            <list-item>
+              <p>PCA</p>
+            </list-item>
+            <list-item>
+              <p>Autoencoder</p>
+            </list-item>
+            <list-item>
+              <p>Variational Autoencoder</p>
+            </list-item>
+          </list>
+        </list-item>
+      </list>
     </sec>
     <sec id="sec-lecture5">
-      <title>5 Lecture 5 (29.11.2024)</title>
+      <title>5 Miniproject (29.11. - 13.12.2024)</title>
+      <list list-type="order">
+        <list-item>
+          <p>Segmentation</p>
+        </list-item>
+        <list-item>
+          <p>VAE &amp; Dimensionality Reduction</p>
+        </list-item>
+        <list-item>
+          <p>Denoising</p>
+        </list-item>
+        <list-item>
+          <p>Image-to-Image Translation</p>
+        </list-item>
+      </list>
     </sec>
     <sec id="sec-lecture6">
-      <title>6 Lecture 6 ()</title>
+      <title>6 Lecture 5: Mixed Bag (10.1.2025)</title>
+      <list list-type="bullet">
+        <list-item>
+          <p>Project presentation</p>
+        </list-item>
+        <list-item>
+          <p>Generative Adversarial Networks</p>
+        </list-item>
+        <list-item>
+          <p>Gaussian Processes 1</p>
+        </list-item>
+      </list>
     </sec>
     <sec id="sec-lecture7">
-      <title>7 Lecture 7</title>
+      <title>7 Lecture 6: GPs (17.1.2025)</title>
     </sec>
     <sec id="sec-lecture8">
-      <title>8 Lecture 8</title>
+      <title>8 Lecture 7: Bayesian Optimization, Active Learning, Deep
+  Kernel Learning (24.1.2025)</title>
     </sec>
     <sec id="sec-lecture9">
-      <title>9 Lecture 9</title>
+      <title>9 Lecture 8: Inverse Imaging Problems 1: Tomography,
+  Deconvolution (31.1.2025)</title>
+    </sec>
+    <sec id="sec-lecture10">
+      <title>10 Lecture 9: Inverse Imaging Problems 2: Phase Contrast
+  Imaging, Superresolution Imaging (7.2.2025)</title>
     </sec>
   </body>
   <back>
