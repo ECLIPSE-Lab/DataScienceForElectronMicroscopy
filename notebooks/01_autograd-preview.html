@@ -1,14 +1,9 @@
 <!DOCTYPE html>
-<html
-  xmlns="http://www.w3.org/1999/xhtml"
-  lang="en"
-  xml:lang="en"
-  >
-  <head>
-    <meta charset="utf-8" />
-    <meta name="generator" content="quarto-1.5.57" />
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="generator" content="quarto-1.5.57">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
     <title>01.3 Automatic Differentiation</title>
@@ -149,33 +144,32 @@
     });
     </script>
 
-    <!-- htmldependencies:E3FAD763 -->
+    
+<script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
       <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
       </head>
 
-  <body>
+  <body class="quarto-notebook">
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
-      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link"><i class="bi bi-caret-left"></i> Back to Article</a>
+      <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
       <h6><i class="bi bi-journal-code"></i> 01.3 Automatic Differentiation</h6>
 
-            <a
-        href="01_autograd.ipynb"
-        class="btn btn-primary quarto-download-embed"
-        data-noresolveinput="true"
-        download="01_autograd.ipynb"
-        >Download Notebook</a
-      >
+            <a href="../notebooks/01_autograd.ipynb" class="btn btn-primary quarto-download-embed" download="01_autograd.ipynb">Download Notebook</a>
           </div>
 
-     <div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
-<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
-  <div id="quarto-toc-target"></div>
-</div>
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-</div>
-<main class="content" id="quarto-document-content">      <header id="title-block-header" class="quarto-title-block default toc-left">
-  <div class="quarto-title-banner">
+     <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">01.3 Automatic Differentiation</h1>
           </div>
@@ -199,90 +193,96 @@
 
     <div class="quarto-other-links-text-target">
     </div>  </div>
-</header>
-
-     <nav id="TOC" role="doc-toc">
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#a-simple-function" id="toc-a-simple-function">A Simple Function</a></li>
-  <li><a href="#backward-for-non-scalar-variables" id="toc-backward-for-non-scalar-variables">Backward for Non-Scalar Variables</a></li>
-  <li><a href="#detaching-computation" id="toc-detaching-computation">Detaching Computation</a></li>
-  <li><a href="#gradients-and-python-control-flow" id="toc-gradients-and-python-control-flow">Gradients and Python Control Flow</a></li>
+  <li><a href="#a-simple-function" id="toc-a-simple-function" class="nav-link active" data-scroll-target="#a-simple-function">A Simple Function</a></li>
+  <li><a href="#backward-for-non-scalar-variables" id="toc-backward-for-non-scalar-variables" class="nav-link" data-scroll-target="#backward-for-non-scalar-variables">Backward for Non-Scalar Variables</a></li>
+  <li><a href="#detaching-computation" id="toc-detaching-computation" class="nav-link" data-scroll-target="#detaching-computation">Detaching Computation</a></li>
+  <li><a href="#gradients-and-python-control-flow" id="toc-gradients-and-python-control-flow" class="nav-link" data-scroll-target="#gradients-and-python-control-flow">Gradients and Python Control Flow</a></li>
   </ul>
-</nav>  <div id="4144c129" class="cell markdown">
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">      
+
+       <div id="4144c129" class="cell markdown">
 <p>Recall from Section Calculus that calculating derivatives is the crucial step in all the optimization algorithms that we will use to train deep networks. While the calculations are straightforward, working them out by hand can be tedious and error-prone, and these issues only grow as our models become more complex.</p>
 <p>Fortunately all modern deep learning frameworks take this work off our plates by offering <em>automatic differentiation</em> (often shortened to <em>autograd</em>). As we pass data through each successive function, the framework builds a <em>computational graph</em> that tracks how each value depends on others. To calculate derivatives, automatic differentiation works backwards through this graph applying the chain rule. The computational algorithm for applying the chain rule in this fashion is called <em>backpropagation</em>.</p>
 <p>While autograd libraries have become a hot concern over the past decade, they have a long history. In fact the earliest references to autograd date back over half of a century :cite:<code>Wengert.1964</code>. The core ideas behind modern backpropagation date to a PhD thesis from 1980 :cite:<code>Speelpenning.1980</code> and were further developed in the late 1980s :cite:<code>Griewank.1989</code>. While backpropagation has become the default method for computing gradients, it is not the only option. For instance, the Julia programming language employs forward propagation :cite:<code>Revels.Lubin.Papamarkou.2016</code>. Before exploring methods, let’s first master the autograd package.</p>
 </div>
-<div id="130439cd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:08.286501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:08.285693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.052257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.050994Z&quot;}" data-origin_pos="3" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb1"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span></code></pre></div>
-</div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="130439cd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:08.286501Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:08.285693Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.052257Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.050994Z&quot;}" data-origin_pos="3" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <div id="e2ab3850" class="cell markdown">
 <section id="a-simple-function" class="level2">
-<h2>A Simple Function</h2>
+<h2 class="anchored" data-anchor-id="a-simple-function">A Simple Function</h2>
 <p>Let’s assume that we are interested in (<strong>differentiating the function <span class="math inline">\(y = 2\mathbf{x}^{\top}\mathbf{x}\)</span> with respect to the column vector <span class="math inline">\(\mathbf{x}\)</span>.</strong>) To start, we assign <code>x</code> an initial value.</p>
 </section>
 </div>
-<div id="4253cfab" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;7&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.056833Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.055871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.084858Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.083727Z&quot;}" data-origin_pos="8" data-outputId="9f833a8e-1600-434a-d323-1f7e092a2e26" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb2"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="fl">4.0</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="4253cfab" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;7&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.056833Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.055871Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.084858Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.083727Z&quot;}" data-origin_pos="8" data-outputid="9f833a8e-1600-434a-d323-1f7e092a2e26" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="fl">4.0</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>tensor([0., 1., 2., 3.])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="e75614b0" class="cell markdown">
 <p>[<strong>Before we calculate the gradient of <span class="math inline">\(y\)</span> with respect to <span class="math inline">\(\mathbf{x}\)</span>, we need a place to store it.</strong>] In general, we avoid allocating new memory every time we take a derivative because deep learning requires successively computing derivatives with respect to the same parameters a great many times, and we might risk running out of memory. Note that the gradient of a scalar-valued function with respect to a vector <span class="math inline">\(\mathbf{x}\)</span> is vector-valued with the same shape as <span class="math inline">\(\mathbf{x}\)</span>.</p>
 </div>
-<div id="2a001d1e" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;9&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.088716Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.087816Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.092878Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.091740Z&quot;}" data-origin_pos="13" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb4"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also create x = torch.arange(4.0, requires_grad=True)</span></span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="2a001d1e" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;9&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.088716Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.087816Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.092878Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.091740Z&quot;}" data-origin_pos="13" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can also create x = torch.arange(4.0, requires_grad=True)</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x.requires_grad_(<span class="va">True</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x.grad  <span class="co"># The gradient is None by default</span></span></code></pre></div>
-</div>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x.grad  <span class="co"># The gradient is None by default</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <div id="2e74bc02" class="cell markdown">
 <p>(<strong>We now calculate our function of <code>x</code> and assign the result to <code>y</code>.</strong>)</p>
 </div>
-<div id="6e3bd777" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;11&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.096336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.095772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.105236Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.104075Z&quot;}" data-origin_pos="17" data-outputId="d21f974f-cc00-4ef3-9a39-2bdd28d5c118" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb5"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> torch.dot(x, x)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="6e3bd777" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;11&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.096336Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.095772Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.105236Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.104075Z&quot;}" data-origin_pos="17" data-outputid="d21f974f-cc00-4ef3-9a39-2bdd28d5c118" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> torch.dot(x, x)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>tensor(28., grad_fn=&lt;MulBackward0&gt;)</code></pre>
 </div>
-</div>
+</div></div>
 <div id="c3067490" class="cell markdown">
 <p>[<strong>We can now take the gradient of <code>y</code> with respect to <code>x</code></strong>] by calling its <code>backward</code> method. Next, we can access the gradient via <code>x</code>’s <code>grad</code> attribute.</p>
 </div>
-<div id="21b134ae" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;12&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.108600Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.108011Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.160854Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.159702Z&quot;}" data-origin_pos="25" data-outputId="879af498-f917-43e8-fe94-1781c2920d80" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb7"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y.backward()</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x.grad</span></code></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="21b134ae" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;12&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.108600Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.108011Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.160854Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.159702Z&quot;}" data-origin_pos="25" data-outputid="879af498-f917-43e8-fe94-1781c2920d80" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y.backward()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x.grad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>tensor([ 0.,  4.,  8., 12.])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="17d1390b" class="cell markdown">
 <p>(<strong>We already know that the gradient of the function <span class="math inline">\(y = 2\mathbf{x}^{\top}\mathbf{x}\)</span> with respect to <span class="math inline">\(\mathbf{x}\)</span> should be <span class="math inline">\(4\mathbf{x}\)</span>.</strong>) We can now verify that the automatic gradient computation and the expected result are identical.</p>
 </div>
-<div id="5030e37d" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;14&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.164665Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.163930Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.171033Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.169923Z&quot;}" data-origin_pos="30" data-outputId="eade007f-d646-4136-fa90-aef1da04a860" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb9"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> <span class="dv">4</span> <span class="op">*</span> x</span></code></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="5030e37d" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;14&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.164665Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.163930Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.171033Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.169923Z&quot;}" data-origin_pos="30" data-outputid="eade007f-d646-4136-fa90-aef1da04a860" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> <span class="dv">4</span> <span class="op">*</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>tensor([True, True, True, True])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="da440e48" class="cell markdown">
 <p>[<strong>Now let’s calculate another function of <code>x</code> and take its gradient.</strong>] Note that PyTorch does not automatically reset the gradient buffer when we record a new gradient. Instead, the new gradient is added to the already-stored gradient. This behavior comes in handy when we want to optimize the sum of multiple objective functions. To reset the gradient buffer, we can call <code>x.grad.zero_()</code> as follows:</p>
 </div>
-<div id="add5cf4b" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;20&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.174691Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.173957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.181847Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.180759Z&quot;}" data-origin_pos="37" data-outputId="6f404041-8eb3-47ac-fa2d-581c20fa8e30" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb11"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()  <span class="co"># Reset the gradient</span></span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="add5cf4b" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;20&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.174691Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.173957Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.181847Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.180759Z&quot;}" data-origin_pos="37" data-outputid="6f404041-8eb3-47ac-fa2d-581c20fa8e30" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()  <span class="co"># Reset the gradient</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x.<span class="bu">sum</span>()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y.backward()</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x.grad</span></code></pre></div>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>x.grad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>tensor([1., 1., 1., 1.])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="8bdd4c0c" class="cell markdown">
 <section id="backward-for-non-scalar-variables" class="level2">
-<h2>Backward for Non-Scalar Variables</h2>
+<h2 class="anchored" data-anchor-id="backward-for-non-scalar-variables">Backward for Non-Scalar Variables</h2>
 <p>When <code>y</code> is a vector, the most natural representation of the derivative of <code>y</code> with respect to a vector <code>x</code> is a matrix called the <em>Jacobian</em> that contains the partial derivatives of each component of <code>y</code> with respect to each component of <code>x</code>. Likewise, for higher-order <code>y</code> and <code>x</code>, the result of differentiation could be an even higher-order tensor.</p>
 <p>While Jacobians do show up in some advanced machine learning techniques, more commonly we want to sum up the gradients of each component of <code>y</code> with respect to the full vector <code>x</code>, yielding a vector of the same shape as <code>x</code>. For example, we often have a vector representing the value of our loss function calculated separately for each example among a <em>batch</em> of training examples. Here, we just want to (<strong>sum up the gradients computed individually for each example</strong>).</p>
 </section>
@@ -290,52 +290,52 @@
 <div id="9dda7124" class="cell markdown">
 <p>Because deep learning frameworks vary in how they interpret gradients of non-scalar tensors, PyTorch takes some steps to avoid confusion. Invoking <code>backward</code> on a non-scalar elicits an error unless we tell PyTorch how to reduce the object to a scalar. More formally, we need to provide some vector <span class="math inline">\(\mathbf{v}\)</span> such that <code>backward</code> will compute <span class="math inline">\(\mathbf{v}^\top \partial_{\mathbf{x}} \mathbf{y}\)</span> rather than <span class="math inline">\(\partial_{\mathbf{x}} \mathbf{y}\)</span>. This next part may be confusing, but for reasons that will become clear later, this argument (representing <span class="math inline">\(\mathbf{v}\)</span>) is named <code>gradient</code>. For a more detailed description, see Yang Zhang’s <a href="https://zhang-yang.medium.com/the-gradient-argument-in-pytorchs-backward-function-explained-by-examples-68f266950c29">Medium post</a>.</p>
 </div>
-<div id="1baa40bd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.185096Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.184685Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.192537Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.191435Z&quot;}" data-origin_pos="45" data-outputId="4178aafa-6afd-4b6d-a863-f258a21b5cb2" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb13"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [17]:</pre></div><div id="1baa40bd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.185096Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.184685Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.192537Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.191435Z&quot;}" data-origin_pos="45" data-outputid="4178aafa-6afd-4b6d-a863-f258a21b5cb2" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">*</span> x</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>y.backward(gradient<span class="op">=</span>torch.ones(<span class="bu">len</span>(y)))  <span class="co"># Faster: y.sum().backward()</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x.grad</span></code></pre></div>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x.grad</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>tensor([0., 2., 4., 6.])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="ffbd2c9d" class="cell markdown">
 <section id="detaching-computation" class="level2">
-<h2>Detaching Computation</h2>
+<h2 class="anchored" data-anchor-id="detaching-computation">Detaching Computation</h2>
 <p>Sometimes, we wish to [<strong>move some calculations outside of the recorded computational graph.</strong>] For example, say that we use the input to create some auxiliary intermediate terms for which we do not want to compute a gradient. In this case, we need to <em>detach</em> the respective computational graph from the final result. The following toy example makes this clearer: suppose we have <code>z = x * y</code> and <code>y = x * x</code> but we want to focus on the <em>direct</em> influence of <code>x</code> on <code>z</code> rather than the influence conveyed via <code>y</code>. In this case, we can create a new variable <code>u</code> that takes the same value as <code>y</code> but whose <em>provenance</em> (how it was created) has been wiped out. Thus <code>u</code> has no ancestors in the graph and gradients do not flow through <code>u</code> to <code>x</code>. For example, taking the gradient of <code>z = x * u</code> will yield the result <code>u</code>, (not <code>3 * x * x</code> as you might have expected since <code>z = x * x * x</code>).</p>
 </section>
 </div>
-<div id="107ac041" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;21&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.196001Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.195456Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.203246Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.202155Z&quot;}" data-origin_pos="50" data-outputId="2bc6d5ad-21fa-425f-c747-90971ab94681" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb15"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [19]:</pre></div><div id="107ac041" class="cell" data-attributes="{&quot;classes&quot;:[],&quot;id&quot;:&quot;&quot;,&quot;n&quot;:&quot;21&quot;}" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.196001Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.195456Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.203246Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.202155Z&quot;}" data-origin_pos="50" data-outputid="2bc6d5ad-21fa-425f-c747-90971ab94681" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> x <span class="op">*</span> x</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> y.detach()</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> u <span class="op">*</span> x</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>z.<span class="bu">sum</span>().backward()</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> u</span></code></pre></div>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> u</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>tensor([True, True, True, True])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="e0378e1f" class="cell markdown">
 <p>Note that while this procedure detaches <code>y</code>’s ancestors from the graph leading to <code>z</code>, the computational graph leading to <code>y</code> persists and thus we can calculate the gradient of <code>y</code> with respect to <code>x</code>.</p>
 </div>
-<div id="cb8c674b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.206880Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.206001Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.213592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.212476Z&quot;}" data-origin_pos="55" data-outputId="18ebe0df-2c54-47f7-b295-d9d84535a259" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb17"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [21]:</pre></div><div id="cb8c674b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.206880Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.206001Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.213592Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.212476Z&quot;}" data-origin_pos="55" data-outputid="18ebe0df-2c54-47f7-b295-d9d84535a259" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x.grad.zero_()</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y.<span class="bu">sum</span>().backward()</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> <span class="dv">2</span> <span class="op">*</span> x</span></code></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>x.grad <span class="op">==</span> <span class="dv">2</span> <span class="op">*</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>tensor([True, True, True, True])</code></pre>
 </div>
-</div>
+</div></div>
 <div id="76f056ce" class="cell markdown">
 <section id="gradients-and-python-control-flow" class="level2">
-<h2>Gradients and Python Control Flow</h2>
+<h2 class="anchored" data-anchor-id="gradients-and-python-control-flow">Gradients and Python Control Flow</h2>
 <p>So far we reviewed cases where the path from input to output was well defined via a function such as <code>z = x * x * x</code>. Programming offers us a lot more freedom in how we compute results. For instance, we can make them depend on auxiliary variables or condition choices on intermediate results. One benefit of using automatic differentiation is that [<strong>even if</strong>] building the computational graph of (<strong>a function required passing through a maze of Python control flow</strong>) (e.g., conditionals, loops, and arbitrary function calls), (<strong>we can still calculate the gradient of the resulting variable.</strong>) To illustrate this, consider the following code snippet where the number of iterations of the <code>while</code> loop and the evaluation of the <code>if</code> statement both depend on the value of the input <code>a</code>.</p>
 </section>
 </div>
-<div id="a83327c2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.218214Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.217554Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.222956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.221858Z&quot;}" data-origin_pos="60" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb19"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(a):</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="a83327c2" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.218214Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.217554Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.222956Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.221858Z&quot;}" data-origin_pos="60" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(a):</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> a <span class="op">*</span> <span class="dv">2</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> b.norm() <span class="op">&lt;</span> <span class="dv">1000</span>:</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        b <span class="op">=</span> b <span class="op">*</span> <span class="dv">2</span></span>
@@ -343,39 +343,39 @@
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> b</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        c <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> b</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> c</span></code></pre></div>
-</div>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> c</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <div id="189f6785" class="cell markdown">
 <p>Below, we call this function, passing in a random value, as input. Since the input is a random variable, we do not know what form the computational graph will take. However, whenever we execute <code>f(a)</code> on a specific input, we realize a specific computational graph and can subsequently run <code>backward</code>.</p>
 </div>
-<div id="c5ef0264" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.227364Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.226919Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.232880Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.231773Z&quot;}" data-origin_pos="65" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb20"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.randn(size<span class="op">=</span>(), requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<div class="cell-container"><div class="cell-decorator"><pre>In [25]:</pre></div><div id="c5ef0264" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.227364Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.226919Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.232880Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.231773Z&quot;}" data-origin_pos="65" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> torch.randn(size<span class="op">=</span>(), requires_grad<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> f(a)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>d.backward()</span></code></pre></div>
-</div>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>d.backward()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
 <div id="51065133" class="cell markdown">
 <p>Even though our function <code>f</code> is, for demonstration purposes, a bit contrived, its dependence on the input is quite simple: it is a <em>linear</em> function of <code>a</code> with piecewise defined scale. As such, <code>f(a) / a</code> is a vector of constant entries and, moreover, <code>f(a) / a</code> needs to match the gradient of <code>f(a)</code> with respect to <code>a</code>.</p>
 </div>
-<div id="ab14ef91" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.237298Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.236886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.243577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.242480Z&quot;}" data-origin_pos="70" data-outputId="0afb1308-dabe-4f65-9cb2-6a87a39dd59c" data-tab="[&quot;pytorch&quot;]">
-<div class="sourceCode" id="cb21"><pre class="sourceCode python cell-code"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a.grad <span class="op">==</span> d <span class="op">/</span> a</span></code></pre></div>
+<div class="cell-container"><div class="cell-decorator"><pre>In [27]:</pre></div><div id="ab14ef91" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:26:10.237298Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:26:10.236886Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:26:10.243577Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:26:10.242480Z&quot;}" data-origin_pos="70" data-outputid="0afb1308-dabe-4f65-9cb2-6a87a39dd59c" data-tab="[&quot;pytorch&quot;]">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>a.grad <span class="op">==</span> d <span class="op">/</span> a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>tensor(True)</code></pre>
 </div>
-</div>
+</div></div>
 <div id="a992f28c" class="cell markdown">
 <p>Dynamic control flow is very common in deep learning. For instance, when processing text, the computational graph depends on the length of the input. In these cases, automatic differentiation becomes vital for statistical modeling since it is impossible to compute the gradient <em>a priori</em>.</p>
 <section id="discussion" class="level2">
-<h2>Discussion</h2>
+<h2 class="anchored" data-anchor-id="discussion">Discussion</h2>
 <p>You have now gotten a taste of the power of automatic differentiation. The development of libraries for calculating derivatives both automatically and efficiently has been a massive productivity booster for deep learning practitioners, liberating them so they can focus on less menial. Moreover, autograd lets us design massive models for which pen and paper gradient computations would be prohibitively time consuming. Interestingly, while we use autograd to <em>optimize</em> models (in a statistical sense) the <em>optimization</em> of autograd libraries themselves (in a computational sense) is a rich subject of vital interest to framework designers. Here, tools from compilers and graph manipulation are leveraged to compute results in the most expedient and memory-efficient manner.</p>
 <p>For now, try to remember these basics: (i) attach gradients to those variables with respect to which we desire derivatives; (ii) record the computation of the target value; (iii) execute the backpropagation function; and (iv) access the resulting gradient.</p>
 </section>
 <section id="exercises" class="level2">
-<h2>Exercises</h2>
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <ol type="1">
 <li>Why is the second derivative much more expensive to compute than the first derivative?</li>
 <li>After running the function for backpropagation, immediately run it again and see what happens. Investigate.</li>
 <li>In the control flow example where we calculate the derivative of <code>d</code> with respect to <code>a</code>, what would happen if we changed the variable <code>a</code> to a random vector or a matrix? At this point, the result of the calculation <code>f(a)</code> is no longer a scalar. What happens to the result? How do we analyze this?</li>
-<li>Let <span class="math inline">\(f(x) = \sin(x)\)</span>. Plot the graph of <span class="math inline">\(f\)</span> and of its derivative <span class="math inline">\(f&#39;\)</span>. Do not exploit the fact that <span class="math inline">\(f&#39;(x) = \cos(x)\)</span> but rather use automatic differentiation to get the result.</li>
+<li>Let <span class="math inline">\(f(x) = \sin(x)\)</span>. Plot the graph of <span class="math inline">\(f\)</span> and of its derivative <span class="math inline">\(f'\)</span>. Do not exploit the fact that <span class="math inline">\(f'(x) = \cos(x)\)</span> but rather use automatic differentiation to get the result.</li>
 <li>Let <span class="math inline">\(f(x) = ((\log x^2) \cdot \sin x) + x^{-1}\)</span>. Write out a dependency graph tracing results from <span class="math inline">\(x\)</span> to <span class="math inline">\(f(x)\)</span>.</li>
 <li>Use the chain rule to compute the derivative <span class="math inline">\(\frac{df}{dx}\)</span> of the aforementioned function, placing each term on the dependency graph that you constructed previously.</li>
 <li>Given the graph and the intermediate derivative results, you have a number of options when computing the gradient. Evaluate the result once starting from <span class="math inline">\(x\)</span> to <span class="math inline">\(f\)</span> and once from <span class="math inline">\(f\)</span> tracing back to <span class="math inline">\(x\)</span>. The path from <span class="math inline">\(x\)</span> to <span class="math inline">\(f\)</span> is commonly known as <em>forward differentiation</em>, whereas the path from <span class="math inline">\(f\)</span> to <span class="math inline">\(x\)</span> is known as backward differentiation.</li>
@@ -384,7 +384,7 @@
 </section>
 </div>
      </main>
-<!-- /main column -->  <script id = "quarto-html-after-body" type="application/javascript">
+<!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -804,5 +804,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>  </div> <!-- /content --> 
-  </body>
-</html>
+  
+</body></html>
