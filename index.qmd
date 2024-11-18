@@ -69,15 +69,15 @@ jupyter: python3
 
 2. VAE & Dimensionality Reduction
 
-We will use the dataset from @rangel2024robust to implement a segmentation model.
+We will use the dataset from @shi2022uncovering to implement a dimensionality reduction model and cluster 4DSTEM data.
 
 3. Denoising
 
-We will use the dataset from @rangel2024robust to implement a segmentation model.
+We will use the dataset from @sadri2024unsupervised to implement a denoising model for 4DSTEM data.
 
 4. Image-to-Image Translation
 
-We will use the dataset from @rangel2024robust to implement a segmentation model.
+We will use a simulated dataset from the IMN chair to implement an Image to image translation model.
 
 ## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
 
