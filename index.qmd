@@ -64,9 +64,20 @@ jupyter: python3
 ## Miniproject (29.11. - 13.12.2024) {#sec-lecture5}
 
 1. Segmentation
+
+  We will use the dataset from @rangel2024robust to implement a segmentation model.
+
 2. VAE & Dimensionality Reduction
+
+We will use the dataset from @rangel2024robust to implement a segmentation model.
+
 3. Denoising
+
+We will use the dataset from @rangel2024robust to implement a segmentation model.
+
 4. Image-to-Image Translation
+
+We will use the dataset from @rangel2024robust to implement a segmentation model.
 
 ## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
 
@@ -82,7 +93,7 @@ jupyter: python3
 
 ## Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025) {#sec-lecture10}
 
-<!-- ## References {.unnumbered} -->
+## References {.unnumbered}
 
-<!-- ::: {#refs}
-::: -->
+::: {#refs}
+:::
