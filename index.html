@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.35">
+<meta name="generator" content="quarto-1.6.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2024-11-15">
+<meta name="dcterms.date" content="2024-11-18">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
 <title>Lecture Data Science for Electron Microscopy Winter 2024</title>
@@ -23,7 +23,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -32,7 +52,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-383d4a065b21370043bc4709e21900a7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-86e67f1fcd594f562d62505f92e4b4dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -43,13 +63,16 @@ ul.task-list li input[type="checkbox"] {
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2024-11-15">
-<meta name="citation_cover_date" content="2024-11-15">
+<meta name="citation_publication_date" content="2024-11-18">
+<meta name="citation_cover_date" content="2024-11-18">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-11-15">
+<meta name="citation_online_date" content="2024-11-18">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
+<meta name="citation_reference" content="citation_title=A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM);,citation_author=Luis Rangel DaCosta;,citation_author=Katherine Sytwu;,citation_author=CK Groschner;,citation_author=MC Scott;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=10;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
+<meta name="citation_reference" content="citation_title=Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy;,citation_author=Chuqiao Shi;,citation_author=Michael C Cao;,citation_author=Sarah M Rehn;,citation_author=Sang-Hoon Bae;,citation_author=Jeehwan Kim;,citation_author=Matthew R Jones;,citation_author=David A Muller;,citation_author=Yimo Han;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_issue=1;,citation_volume=8;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
+<meta name="citation_reference" content="citation_title=Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy;,citation_author=Alireza Sadri;,citation_author=Timothy C Petersen;,citation_author=Emmanuel WC Terzoudis-Lumsden;,citation_author=Bryan D Esser;,citation_author=Joanne Etheridge;,citation_author=Scott D Findlay;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=10;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
 </head>
 
 <body>
@@ -83,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 15, 2024</p>
+              <p class="date">November 18, 2024</p>
             </div>
           </div>
           
@@ -126,8 +149,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#sec-lecture8" id="toc-sec-lecture8" class="nav-link" data-scroll-target="#sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Bayesian Optimization, Active Learning, Deep Kernel Learning (24.1.2025)</a></li>
   <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Inverse Imaging Problems 1: Tomography, Deconvolution (31.1.2025)</a></li>
   <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025)</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/02_data_fusion-preview.html"><i class="bi bi-journal-code"></i>Regression example - sensor fusion</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -182,10 +206,20 @@ ul.task-list li input[type="checkbox"] {
 <h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Miniproject (29.11. - 13.12.2024)</h2>
 <ol type="1">
 <li>Segmentation</li>
+</ol>
+<p>We will use the dataset from <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> to implement a segmentation model.</p>
+<ol start="2" type="1">
 <li>VAE &amp; Dimensionality Reduction</li>
+</ol>
+<p>We will use the dataset from <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> to implement a dimensionality reduction model and cluster 4DSTEM data.</p>
+<ol start="3" type="1">
 <li>Denoising</li>
+</ol>
+<p>We will use the dataset from <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> to implement a denoising model for 4DSTEM data.</p>
+<ol start="4" type="1">
 <li>Image-to-Image Translation</li>
 </ol>
+<p>We will use a simulated dataset from the IMN chair to implement an Image to image translation model.</p>
 </section>
 <section id="sec-lecture6" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (10.1.2025)</h2>
@@ -206,16 +240,27 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="sec-lecture10" class="level2" data-number="10">
 <h2 data-number="10" class="anchored" data-anchor-id="sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025)</h2>
-<!-- ## References {.unnumbered} -->
-<!-- ::: {#refs}
-::: -->
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-rangel2024robust" class="csl-entry" role="listitem">
+Rangel DaCosta, Luis, Katherine Sytwu, CK Groschner, and MC Scott. 2024. <span>“A Robust Synthetic Data Generation Framework for Machine Learning in High-Resolution Transmission Electron Microscopy (HRTEM).”</span> <em>Npj Computational Materials</em> 10 (1): 165.
+</div>
+<div id="ref-sadri2024unsupervised" class="csl-entry" role="listitem">
+Sadri, Alireza, Timothy C Petersen, Emmanuel WC Terzoudis-Lumsden, Bryan D Esser, Joanne Etheridge, and Scott D Findlay. 2024. <span>“Unsupervised Deep Denoising for Four-Dimensional Scanning Transmission Electron Microscopy.”</span> <em>Npj Computational Materials</em> 10 (1): 243.
+</div>
+<div id="ref-shi2022uncovering" class="csl-entry" role="listitem">
+Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R Jones, David A Muller, and Yimo Han. 2022. <span>“Uncovering Material Deformations via Machine Learning Combined with Four-Dimensional Scanning Transmission Electron Microscopy.”</span> <em>Npj Computational Materials</em> 8 (1): 114.
+</div>
+</div>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pelz2024,
   author = {Pelz, Philipp},
   title = {Lecture {Data} {Science} for {Electron} {Microscopy} {Winter}
     2024},
-  date = {2024-11-15},
+  date = {2024-11-18},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
@@ -223,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2024. <span>“Lecture Data Science for Electron Microscopy
 Winter 2024.”</span> Friedrich-Alexander Universitaet
-Erlangen-Nuernberg. November 15, 2024.
+Erlangen-Nuernberg. November 18, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">

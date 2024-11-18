@@ -64,10 +64,10 @@ administration</role>
 <corresp id="cor-1">philipp.pelz@fau.de</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-15">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-18">
 <year>2024</year>
 <month>11</month>
-<day>15</day>
+<day>18</day>
 </pub-date>
 
 
@@ -180,16 +180,37 @@ Lecture</p>
     <list-item>
       <p>Segmentation</p>
     </list-item>
+  </list>
+  <p>We will use the dataset from Rangel DaCosta et al.
+  (<xref alt="2024" rid="ref-rangel2024robust" ref-type="bibr">2024</xref>)
+  to implement a segmentation model.</p>
+  <list list-type="order">
     <list-item>
+      <label>2.</label>
       <p>VAE &amp; Dimensionality Reduction</p>
     </list-item>
+  </list>
+  <p>We will use the dataset from Shi et al.
+  (<xref alt="2022" rid="ref-shi2022uncovering" ref-type="bibr">2022</xref>)
+  to implement a dimensionality reduction model and cluster 4DSTEM
+  data.</p>
+  <list list-type="order">
     <list-item>
+      <label>3.</label>
       <p>Denoising</p>
     </list-item>
+  </list>
+  <p>We will use the dataset from Sadri et al.
+  (<xref alt="2024" rid="ref-sadri2024unsupervised" ref-type="bibr">2024</xref>)
+  to implement a denoising model for 4DSTEM data.</p>
+  <list list-type="order">
     <list-item>
+      <label>4.</label>
       <p>Image-to-Image Translation</p>
     </list-item>
   </list>
+  <p>We will use a simulated dataset from the IMN chair to implement an
+  Image to image translation model.</p>
 </sec>
 <sec id="sec-lecture6">
   <title>6 Lecture 5: Mixed Bag (10.1.2025)</title>
@@ -223,6 +244,69 @@ Lecture</p>
 </body>
 
 <back>
+<ref-list>
+  <title>References</title>
+  <ref id="ref-rangel2024robust">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Rangel DaCosta</surname><given-names>Luis</given-names></name>
+        <name><surname>Sytwu</surname><given-names>Katherine</given-names></name>
+        <name><surname>Groschner</surname><given-names>CK</given-names></name>
+        <name><surname>Scott</surname><given-names>MC</given-names></name>
+      </person-group>
+      <article-title>A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM)</article-title>
+      <source>npj Computational Materials</source>
+      <publisher-name>Nature Publishing Group UK London</publisher-name>
+      <year iso-8601-date="2024">2024</year>
+      <volume>10</volume>
+      <issue>1</issue>
+      <fpage>165</fpage>
+      <lpage></lpage>
+    </element-citation>
+  </ref>
+  <ref id="ref-shi2022uncovering">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Shi</surname><given-names>Chuqiao</given-names></name>
+        <name><surname>Cao</surname><given-names>Michael C</given-names></name>
+        <name><surname>Rehn</surname><given-names>Sarah M</given-names></name>
+        <name><surname>Bae</surname><given-names>Sang-Hoon</given-names></name>
+        <name><surname>Kim</surname><given-names>Jeehwan</given-names></name>
+        <name><surname>Jones</surname><given-names>Matthew R</given-names></name>
+        <name><surname>Muller</surname><given-names>David A</given-names></name>
+        <name><surname>Han</surname><given-names>Yimo</given-names></name>
+      </person-group>
+      <article-title>Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy</article-title>
+      <source>npj Computational Materials</source>
+      <publisher-name>Nature Publishing Group UK London</publisher-name>
+      <year iso-8601-date="2022">2022</year>
+      <volume>8</volume>
+      <issue>1</issue>
+      <fpage>114</fpage>
+      <lpage></lpage>
+    </element-citation>
+  </ref>
+  <ref id="ref-sadri2024unsupervised">
+    <element-citation publication-type="article-journal">
+      <person-group person-group-type="author">
+        <name><surname>Sadri</surname><given-names>Alireza</given-names></name>
+        <name><surname>Petersen</surname><given-names>Timothy C</given-names></name>
+        <name><surname>Terzoudis-Lumsden</surname><given-names>Emmanuel WC</given-names></name>
+        <name><surname>Esser</surname><given-names>Bryan D</given-names></name>
+        <name><surname>Etheridge</surname><given-names>Joanne</given-names></name>
+        <name><surname>Findlay</surname><given-names>Scott D</given-names></name>
+      </person-group>
+      <article-title>Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy</article-title>
+      <source>npj Computational Materials</source>
+      <publisher-name>Nature Publishing Group UK London</publisher-name>
+      <year iso-8601-date="2024">2024</year>
+      <volume>10</volume>
+      <issue>1</issue>
+      <fpage>243</fpage>
+      <lpage></lpage>
+    </element-citation>
+  </ref>
+</ref-list>
 </back>
 
 <sub-article article-type="notebook" id="nb-3-nb-1">
@@ -4414,6 +4498,5 @@ torch.norm(u)</code>
 
 
 </sub-article>
-<!-- (F2ED4C6E)[nb-5]:/home/runner/work/DataScienceForElectronMicroscopy/DataScienceForElectronMicroscopy/notebooks/02_data_fusion.ipynb -->
 
 </article>
