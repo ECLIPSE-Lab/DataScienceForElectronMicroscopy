@@ -45,10 +45,10 @@ administration</role>
       <author-notes>
         <corresp id="cor-1">philipp.pelz@fau.de</corresp>
       </author-notes>
-      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-18">
+      <pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-11-21">
         <year>2024</year>
         <month>11</month>
-        <day>18</day>
+        <day>21</day>
       </pub-date>
       <history/>
       <abstract>
@@ -158,30 +158,79 @@ Lecture</p>
     </sec>
     <sec id="sec-lecture5">
       <title>5 Miniproject (29.11. - 13.12.2024)</title>
+      <p>In the miniproject, you will test multiple deep neural network
+  architectures on one of four microscopy-related tasks. You should
+  summarize your results in a short presentation (5 minutes + 2 minutes
+  discussion) and deliver a Jupyter Notebook with your code and results.
+  The miniproject will be graded and will count as 40% towards your
+  final grade.</p>
       <list list-type="order">
         <list-item>
-          <p>Segmentation</p>
-          <p>We will use the dataset from Rangel DaCosta et al.
+          <p>Segmentation Task</p>
+          <p>We will use the HRTEM dataset from “A robust synthetic data
+      generation framework for machine learning in high-resolution
+      transmission electron microscopy (HRTEM)” by Rangel DaCosta et al.
       (<xref alt="2024" rid="ref-rangel2024robust" ref-type="bibr">2024</xref>)
-      to implement a segmentation model.</p>
+      to implement a segmentation model. The goal is to segment
+      nanoparticles in HRTEM images.</p>
+          <p>Please use the article “A robust synthetic data generation
+      framework for machine learning in high-resolution transmission
+      electron microscopy (HRTEM)” by Rangel DaCosta et al.
+      (<xref alt="2024" rid="ref-rangel2024robust" ref-type="bibr">2024</xref>)
+      as a starting point for your implementation.</p>
+          <p>The datast contains pairs of HRTEM images and ground truth
+      segmentations.</p>
         </list-item>
         <list-item>
           <p>VAE &amp; Dimensionality Reduction</p>
-          <p>We will use the dataset from Shi et al.
+          <p>We will use the dataset from “Uncovering material deformations
+      via machine learning combined with four-dimensional scanning
+      transmission electron microscopy” by Shi et al.
       (<xref alt="2022" rid="ref-shi2022uncovering" ref-type="bibr">2022</xref>)
       to implement a dimensionality reduction model and cluster 4DSTEM
       data.</p>
+          <p>The goal is to learn a mapping from 4DSTEM data to a
+      lower-dimensional embedding where you can perform clustering to
+      identify different deformation modes.</p>
+          <p>Please use the article “Uncovering material deformations via
+      machine learning combined with four-dimensional scanning
+      transmission electron microscopy” by Shi et al.
+      (<xref alt="2022" rid="ref-shi2022uncovering" ref-type="bibr">2022</xref>)
+      as a starting point for your implementation.</p>
         </list-item>
         <list-item>
           <p>Denoising</p>
-          <p>We will use the dataset from Sadri et al.
+          <p>We will use the dataset from “Unsupervised deep denoising for
+      four-dimensional scanning transmission electron microscopy” by
+      Sadri et al.
       (<xref alt="2024" rid="ref-sadri2024unsupervised" ref-type="bibr">2024</xref>)
       to implement a denoising model for 4DSTEM data.</p>
+          <p>The goal is to learn a mapping from noisy to clean 4DSTEM
+      data.</p>
+          <p>Please use the article “Unsupervised deep denoising for
+      four-dimensional scanning transmission electron microscopy” by
+      Sadri et al.
+      (<xref alt="2024" rid="ref-sadri2024unsupervised" ref-type="bibr">2024</xref>)
+      as a starting point for your implementation.</p>
+          <p>The article contains pytorch code for the model.</p>
+          <p>Learn how to adapt it to your needs and try to replicate the
+      results on the SrTiO3_High_mag_Low_dose.npy and
+      SrTiO3_High_mag_High_dose.npy datasets.</p>
         </list-item>
         <list-item>
           <p>Image-to-Image Translation</p>
-          <p>We will use a simulated dataset from the IMN chair to implement
-      an Image to image translation model.</p>
+          <p>We will use a simulated X-ray image dataset with pairs of
+      projected thickness and phase contrast images to implement an
+      Image to image translation model.</p>
+          <p>The goal is to learn a mapping from phase contrast images to
+      projected thickness images.</p>
+          <p>This is usually a task that is solved with multiple
+      measurements and a physical model of the imaging process.</p>
+          <p>Here we will try to learn this mapping from simulated data.
+      Please use the article “Multi-resolution convolutional neural
+      networks for inverse problems” by Wang et al.
+      (<xref alt="2020" rid="ref-wang2020multi" ref-type="bibr">2020</xref>)
+      as a starting point for your implementation.</p>
         </list-item>
       </list>
     </sec>
@@ -329,6 +378,44 @@ Lecture</p>
           <volume>10</volume>
           <issue>1</issue>
           <fpage>243</fpage>
+          <lpage/>
+        </element-citation>
+      </ref>
+      <ref id="ref-wang2020multi">
+        <element-citation publication-type="article-journal">
+          <person-group person-group-type="author">
+            <name>
+              <surname>Wang</surname>
+              <given-names>Feng</given-names>
+            </name>
+            <name>
+              <surname>Eljarrat</surname>
+              <given-names>Alberto</given-names>
+            </name>
+            <name>
+              <surname>Müller</surname>
+              <given-names>Johannes</given-names>
+            </name>
+            <name>
+              <surname>Henninen</surname>
+              <given-names>Trond R</given-names>
+            </name>
+            <name>
+              <surname>Erni</surname>
+              <given-names>Rolf</given-names>
+            </name>
+            <name>
+              <surname>Koch</surname>
+              <given-names>Christoph T</given-names>
+            </name>
+          </person-group>
+          <article-title>Multi-resolution convolutional neural networks for inverse problems</article-title>
+          <source>Scientific reports</source>
+          <publisher-name>Nature Publishing Group UK London</publisher-name>
+          <year iso-8601-date="2020">2020</year>
+          <volume>10</volume>
+          <issue>1</issue>
+          <fpage>5730</fpage>
           <lpage/>
         </element-citation>
       </ref>
@@ -971,11 +1058,11 @@ class ConvVAE(th.nn.Module):
         )
         
         # Latent space
-        self.fc_mu = th.nn.Linear(256 * 8 * 8, 128)
-        self.fc_var = th.nn.Linear(256 * 8 * 8, 128)
+        self.fc_mu = th.nn.Linear(256 * 8 * 8, 3)
+        self.fc_var = th.nn.Linear(256 * 8 * 8, 3)
         
         # Decoder
-        self.decoder_input = th.nn.Linear(128, 256 * 8 * 8)
+        self.decoder_input = th.nn.Linear(3, 256 * 8 * 8)
         
         self.decoder = th.nn.Sequential(
             th.nn.ConvTranspose2d(256, 128, kernel_size=3, stride=2, padding=1, output_padding=1),
@@ -1011,7 +1098,7 @@ class ConvVAE(th.nn.Module):
         return self.decode(z), mu, log_var
 
 # Initialize model
-model = ConvVAE()
+model = ConvVAE().cuda()
 
 # Define loss function
 def loss_function(recon_x, x, mu, log_var):
@@ -1024,15 +1111,48 @@ optimizer = th.optim.Adam(model.parameters(), lr=1e-3)
   </code>
         </sec>
         <sec id="cell-9-nb-3" specific-use="notebook-content">
+          <code language="python"># Print model architecture
+print(model)
+  </code>
+          <boxed-text>
+            <preformat>ConvVAE(
+  (encoder): Sequential(
+    (0): Conv2d(1, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (1): ReLU()
+    (2): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (3): ReLU()
+    (4): Conv2d(64, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (5): ReLU()
+    (6): Conv2d(128, 256, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+    (7): ReLU()
+    (8): Flatten(start_dim=1, end_dim=-1)
+  )
+  (fc_mu): Linear(in_features=16384, out_features=3, bias=True)
+  (fc_var): Linear(in_features=16384, out_features=3, bias=True)
+  (decoder_input): Linear(in_features=3, out_features=16384, bias=True)
+  (decoder): Sequential(
+    (0): ConvTranspose2d(256, 128, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (1): ReLU()
+    (2): ConvTranspose2d(128, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (3): ReLU()
+    (4): ConvTranspose2d(64, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (5): ReLU()
+    (6): ConvTranspose2d(32, 1, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), output_padding=(1, 1))
+    (7): Sigmoid()
+  )
+)</preformat>
+          </boxed-text>
+        </sec>
+        <sec id="cell-10-nb-3" specific-use="notebook-content">
           <code language="python"># Training loop
-num_epochs = 50
+num_epochs = 3
 batch_size = 32
 
 data3dt = th.from_numpy(np.pad(data3d, ((0,0), (2,2), (2,2)))).float().unsqueeze(1).cuda()
 data3dt -= data3dt.min()
 data3dt /= data3dt.max()</code>
         </sec>
-        <sec id="cell-10-nb-3" specific-use="notebook-content">
+        <sec id="cell-11-nb-3" specific-use="notebook-content">
           <code language="python">
 
 for epoch in range(num_epochs):
@@ -1066,28 +1186,9 @@ for epoch in range(num_epochs):
     print(f'Epoch [{epoch+1}/{num_epochs}], Average Loss: {avg_loss:.4f}')
   </code>
           <boxed-text>
-            <preformat>RuntimeError: all elements of input should be between 0 and 1
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mRuntimeError[0m                              Traceback (most recent call last)
-Cell [0;32mIn[15], line 22[0m
-[1;32m     19[0m recon_batch, mu, log_var [38;5;241m=[39m model(batch)
-[1;32m     21[0m [38;5;66;03m# Calculate loss[39;00m
-[0;32m---&gt; 22[0m loss [38;5;241m=[39m [43mloss_function[49m[43m([49m[43mrecon_batch[49m[43m,[49m[43m [49m[43mbatch[49m[43m,[49m[43m [49m[43mmu[49m[43m,[49m[43m [49m[43mlog_var[49m[43m)[49m
-[1;32m     24[0m [38;5;66;03m# Backward pass[39;00m
-[1;32m     25[0m loss[38;5;241m.[39mbackward()
-
-Cell [0;32mIn[5], line 64[0m, in [0;36mloss_function[0;34m(recon_x, x, mu, log_var)[0m
-[1;32m     63[0m [38;5;28;01mdef[39;00m [38;5;21mloss_function[39m(recon_x, x, mu, log_var):
-[0;32m---&gt; 64[0m     BCE [38;5;241m=[39m [43mth[49m[38;5;241;43m.[39;49m[43mnn[49m[38;5;241;43m.[39;49m[43mfunctional[49m[38;5;241;43m.[39;49m[43mbinary_cross_entropy[49m[43m([49m[43mrecon_x[49m[43m,[49m[43m [49m[43mx[49m[43m,[49m[43m [49m[43mreduction[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43msum[39;49m[38;5;124;43m'[39;49m[43m)[49m
-[1;32m     65[0m     KLD [38;5;241m=[39m [38;5;241m-[39m[38;5;241m0.5[39m [38;5;241m*[39m th[38;5;241m.[39msum([38;5;241m1[39m [38;5;241m+[39m log_var [38;5;241m-[39m mu[38;5;241m.[39mpow([38;5;241m2[39m) [38;5;241m-[39m log_var[38;5;241m.[39mexp())
-[1;32m     66[0m     [38;5;28;01mreturn[39;00m BCE [38;5;241m+[39m KLD
-
-File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/functional.py:3154[0m, in [0;36mbinary_cross_entropy[0;34m(input, target, weight, size_average, reduce, reduction)[0m
-[1;32m   3151[0m     new_size [38;5;241m=[39m _infer_size(target[38;5;241m.[39msize(), weight[38;5;241m.[39msize())
-[1;32m   3152[0m     weight [38;5;241m=[39m weight[38;5;241m.[39mexpand(new_size)
-[0;32m-&gt; 3154[0m [38;5;28;01mreturn[39;00m [43mtorch[49m[38;5;241;43m.[39;49m[43m_C[49m[38;5;241;43m.[39;49m[43m_nn[49m[38;5;241;43m.[39;49m[43mbinary_cross_entropy[49m[43m([49m[38;5;28;43minput[39;49m[43m,[49m[43m [49m[43mtarget[49m[43m,[49m[43m [49m[43mweight[49m[43m,[49m[43m [49m[43mreduction_enum[49m[43m)[49m
-
-[0;31mRuntimeError[0m: all elements of input should be between 0 and 1</preformat>
+            <preformat>Epoch [1/3], Average Loss: 8588.8457
+Epoch [2/3], Average Loss: 6917.8708
+Epoch [3/3], Average Loss: 6903.6330</preformat>
           </boxed-text>
         </sec>
       </sec>
@@ -5680,11 +5781,83 @@ import torch as th</code>
       </sec>
       <sec id="cell-3-nb-7" specific-use="notebook-content">
         <code language="python">path = '/mnt/data/datascience_miniprojects/04_ImageToImage/sim/'
-path_inputs = path + 'inputs/'
-path_targets = path + 'outputs/'
+path_inputs = path + 'projected_thickness/'
+path_targets = path + 'phase_contrast/'</code>
+      </sec>
+      <sec id="cell-4-nb-7" specific-use="notebook-content">
+        <code language="python">from PIL import Image
+from glob import glob
+from torch.utils.data import Dataset
+import torchvision.transforms as T
 
-# %%
+class Img2ImgDataset(Dataset):
+    def __init__(self, input_path, target_path):
+        # Get sorted lists of file paths
+        self.input_files = sorted(glob(os.path.join(input_path, '*.tif')))
+        self.target_files = sorted(glob(os.path.join(target_path, '*.tif')))
+        
+        # Verify matching number of files
+        assert len(self.input_files) == len(self.target_files), \
+            "Number of input and target images must match"
+            
+        # Define transforms
+        self.transform = T.Compose([
+            T.ToTensor(),  # Convert PIL image to tensor and scale to [0,1]
+        ])
+        
+    def __len__(self):
+        return len(self.input_files)
+    
+    def __getitem__(self, idx):
+        # Load images
+        input_img = Image.open(self.input_files[idx])
+        target_img = Image.open(self.target_files[idx])
+        
+        # Convert to tensors
+        input_tensor = self.transform(input_img)
+        target_tensor = self.transform(target_img)
+        
+        return input_tensor, target_tensor
+
+# Create dataset
+dataset = Img2ImgDataset(path_inputs, path_targets)
+
+# Print dataset size
+print(f"Dataset contains {len(dataset)} image pairs")
+
+# Load first pair to verify shapes
+x, y = dataset[0]
+print(f"Input shape: {x.shape}")
+print(f"Target shape: {y.shape}")
 </code>
+        <boxed-text>
+          <preformat>Dataset contains 1844 image pairs
+Input shape: torch.Size([1, 1024, 1024])
+Target shape: torch.Size([1, 1024, 1024])</preformat>
+        </boxed-text>
+      </sec>
+      <sec id="cell-5-nb-7" specific-use="notebook-content">
+        <code language="python">import torchvision
+# Create a 3x3 grid of input images
+inputs = []
+for i in range(9):
+    x, _ = dataset[i]  # Get just the input image
+    inputs.append(x)
+
+# Use torchvision's make_grid to create a grid of images
+grid = torchvision.utils.make_grid(inputs, nrow=3, padding=2)
+
+# Convert to numpy and scale to 0-255 range for display
+grid_np = (grid.squeeze().numpy() * 255).astype(np.uint8)
+
+# Plot the grid using matplotlib
+plt.figure(figsize=(7,7))
+plt.imshow(grid_np.transpose(1,2,0))  # Transpose from (C,H,W) to (H,W,C) for matplotlib
+plt.axis('off')
+plt.show()</code>
+        <boxed-text>
+          <graphic mimetype="image" mime-subtype="png" xlink:href="X4_Img2Img_files/figure-jats/cell-5-output-1.png"/>
+        </boxed-text>
       </sec>
     </body>
     <back>

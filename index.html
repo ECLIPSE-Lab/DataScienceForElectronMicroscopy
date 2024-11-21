@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2024-11-18">
+<meta name="dcterms.date" content="2024-11-21">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
 <title>Lecture Data Science for Electron Microscopy Winter 2024</title>
@@ -63,16 +63,17 @@ div.csl-indent {
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2024-11-18">
-<meta name="citation_cover_date" content="2024-11-18">
+<meta name="citation_publication_date" content="2024-11-21">
+<meta name="citation_cover_date" content="2024-11-21">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-11-18">
+<meta name="citation_online_date" content="2024-11-21">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
 <meta name="citation_reference" content="citation_title=A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM);,citation_author=Luis Rangel DaCosta;,citation_author=Katherine Sytwu;,citation_author=CK Groschner;,citation_author=MC Scott;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=10;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
 <meta name="citation_reference" content="citation_title=Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy;,citation_author=Chuqiao Shi;,citation_author=Michael C Cao;,citation_author=Sarah M Rehn;,citation_author=Sang-Hoon Bae;,citation_author=Jeehwan Kim;,citation_author=Matthew R Jones;,citation_author=David A Muller;,citation_author=Yimo Han;,citation_publication_date=2022;,citation_cover_date=2022;,citation_year=2022;,citation_issue=1;,citation_volume=8;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
 <meta name="citation_reference" content="citation_title=Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy;,citation_author=Alireza Sadri;,citation_author=Timothy C Petersen;,citation_author=Emmanuel WC Terzoudis-Lumsden;,citation_author=Bryan D Esser;,citation_author=Joanne Etheridge;,citation_author=Scott D Findlay;,citation_publication_date=2024;,citation_cover_date=2024;,citation_year=2024;,citation_issue=1;,citation_volume=10;,citation_journal_title=npj Computational Materials;,citation_publisher=Nature Publishing Group UK London;">
+<meta name="citation_reference" content="citation_title=Multi-resolution convolutional neural networks for inverse problems;,citation_author=Feng Wang;,citation_author=Alberto Eljarrat;,citation_author=Johannes Müller;,citation_author=Trond R Henninen;,citation_author=Rolf Erni;,citation_author=Christoph T Koch;,citation_publication_date=2020;,citation_cover_date=2020;,citation_year=2020;,citation_issue=1;,citation_volume=10;,citation_journal_title=Scientific reports;,citation_publisher=Nature Publishing Group UK London;">
 </head>
 
 <body>
@@ -106,7 +107,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 18, 2024</p>
+              <p class="date">November 21, 2024</p>
             </div>
           </div>
           
@@ -204,15 +205,27 @@ div.csl-indent {
 </section>
 <section id="sec-lecture5" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Miniproject (29.11. - 13.12.2024)</h2>
+<p>In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks. You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results. The miniproject will be graded and will count as 40% towards your final grade.</p>
 <ol type="1">
-<li><p>Segmentation</p>
-<p>We will use the dataset from <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> to implement a segmentation model.</p></li>
+<li><p>Segmentation Task</p>
+<p>We will use the HRTEM dataset from “A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM)” by <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> to implement a segmentation model. The goal is to segment nanoparticles in HRTEM images.</p>
+<p>Please use the article “A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM)” by <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> as a starting point for your implementation.</p>
+<p>The datast contains pairs of HRTEM images and ground truth segmentations.</p></li>
 <li><p>VAE &amp; Dimensionality Reduction</p>
-<p>We will use the dataset from <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> to implement a dimensionality reduction model and cluster 4DSTEM data.</p></li>
+<p>We will use the dataset from “Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy” by <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> to implement a dimensionality reduction model and cluster 4DSTEM data.</p>
+<p>The goal is to learn a mapping from 4DSTEM data to a lower-dimensional embedding where you can perform clustering to identify different deformation modes.</p>
+<p>Please use the article “Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy” by <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> as a starting point for your implementation.</p></li>
 <li><p>Denoising</p>
-<p>We will use the dataset from <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> to implement a denoising model for 4DSTEM data.</p></li>
+<p>We will use the dataset from “Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy” by <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> to implement a denoising model for 4DSTEM data.</p>
+<p>The goal is to learn a mapping from noisy to clean 4DSTEM data.</p>
+<p>Please use the article “Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy” by <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> as a starting point for your implementation.</p>
+<p>The article contains pytorch code for the model.</p>
+<p>Learn how to adapt it to your needs and try to replicate the results on the SrTiO3_High_mag_Low_dose.npy and SrTiO3_High_mag_High_dose.npy datasets.</p></li>
 <li><p>Image-to-Image Translation</p>
-<p>We will use a simulated dataset from the IMN chair to implement an Image to image translation model.</p></li>
+<p>We will use a simulated X-ray image dataset with pairs of projected thickness and phase contrast images to implement an Image to image translation model.</p>
+<p>The goal is to learn a mapping from phase contrast images to projected thickness images.</p>
+<p>This is usually a task that is solved with multiple measurements and a physical model of the imaging process.</p>
+<p>Here we will try to learn this mapping from simulated data. Please use the article “Multi-resolution convolutional neural networks for inverse problems” by <span class="citation" data-cites="wang2020multi">Wang et al. (<a href="#ref-wang2020multi" role="doc-biblioref">2020</a>)</span> as a starting point for your implementation.</p></li>
 </ol>
 </section>
 <section id="sec-lecture6" class="level2" data-number="6">
@@ -247,6 +260,9 @@ Sadri, Alireza, Timothy C Petersen, Emmanuel WC Terzoudis-Lumsden, Bryan D Esser
 <div id="ref-shi2022uncovering" class="csl-entry" role="listitem">
 Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R Jones, David A Muller, and Yimo Han. 2022. <span>“Uncovering Material Deformations via Machine Learning Combined with Four-Dimensional Scanning Transmission Electron Microscopy.”</span> <em>Npj Computational Materials</em> 8 (1): 114.
 </div>
+<div id="ref-wang2020multi" class="csl-entry" role="listitem">
+Wang, Feng, Alberto Eljarrat, Johannes Müller, Trond R Henninen, Rolf Erni, and Christoph T Koch. 2020. <span>“Multi-Resolution Convolutional Neural Networks for Inverse Problems.”</span> <em>Scientific Reports</em> 10 (1): 5730.
+</div>
 </div>
 </section>
 
@@ -254,7 +270,7 @@ Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R
   author = {Pelz, Philipp},
   title = {Lecture {Data} {Science} for {Electron} {Microscopy} {Winter}
     2024},
-  date = {2024-11-18},
+  date = {2024-11-21},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
@@ -262,7 +278,7 @@ Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2024. <span>“Lecture Data Science for Electron Microscopy
 Winter 2024.”</span> Friedrich-Alexander Universitaet
-Erlangen-Nuernberg. November 18, 2024.
+Erlangen-Nuernberg. November 21, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
