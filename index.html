@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.36">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2024-11-18">
+<meta name="dcterms.date" content="2024-11-21">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
 <title>Lecture Data Science for Electron Microscopy Winter 2024</title>
@@ -52,7 +52,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-01c78b5cd655e4cd89133cf59d535862.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-86e67f1fcd594f562d62505f92e4b4dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -63,10 +63,10 @@ div.csl-indent {
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2024-11-18">
-<meta name="citation_cover_date" content="2024-11-18">
+<meta name="citation_publication_date" content="2024-11-21">
+<meta name="citation_cover_date" content="2024-11-21">
 <meta name="citation_year" content="2024">
-<meta name="citation_online_date" content="2024-11-18">
+<meta name="citation_online_date" content="2024-11-21">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -106,7 +106,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">November 18, 2024</p>
+              <p class="date">November 21, 2024</p>
             </div>
           </div>
           
@@ -151,7 +151,7 @@ div.csl-indent {
   <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks/X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks/X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks/X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -205,21 +205,15 @@ div.csl-indent {
 <section id="sec-lecture5" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Miniproject (29.11. - 13.12.2024)</h2>
 <ol type="1">
-<li>Segmentation</li>
+<li><p>Segmentation</p>
+<p>We will use the dataset from <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> to implement a segmentation model.</p></li>
+<li><p>VAE &amp; Dimensionality Reduction</p>
+<p>We will use the dataset from <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> to implement a dimensionality reduction model and cluster 4DSTEM data.</p></li>
+<li><p>Denoising</p>
+<p>We will use the dataset from <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> to implement a denoising model for 4DSTEM data.</p></li>
+<li><p>Image-to-Image Translation</p>
+<p>We will use a simulated dataset from the IMN chair to implement an Image to image translation model.</p></li>
 </ol>
-<p>We will use the dataset from <span class="citation" data-cites="rangel2024robust">Rangel DaCosta et al. (<a href="#ref-rangel2024robust" role="doc-biblioref">2024</a>)</span> to implement a segmentation model.</p>
-<ol start="2" type="1">
-<li>VAE &amp; Dimensionality Reduction</li>
-</ol>
-<p>We will use the dataset from <span class="citation" data-cites="shi2022uncovering">Shi et al. (<a href="#ref-shi2022uncovering" role="doc-biblioref">2022</a>)</span> to implement a dimensionality reduction model and cluster 4DSTEM data.</p>
-<ol start="3" type="1">
-<li>Denoising</li>
-</ol>
-<p>We will use the dataset from <span class="citation" data-cites="sadri2024unsupervised">Sadri et al. (<a href="#ref-sadri2024unsupervised" role="doc-biblioref">2024</a>)</span> to implement a denoising model for 4DSTEM data.</p>
-<ol start="4" type="1">
-<li>Image-to-Image Translation</li>
-</ol>
-<p>We will use a simulated dataset from the IMN chair to implement an Image to image translation model.</p>
 </section>
 <section id="sec-lecture6" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (10.1.2025)</h2>
@@ -260,7 +254,7 @@ Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R
   author = {Pelz, Philipp},
   title = {Lecture {Data} {Science} for {Electron} {Microscopy} {Winter}
     2024},
-  date = {2024-11-18},
+  date = {2024-11-21},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
@@ -268,7 +262,7 @@ Shi, Chuqiao, Michael C Cao, Sarah M Rehn, Sang-Hoon Bae, Jeehwan Kim, Matthew R
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2024" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2024. <span>“Lecture Data Science for Electron Microscopy
 Winter 2024.”</span> Friedrich-Alexander Universitaet
-Erlangen-Nuernberg. November 18, 2024.
+Erlangen-Nuernberg. November 21, 2024.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
