@@ -6,6 +6,7 @@ execute:
 
 format:
   html:
+    meca: false
     toc: true
     comments:
       hypothesis: false
