@@ -63,21 +63,49 @@ jupyter: python3
 
 ## Miniproject (29.11. - 13.12.2024) {#sec-lecture5}
 
-1. Segmentation
+In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks.
+You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results.
+The miniproject will be graded and will count as 40% towards your final grade.
 
-    We will use the dataset from @rangel2024robust to implement a segmentation model.
+1. Segmentation Task
+
+    We will use the HRTEM dataset from "A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM)" by @rangel2024robust to implement a segmentation model.
+    The goal is to segment nanoparticles in HRTEM images.
+
+    Please use the article  "A robust synthetic data generation framework for machine learning in high-resolution transmission electron microscopy (HRTEM)" by @rangel2024robust as a starting point for your implementation.
+
+    The datast contains pairs of HRTEM images and ground truth segmentations. 
 
 2. VAE & Dimensionality Reduction
 
-    We will use the dataset from @shi2022uncovering to implement a dimensionality reduction model and cluster 4DSTEM data.
+    We will use the dataset from "Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy" by @shi2022uncovering to implement a dimensionality reduction model and cluster 4DSTEM data.
+
+    The goal is to learn a mapping from 4DSTEM data to a lower-dimensional embedding where you can perform clustering to identify different deformation modes.
+
+    Please use the article  "Uncovering material deformations via machine learning combined with four-dimensional scanning transmission electron microscopy" by @shi2022uncovering as a starting point for your implementation.    
 
 3. Denoising
 
-    We will use the dataset from @sadri2024unsupervised to implement a denoising model for 4DSTEM data.
+    We will use the dataset from "Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy" by @sadri2024unsupervised to implement a denoising model for 4DSTEM data. 
+    
+    The goal is to learn a mapping from noisy to clean 4DSTEM data.
+
+    Please use the article  "Unsupervised deep denoising for four-dimensional scanning transmission electron microscopy" by @sadri2024unsupervised as a starting point for your implementation.
+
+    The article contains pytorch code for the model. 
+    
+    Learn how to adapt it to your needs and try to replicate the results on the SrTiO3_High_mag_Low_dose.npy and SrTiO3_High_mag_High_dose.npy datasets.
 
 4. Image-to-Image Translation
 
-    We will use a simulated dataset from the IMN chair to implement an Image to image translation model.
+    We will use a simulated X-ray image dataset with pairs of projected thickness and phase contrast images to implement an Image to image translation model. 
+    
+    The goal is to learn a mapping from phase contrast images to projected thickness images. 
+    
+    This is usually a task that is solved with multiple measurements and a physical model of the imaging process. 
+    
+    Here we will try to learn this mapping from simulated data. 
+    Please use the article "Multi-resolution convolutional neural networks for inverse problems" by @wang2020multi as a starting point for your implementation.
 
 ## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
 
@@ -85,13 +113,27 @@ jupyter: python3
 - Generative Adversarial Networks
 - Gaussian Processes 1
 
-## Lecture 6: GPs (17.1.2025) {#sec-lecture7}
+## Lecture 6: Gaussian Processes Introduction (17.1.2025) {#sec-lecture7}
 
-## Lecture 7: Bayesian Optimization, Active Learning, Deep Kernel Learning (24.1.2025) {#sec-lecture8}
+- Introduction to Gaussian Processes  
 
-## Lecture 8: Inverse Imaging Problems 1: Tomography, Deconvolution (31.1.2025) {#sec-lecture9}
+## Lecture 7: Gaussian Processes Applications (24.1.2025) {#sec-lecture8}
 
-## Lecture 9: Inverse Imaging Problems 2: Phase Contrast Imaging, Superresolution Imaging (7.2.2025) {#sec-lecture10}
+- Bayesian Optimization
+- Active Learning
+- Deep Kernel Learning
+
+## Lecture 8: Inverse Imaging Problems 1: Linear Problems (31.1.2025) {#sec-lecture9}
+
+- Algorithms for linear inverse problems
+- Tomography
+- Deconvolution
+
+## Lecture 9: Inverse Imaging Problems 2: Nonlinear Problems (7.2.2025) {#sec-lecture10}
+
+- Phase Contrast Imaging
+- Superresolution Imaging
+- Inverse Problems in Electron Microscopy
 
 ## References {.unnumbered}
 
