@@ -460,7 +460,7 @@ Lecture</p>
       </ref>
     </ref-list>
   </back>
-  <sub-article article-type="notebook" id="nb-2-nb-1">
+  <sub-article article-type="notebook" id="nb-3-nb-1">
     <front-stub>
       <title-group>
         <article-title>X3 Denoising</article-title>
@@ -468,13 +468,64 @@ Lecture</p>
     </front-stub>
     <body>
       <sec id="cell-2-nb-1" specific-use="notebook-content">
-        <code language="python">file_path = '/mnt/data/datascience_miniprojects/03_denoising/25815436/SrTiO3_Low_mag_Low_angle_Low_dose.npy'</code>
+        <code language="python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+import h5py as h5
+import torch as th</code>
+      </sec>
+      <sec id="cell-3-nb-1" specific-use="notebook-content">
+        <sec id="download-the-data-from-gdrive-file1-nb-1">
+          <title>Download the data from GDrive
+  <ext-link ext-link-type="uri" xlink:href="https://drive.google.com/file/d/1rQZwNN9HC_3uyd3JRpBB2cY10vEYVM2H/view?usp=drivesdk">file1</ext-link></title>
+        </sec>
+        <sec id="download-the-data-from-gdrive-file2-nb-1">
+          <title>Download the data from GDrive
+  <ext-link ext-link-type="uri" xlink:href="https://drive.google.com/file/d/12yZqhx6yxLrty9seXL8V5yueQ5YPUr-1/view?usp=drivesdk">file2</ext-link></title>
+        </sec>
+        <sec id="cell-4-nb-1" specific-use="notebook-content">
+          <code language="python">file_path = '/mnt/data/datascience_miniprojects/03_denoising/25815436/SrTiO3_Low_mag_Low_angle_Low_dose.npy'
+data = np.load(file_path)
+print(f"Data shape: {data.shape}")
+ds = data.shape
+data3d = data.reshape(ds[0]*ds[1], ds[2], ds[3])
+print(f"Data3d shape: {data3d.shape}")</code>
+          <boxed-text>
+            <preformat>Data shape: (96, 106, 64, 64)
+Data3d shape: (10176, 64, 64)</preformat>
+          </boxed-text>
+        </sec>
+        <sec id="cell-5-nb-1" specific-use="notebook-content">
+          <code language="python">plt.figure(figsize=(15, 5))
+
+for i in range(3):
+    plt.subplot(1, 3, i+1)
+    plt.imshow(data3d[i+1000]**0.25, cmap='gray')
+    plt.title(f'Image {i+1}')
+    plt.axis('off')
+
+plt.tight_layout()
+plt.show()</code>
+          <boxed-text>
+            <graphic mimetype="image" mime-subtype="png" xlink:href="X3_denoising_files/figure-jats/cell-4-output-1.png"/>
+          </boxed-text>
+        </sec>
+        <sec id="cell-6-nb-1" specific-use="notebook-content">
+          <code language="python"># Training loop
+num_epochs = 3
+batch_size = 32
+
+data3dt = th.from_numpy(data3d).float().unsqueeze(1).cuda()
+data3dt -= data3dt.min()
+data3dt /= data3dt.max()</code>
+        </sec>
       </sec>
     </body>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-4-nb-2">
+  <sub-article article-type="notebook" id="nb-5-nb-2">
     <front-stub>
       <title-group>
         <article-title>01.1 Data Manipulation</article-title>
@@ -1017,7 +1068,7 @@ a, a.item(), float(a), int(a)</code>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-6-nb-3">
+  <sub-article article-type="notebook" id="nb-8-nb-3">
     <front-stub>
       <title-group>
         <article-title>X2 Dimensionality Reduction</article-title>
@@ -1033,20 +1084,15 @@ import h5py as h5
 import torch as th</code>
       </sec>
       <sec id="cell-3-nb-3" specific-use="notebook-content">
-        <code language="python">file_path = '/mnt/data/datascience_miniprojects/02_clustering/data.npy'
-
-data = np.load(file_path)
-print(f"Data shape: {data.shape}")
-</code>
-        <boxed-text>
-          <preformat>Data shape: (256, 256, 124, 124)</preformat>
-        </boxed-text>
+        <code language="python">file_path = '/mnt/data/insync/braunphil/Public/datascience_miniproject/'
+file_name = '02_VAE.npy'
+data = np.load(file_path + file_name)
+print(f"Data shape: {data.shape}")</code>
       </sec>
       <sec id="cell-4-nb-3" specific-use="notebook-content">
         <code language="python">ds = data.shape
 data3d = data.reshape(ds[0]*ds[1], ds[2], ds[3])
-print(f"Data3d shape: {data3d.shape}")
-</code>
+print(f"Data3d shape: {data3d.shape}")</code>
         <boxed-text>
           <preformat>Data3d shape: (65536, 124, 124)</preformat>
         </boxed-text>
@@ -1192,7 +1238,15 @@ data3dt -= data3dt.min()
 data3dt /= data3dt.max()</code>
         </sec>
         <sec id="cell-11-nb-3" specific-use="notebook-content">
-          <code language="python">
+          <code language="python"># Create example input for tracing
+example_input = data3dt[:1]
+model.eval()
+# Use torch.jit.trace to create a traced version of the model
+traced_model = th.jit.trace(model, example_input)
+
+# Replace the original model with the traced version
+model = traced_model
+
 
 for epoch in range(num_epochs):
     total_loss = 0
@@ -1225,9 +1279,22 @@ for epoch in range(num_epochs):
     print(f'Epoch [{epoch+1}/{num_epochs}], Average Loss: {avg_loss:.4f}')
   </code>
           <boxed-text>
-            <preformat>Epoch [1/3], Average Loss: 8588.8457
-Epoch [2/3], Average Loss: 6917.8708
-Epoch [3/3], Average Loss: 6903.6330</preformat>
+            <preformat>/home/philipp/mambaforge/envs/main11/lib/python3.11/site-packages/torch/jit/_trace.py:1116: TracerWarning: Trace had nondeterministic nodes. Did you forget call .eval() on your model? Nodes:
+    %eps : Float(1, 3, strides=[3, 1], requires_grad=0, device=cuda:0) = aten::randn_like(%std, %180, %181, %182, %183, %184) # /tmp/ipykernel_457356/3107499789.py:44:0
+This may cause errors in trace checking. To disable trace checking, pass check_trace=False to torch.jit.trace()
+  _check_trace(
+/home/philipp/mambaforge/envs/main11/lib/python3.11/site-packages/torch/jit/_trace.py:1116: TracerWarning: Output nr 1. of the traced function does not match the corresponding output of the Python function. Detailed error:
+Tensor-likes are not close!
+
+Mismatched elements: 16347 / 16384 (99.8%)
+Greatest absolute difference: 0.04185950756072998 at index (0, 0, 39, 27) (up to 1e-05 allowed)
+Greatest relative difference: 0.08788865663083263 at index (0, 0, 39, 27) (up to 1e-05 allowed)
+  _check_trace(</preformat>
+          </boxed-text>
+          <boxed-text>
+            <preformat>Epoch [1/3], Average Loss: 8489.5454
+Epoch [2/3], Average Loss: 6916.7546
+Epoch [3/3], Average Loss: 6891.0922</preformat>
           </boxed-text>
         </sec>
       </sec>
@@ -1235,7 +1302,7 @@ Epoch [3/3], Average Loss: 6903.6330</preformat>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-8-nb-4">
+  <sub-article article-type="notebook" id="nb-10-nb-4">
     <front-stub>
       <title-group>
         <article-title>01.3 Automatic Differentiation</article-title>
@@ -1617,7 +1684,7 @@ d.backward()</code>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-10-nb-5">
+  <sub-article article-type="notebook" id="nb-12-nb-5">
     <front-stub>
       <title-group>
         <article-title>02.1 Optimization &amp; Linear Neural
@@ -3813,7 +3880,7 @@ annotate('vanishing gradient', (4, 1), (2, 0.0))</code>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-12-nb-6">
+  <sub-article article-type="notebook" id="nb-14-nb-6">
     <front-stub>
       <title-group>
         <article-title>01.2 Linear Algebra</article-title>
@@ -5803,7 +5870,7 @@ torch.norm(u)</code>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-14-nb-7">
+  <sub-article article-type="notebook" id="nb-17-nb-7">
     <front-stub>
       <title-group>
         <article-title>X4 Image to Image Translation</article-title>
@@ -5819,12 +5886,27 @@ import h5py as h5
 import torch as th</code>
       </sec>
       <sec id="cell-3-nb-7" specific-use="notebook-content">
-        <code language="python">path = '/mnt/data/datascience_miniprojects/04_ImageToImage/sim/'
+        <sec id="download-the-data-from-gdrive-file1-nb-7">
+          <title>Download the data from GDrive
+  <ext-link ext-link-type="uri" xlink:href="https://drive.google.com/file/d/1wBeqnl_Hjk3l5zbDHlww4V5WBUSATSuA/view?usp=drivesdk">file1</ext-link></title>
+        </sec>
+        <sec id="cell-4-nb-7" specific-use="notebook-content">
+</sec>
+        <sec id="set-paths-to-data-nb-7">
+          <title>Set paths to data</title>
+        </sec>
+        <sec id="cell-5-nb-7" specific-use="notebook-content">
+          <code language="python">path = '/mnt/data/datascience_miniprojects/04_ImageToImage/sim/'
 path_inputs = path + 'projected_thickness/'
 path_targets = path + 'phase_contrast/'</code>
-      </sec>
-      <sec id="cell-4-nb-7" specific-use="notebook-content">
-        <code language="python">from PIL import Image
+        </sec>
+        <sec id="cell-6-nb-7" specific-use="notebook-content">
+</sec>
+        <sec id="create-dataset-and-load-data-nb-7">
+          <title>Create Dataset and Load Data</title>
+        </sec>
+        <sec id="cell-7-nb-7" specific-use="notebook-content">
+          <code language="python">from PIL import Image
 from glob import glob
 from torch.utils.data import Dataset
 import torchvision.transforms as T
@@ -5868,16 +5950,21 @@ print(f"Dataset contains {len(dataset)} image pairs")
 x, y = dataset[0]
 print(f"Input shape: {x.shape}")
 print(f"Target shape: {y.shape}")
-</code>
-        <boxed-text>
-          <preformat>Dataset contains 1844 image pairs
+  </code>
+          <boxed-text>
+            <preformat>Dataset contains 1844 image pairs
 Input shape: torch.Size([1, 1024, 1024])
 Target shape: torch.Size([1, 1024, 1024])</preformat>
-        </boxed-text>
-      </sec>
-      <sec id="cell-5-nb-7" specific-use="notebook-content">
-        <code language="python">import torchvision
-# Create a 3x3 grid of input images
+          </boxed-text>
+        </sec>
+        <sec id="cell-8-nb-7" specific-use="notebook-content">
+</sec>
+        <sec id="create-a-3x3-grid-of-input-images-nb-7">
+          <title>Create a 3x3 grid of input images</title>
+        </sec>
+        <sec id="cell-9-nb-7" specific-use="notebook-content">
+          <code language="python">import torchvision
+
 inputs = []
 for i in range(9):
     x, _ = dataset[i]  # Get just the input image
@@ -5894,15 +5981,133 @@ plt.figure(figsize=(7,7))
 plt.imshow(grid_np.transpose(1,2,0))  # Transpose from (C,H,W) to (H,W,C) for matplotlib
 plt.axis('off')
 plt.show()</code>
-        <boxed-text>
-          <graphic mimetype="image" mime-subtype="png" xlink:href="X4_Img2Img_files/figure-jats/cell-5-output-1.png"/>
-        </boxed-text>
+          <boxed-text>
+            <graphic mimetype="image" mime-subtype="png" xlink:href="X4_Img2Img_files/figure-jats/cell-5-output-1.png"/>
+          </boxed-text>
+        </sec>
+        <sec id="cell-10-nb-7" specific-use="notebook-content">
+</sec>
+        <sec id="create-a-3x3-grid-of-target-images-nb-7">
+          <title>Create a 3x3 grid of target images</title>
+        </sec>
+        <sec id="cell-11-nb-7" specific-use="notebook-content">
+          <code language="python">import torchvision
+
+inputs = []
+for i in range(9):
+    _, x = dataset[i]  # Get just the input image
+    inputs.append(x)
+
+# Use torchvision's make_grid to create a grid of images
+grid = torchvision.utils.make_grid(inputs, nrow=3, padding=2)
+
+# Convert to numpy and scale to 0-255 range for display
+grid_np = (grid.squeeze().numpy() * 255).astype(np.uint8)
+
+# Plot the grid using matplotlib
+plt.figure(figsize=(7,7))
+plt.imshow(grid_np.transpose(1,2,0))  # Transpose from (C,H,W) to (H,W,C) for matplotlib
+plt.axis('off')
+plt.show()</code>
+          <boxed-text>
+            <graphic mimetype="image" mime-subtype="png" xlink:href="X4_Img2Img_files/figure-jats/cell-6-output-1.png"/>
+          </boxed-text>
+        </sec>
+        <sec id="cell-12-nb-7" specific-use="notebook-content">
+</sec>
+        <sec id="create-training-and-validation-splits-nb-7">
+          <title>Create training and validation splits</title>
+        </sec>
+        <sec id="cell-13-nb-7" specific-use="notebook-content">
+          <code language="python">import torch 
+
+dataset_size = len(dataset)
+train_size = int(0.8 * dataset_size)
+val_size = dataset_size - train_size
+
+train_dataset, val_dataset = torch.utils.data.random_split(
+    dataset, 
+    [train_size, val_size],
+    generator=torch.Generator().manual_seed(42)
+)
+
+print(f"Training set size: {len(train_dataset)}")
+print(f"Validation set size: {len(val_dataset)}")
+
+# Create data loaders
+batch_size = 32
+train_loader = torch.utils.data.DataLoader(
+    train_dataset,
+    batch_size=batch_size,
+    shuffle=True,
+    num_workers=2,
+    pin_memory=True
+)
+
+val_loader = torch.utils.data.DataLoader(
+    val_dataset,
+    batch_size=batch_size,
+    shuffle=False,
+    num_workers=2,
+    pin_memory=True
+)
+
+# Get a random batch from training set
+dataiter = iter(train_loader)
+batch = next(dataiter)
+input_images, target_images = batch
+
+print(f"Batch shape: {input_images.shape}")
+print(f"Target shape: {target_images.shape}")
+
+# Display a random batch
+idx = torch.randint(0, batch_size, (9,))
+sample_inputs = [input_images[i] for i in idx]
+sample_targets = [target_images[i] for i in idx]
+
+# Create input grid
+input_grid = torchvision.utils.make_grid(sample_inputs, nrow=3, padding=2)
+input_grid_np = (input_grid.squeeze().numpy() * 255).astype(np.uint8)
+
+# Create target grid 
+target_grid = torchvision.utils.make_grid(sample_targets, nrow=3, padding=2)
+target_grid_np = (target_grid.squeeze().numpy() * 255).astype(np.uint8)
+
+# Plot side by side
+plt.figure(figsize=(14,7))
+plt.subplot(1,2,1)
+plt.imshow(input_grid_np.transpose(1,2,0))
+plt.title('Input Images (Training Set)')
+plt.axis('off')
+
+plt.subplot(1,2,2)
+plt.imshow(target_grid_np.transpose(1,2,0))
+plt.title('Target Images (Training Set)') 
+plt.axis('off')
+
+plt.show()
+  </code>
+          <boxed-text>
+            <preformat>Training set size: 1475
+Validation set size: 369
+Batch shape: torch.Size([32, 1, 1024, 1024])
+Target shape: torch.Size([32, 1, 1024, 1024])</preformat>
+          </boxed-text>
+          <boxed-text>
+            <graphic mimetype="image" mime-subtype="png" xlink:href="X4_Img2Img_files/figure-jats/cell-7-output-2.png"/>
+          </boxed-text>
+        </sec>
+        <sec id="cell-14-nb-7" specific-use="notebook-content">
+          <sec id="now-we-can-start-defining-our-model-and-training-it-nb-7">
+            <title>Now we can start defining our model and training it</title>
+          </sec>
+        </sec>
       </sec>
     </body>
     <back>
 </back>
   </sub-article>
-  <sub-article article-type="notebook" id="nb-16-nb-8">
+  <sub-article article-type="notebook" id="nb-20-nb-8">
     <front-stub>
       <title-group>
         <article-title>X1 Segmentation</article-title>
@@ -5918,32 +6123,37 @@ import h5py as h5
 import torch as th</code>
       </sec>
       <sec id="cell-3-nb-8" specific-use="notebook-content">
-        <sec id="lets-load-the-data-and-display-some-examples-nb-8">
-          <title>Let’s load the data and display some examples</title>
+        <sec id="download-the-data-from-gdrive-nb-8">
+          <title>Download the data from
+  <ext-link ext-link-type="uri" xlink:href="https://drive.google.com/file/d/1sVATyJhuX0UEdtd07gDnVTmg5xu1mp-g/view?usp=drivesdk">GDrive</ext-link></title>
         </sec>
         <sec id="cell-4-nb-8" specific-use="notebook-content">
-          <code language="python">file_path = '/mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/'
+          <sec id="lets-load-the-data-and-display-some-examples-nb-8">
+            <title>Let’s load the data and display some examples</title>
+          </sec>
+          <sec id="cell-5-nb-8" specific-use="notebook-content">
+            <code language="python">file_path = '/mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/'
 
 print("Folders in file_path:")
 folders = [f for f in os.listdir(file_path) if os.path.isdir(os.path.join(file_path, f))]
 for folder in folders[:5]:
     print(f"- {folder}")</code>
-          <boxed-text>
-            <preformat>Folders in file_path:
-- image_batch_45583848663_20240606
-- image_batch_46278748687_20240606
-- image_batch_45469557772_20240606
-- image_batch_45641514575_20240606
-- image_batch_45349807339_20240606</preformat>
-          </boxed-text>
-        </sec>
-        <sec id="cell-5-nb-8" specific-use="notebook-content">
-</sec>
-        <sec id="get-all-.h5-files-from-all-subfolders-nb-8">
-          <title>Get all .h5 files from all subfolders</title>
-        </sec>
-        <sec id="cell-6-nb-8" specific-use="notebook-content">
-          <code language="python">
+            <boxed-text>
+              <preformat>Folders in file_path:
+- image_batch_52494658464_20240403
+- image_batch_5254823359_20240403
+- image_batch_52136360101_20240403
+- image_batch_52393632444_20240403
+- image_batch_52048343522_20240403</preformat>
+            </boxed-text>
+          </sec>
+          <sec id="cell-6-nb-8" specific-use="notebook-content">
+  </sec>
+          <sec id="get-all-.h5-files-from-all-subfolders-nb-8">
+            <title>Get all .h5 files from all subfolders</title>
+          </sec>
+          <sec id="cell-7-nb-8" specific-use="notebook-content">
+            <code language="python">
 h5_files = []
 for folder in folders:
     folder_path = os.path.join(file_path, folder)
@@ -5955,19 +6165,19 @@ for f in h5_files[:5]:  # Print first 5 files as example
     print(f"- {f}")
 if len(h5_files) &gt; 5:
     print("...")</code>
-          <boxed-text>
-            <preformat>
-Found 176 .h5 files:
-- /mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/image_batch_45583848663_20240606/image_batch.h5
-- /mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/image_batch_46278748687_20240606/image_batch.h5
-- /mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/image_batch_45469557772_20240606/image_batch.h5
-- /mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/image_batch_45641514575_20240606/image_batch.h5
-- /mnt/data/datascience_miniprojects/01_segmentation/image_datasets/Au_np_with_varying_substrate/images/image_batch_45349807339_20240606/image_batch.h5
+            <boxed-text>
+              <preformat>
+Found 128 .h5 files:
+- /mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/image_batch_52494658464_20240403/image_batch.h5
+- /mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/image_batch_5254823359_20240403/image_batch.h5
+- /mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/image_batch_52136360101_20240403/image_batch.h5
+- /mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/image_batch_52393632444_20240403/image_batch.h5
+- /mnt/data/insync/braunphil/Public/datascience_miniproject/optimal_Au/images/image_batch_52048343522_20240403/image_batch.h5
 ...</preformat>
-          </boxed-text>
-        </sec>
-        <sec id="cell-7-nb-8" specific-use="notebook-content">
-          <code language="python">file_names = h5_files[0]
+            </boxed-text>
+          </sec>
+          <sec id="cell-8-nb-8" specific-use="notebook-content">
+            <code language="python">file_names = h5_files[0]
 
 with h5.File(file_names, 'r') as f:
     d = f['train_batch'][...]
@@ -5991,12 +6201,286 @@ plt.tight_layout()
 plt.show()
 
 # %%</code>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="X1_segmentation_files/figure-jats/cell-5-output-1.png"/>
-          </boxed-text>
-          <boxed-text>
-            <graphic mimetype="image" mime-subtype="png" xlink:href="X1_segmentation_files/figure-jats/cell-5-output-2.png"/>
-          </boxed-text>
+            <boxed-text>
+              <graphic mimetype="image" mime-subtype="png" xlink:href="X1_segmentation_files/figure-jats/cell-5-output-1.png"/>
+            </boxed-text>
+            <boxed-text>
+              <graphic mimetype="image" mime-subtype="png" xlink:href="X1_segmentation_files/figure-jats/cell-5-output-2.png"/>
+            </boxed-text>
+          </sec>
+          <sec id="cell-9-nb-8" specific-use="notebook-content">
+            <code language="python">d.shape, m.shape</code>
+            <boxed-text>
+              <preformat>((64, 512, 512), (64, 512, 512))</preformat>
+            </boxed-text>
+          </sec>
+          <sec id="cell-10-nb-8" specific-use="notebook-content">
+            <code language="python">class SegmentationDataset:
+    def __init__(self, file_paths):
+        self.file_paths = file_paths
+        
+    def __len__(self):
+        return len(self.file_paths)
+    
+    def __getitem__(self, idx):
+        file_path = self.file_paths[idx]
+        with h5.File(file_path, 'r') as f:
+            # Load image and mask from h5 file
+            image = f['train_batch'][...]
+            mask = f['mask_batch'][...]
+        return image, mask
+
+# Create dataset instance
+dataset = SegmentationDataset(h5_files)
+
+# Test loading first item
+images, masks = dataset[0]
+print(f"Loaded images shape: {images.shape}")
+print(f"Loaded masks shape: {masks.shape}")
+    </code>
+            <boxed-text>
+              <preformat>Loaded images shape: (64, 512, 512)
+Loaded masks shape: (64, 512, 512)</preformat>
+            </boxed-text>
+          </sec>
+          <sec id="cell-11-nb-8" specific-use="notebook-content">
+            <code language="python">import torch
+import torch.nn as nn
+
+class DoubleConv(nn.Module):
+    def __init__(self, in_channels, out_channels):
+        super().__init__()
+        self.double_conv = nn.Sequential(
+            nn.Conv2d(in_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+        )
+
+    def forward(self, x):
+        return self.double_conv(x)
+
+class UNet(nn.Module):
+    def __init__(self, in_channels=1, out_channels=1):
+        super().__init__()
+        
+        # Encoder
+        self.conv1 = DoubleConv(in_channels, 64)
+        self.pool1 = nn.MaxPool2d(2)
+        self.conv2 = DoubleConv(64, 128)
+        self.pool2 = nn.MaxPool2d(2)
+        self.conv3 = DoubleConv(128, 256)
+        self.pool3 = nn.MaxPool2d(2)
+        self.conv4 = DoubleConv(256, 512)
+        self.pool4 = nn.MaxPool2d(2)
+        self.conv5 = DoubleConv(512, 1024)
+
+        # Decoder
+        self.up4 = nn.ConvTranspose2d(1024, 512, kernel_size=2, stride=2)
+        self.upconv4 = DoubleConv(1024, 512)
+        self.up3 = nn.ConvTranspose2d(512, 256, kernel_size=2, stride=2)
+        self.upconv3 = DoubleConv(512, 256)
+        self.up2 = nn.ConvTranspose2d(256, 128, kernel_size=2, stride=2)
+        self.upconv2 = DoubleConv(256, 128)
+        self.up1 = nn.ConvTranspose2d(128, 64, kernel_size=2, stride=2)
+        self.upconv1 = DoubleConv(128, 64)
+        
+        # Final output
+        self.outconv = nn.Conv2d(64, out_channels, kernel_size=1)
+        
+    def forward(self, x):
+        # Encoder
+        conv1 = self.conv1(x)
+        pool1 = self.pool1(conv1)
+        conv2 = self.conv2(pool1)
+        pool2 = self.pool2(conv2)
+        conv3 = self.conv3(pool2)
+        pool3 = self.pool3(conv3)
+        conv4 = self.conv4(pool3)
+        pool4 = self.pool4(conv4)
+        conv5 = self.conv5(pool4)
+        
+        # Decoder with skip connections
+        up4 = self.up4(conv5)
+        up4 = torch.cat([up4, conv4], dim=1)
+        up4 = self.upconv4(up4)
+        
+        up3 = self.up3(up4)
+        up3 = torch.cat([up3, conv3], dim=1)
+        up3 = self.upconv3(up3)
+        
+        up2 = self.up2(up3)
+        up2 = torch.cat([up2, conv2], dim=1)
+        up2 = self.upconv2(up2)
+        
+        up1 = self.up1(up2)
+        up1 = torch.cat([up1, conv1], dim=1)
+        up1 = self.upconv1(up1)
+        
+        out = self.outconv(up1)
+        return out
+
+# Create model instance
+model = UNet(in_channels=1, out_channels=1)
+    </code>
+          </sec>
+          <sec id="cell-12-nb-8" specific-use="notebook-content">
+            <code language="python">import torch.optim as optim
+from torch.utils.data import DataLoader
+
+# Define loss function and optimizer
+criterion = nn.BCEWithLogitsLoss()
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+# Create data loaders
+batch_size = 4
+train_loader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+# val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+
+
+# Training parameters
+num_epochs = 50
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model = model.to(device)
+
+# Training loop
+for epoch in range(num_epochs):
+    model.train()
+    running_loss = 0.0
+    
+    for i, (images, masks) in enumerate(train_loader):
+        # Move data to device
+        images = images.to(device)
+        masks = masks.to(device)
+        
+        # Zero the gradients
+        optimizer.zero_grad()
+        
+        # Forward pass
+        outputs = model(images)
+        loss = criterion(outputs, masks)
+        
+        # Backward pass and optimize
+        loss.backward()
+        optimizer.step()
+        
+        running_loss += loss.item()
+        
+        # Print statistics every 10 batches
+        if (i + 1) % 10 == 0:
+            print(f'Epoch [{epoch+1}/{num_epochs}], Step [{i+1}/{len(train_loader)}], Loss: {loss.item():.4f}')
+    
+    # Print epoch statistics
+    epoch_loss = running_loss / len(train_loader)
+    print(f'Epoch [{epoch+1}/{num_epochs}] complete. Average Loss: {epoch_loss:.4f}')
+
+print('Training finished!')
+    </code>
+            <boxed-text>
+              <preformat>RuntimeError: Input type (unsigned char) and bias type (float) should be the same
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mRuntimeError[0m                              Traceback (most recent call last)
+Cell [0;32mIn[18], line 33[0m
+[1;32m     30[0m optimizer[38;5;241m.[39mzero_grad()
+[1;32m     32[0m [38;5;66;03m# Forward pass[39;00m
+[0;32m---&gt; 33[0m outputs [38;5;241m=[39m [43mmodel[49m[43m([49m[43mimages[49m[43m)[49m
+[1;32m     34[0m loss [38;5;241m=[39m criterion(outputs, masks)
+[1;32m     36[0m [38;5;66;03m# Backward pass and optimize[39;00m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1532[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1530[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1531[0m [38;5;28;01melse[39;00m:
+[0;32m-&gt; 1532[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1541[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1536[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1537[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1538[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1539[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1540[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-&gt; 1541[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1543[0m [38;5;28;01mtry[39;00m:
+[1;32m   1544[0m     result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+
+Cell [0;32mIn[14], line 49[0m, in [0;36mUNet.forward[0;34m(self, x)[0m
+[1;32m     47[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, x):
+[1;32m     48[0m     [38;5;66;03m# Encoder[39;00m
+[0;32m---&gt; 49[0m     conv1 [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mconv1[49m[43m([49m[43mx[49m[43m)[49m
+[1;32m     50[0m     pool1 [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mpool1(conv1)
+[1;32m     51[0m     conv2 [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mconv2(pool1)
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1532[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1530[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1531[0m [38;5;28;01melse[39;00m:
+[0;32m-&gt; 1532[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1541[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1536[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1537[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1538[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1539[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1540[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-&gt; 1541[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1543[0m [38;5;28;01mtry[39;00m:
+[1;32m   1544[0m     result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+
+Cell [0;32mIn[14], line 17[0m, in [0;36mDoubleConv.forward[0;34m(self, x)[0m
+[1;32m     16[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, x):
+[0;32m---&gt; 17[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdouble_conv[49m[43m([49m[43mx[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1532[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1530[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1531[0m [38;5;28;01melse[39;00m:
+[0;32m-&gt; 1532[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1541[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1536[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1537[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1538[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1539[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1540[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-&gt; 1541[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1543[0m [38;5;28;01mtry[39;00m:
+[1;32m   1544[0m     result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/container.py:217[0m, in [0;36mSequential.forward[0;34m(self, input)[0m
+[1;32m    215[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, [38;5;28minput[39m):
+[1;32m    216[0m     [38;5;28;01mfor[39;00m module [38;5;129;01min[39;00m [38;5;28mself[39m:
+[0;32m--&gt; 217[0m         [38;5;28minput[39m [38;5;241m=[39m [43mmodule[49m[43m([49m[38;5;28;43minput[39;49m[43m)[49m
+[1;32m    218[0m     [38;5;28;01mreturn[39;00m [38;5;28minput[39m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1532[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1530[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1531[0m [38;5;28;01melse[39;00m:
+[0;32m-&gt; 1532[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/module.py:1541[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1536[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1537[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1538[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1539[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1540[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-&gt; 1541[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1543[0m [38;5;28;01mtry[39;00m:
+[1;32m   1544[0m     result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/conv.py:460[0m, in [0;36mConv2d.forward[0;34m(self, input)[0m
+[1;32m    459[0m [38;5;28;01mdef[39;00m [38;5;21mforward[39m([38;5;28mself[39m, [38;5;28minput[39m: Tensor) [38;5;241m-[39m[38;5;241m&gt;[39m Tensor:
+[0;32m--&gt; 460[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_conv_forward[49m[43m([49m[38;5;28;43minput[39;49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mweight[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mbias[49m[43m)[49m
+
+File [0;32m~/mambaforge/envs/main11/lib/python3.11/site-packages/torch/nn/modules/conv.py:456[0m, in [0;36mConv2d._conv_forward[0;34m(self, input, weight, bias)[0m
+[1;32m    452[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mpadding_mode [38;5;241m!=[39m [38;5;124m'[39m[38;5;124mzeros[39m[38;5;124m'[39m:
+[1;32m    453[0m     [38;5;28;01mreturn[39;00m F[38;5;241m.[39mconv2d(F[38;5;241m.[39mpad([38;5;28minput[39m, [38;5;28mself[39m[38;5;241m.[39m_reversed_padding_repeated_twice, mode[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39mpadding_mode),
+[1;32m    454[0m                     weight, bias, [38;5;28mself[39m[38;5;241m.[39mstride,
+[1;32m    455[0m                     _pair([38;5;241m0[39m), [38;5;28mself[39m[38;5;241m.[39mdilation, [38;5;28mself[39m[38;5;241m.[39mgroups)
+[0;32m--&gt; 456[0m [38;5;28;01mreturn[39;00m [43mF[49m[38;5;241;43m.[39;49m[43mconv2d[49m[43m([49m[38;5;28;43minput[39;49m[43m,[49m[43m [49m[43mweight[49m[43m,[49m[43m [49m[43mbias[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mstride[49m[43m,[49m
+[1;32m    457[0m [43m                [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mpadding[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdilation[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mgroups[49m[43m)[49m
+
+[0;31mRuntimeError[0m: Input type (unsigned char) and bias type (float) should be the same</preformat>
+            </boxed-text>
+          </sec>
         </sec>
       </sec>
     </body>
