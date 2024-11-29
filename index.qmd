@@ -30,7 +30,7 @@ jupyter: python3
 ---
 - [Pelz Lab website](https://pelzlab.science)
 - [Studon Link](https://www.studon.fau.de/campo/course/421992)
-  
+- [Link to Github folder](https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy)
 
 
 

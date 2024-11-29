@@ -6,13 +6,11 @@ execute:
 
 format:
   html:
-    meca: false
     toc: true
     comments:
       hypothesis: false
   docx: default
-  jats: default
-  agu-pdf: default
+
 
 
 
