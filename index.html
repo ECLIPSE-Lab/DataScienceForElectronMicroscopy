@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.1">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -52,10 +52,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2bb0ec5e928ee8c40b12725cb7836c35.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-86e67f1fcd594f562d62505f92e4b4dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 
 
 <meta name="citation_title" content="Lecture Data Science for Electron Microscopy Winter 2024">
@@ -115,7 +115,7 @@ div.csl-indent {
               </div>
       </div>
       <div class="quarto-title-meta-column-end quarto-other-formats-target">
-      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="index.pdf"><i class="bi bi-file-pdf"></i>PDF (agu)</a></p></div><div class="quarto-title-meta-contents"><p><a href="index-meca.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="index.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div></div></div>
     </div>
 
     <div>
@@ -152,7 +152,7 @@ div.csl-indent {
   <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Inverse Imaging Problems 2: Nonlinear Problems (7.2.2025)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks/X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks/X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks/X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks\01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks\01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks\01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks\02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks\X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks\X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks\X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks\X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -381,6 +381,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -491,6 +493,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
