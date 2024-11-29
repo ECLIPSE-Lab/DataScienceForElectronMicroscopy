@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -52,12 +52,13 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-474c6d7e63be50eb6972897072b39b27.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9dfb407ae95b6b1cd864f2634721f950.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
 
+<link rel="stylesheet" href="styles.css">
 <meta name="citation_title" content="Lecture Data Science for Electron Microscopy Winter 2024">
 <meta name="citation_abstract" content="This is the website for the Data Science for Electron Microscopy Lecture
 ">
@@ -152,7 +153,7 @@ div.csl-indent {
   <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Inverse Imaging Problems 2: Nonlinear Problems (7.2.2025)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks\01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks\01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks\01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks\02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks\X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks\X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks\X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks\X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
+<div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks/X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks/X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks/X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
 </div>
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
 </div>
@@ -163,11 +164,17 @@ div.csl-indent {
   
 
 
-<ul>
-<li><a href="https://pelzlab.science">Pelz Lab website</a></li>
-<li><a href="https://www.studon.fau.de/campo/course/421992">Studon Link</a></li>
-<li><a href="https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy">Link to Github folder</a></li>
-</ul>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="https://pelzlab.science"><img src="images/eclipse_header.png" class="img-fluid" width="300"></a></p>
+</div><div class="column" style="width:25%;">
+<p><a href="https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy"><img src="images/github.jpeg" class="img-fluid" width="120"></a></p>
+<p><strong>Github Code</strong></p>
+</div><div class="column" style="width:25%;">
+<p><a href="https://www.studon.fau.de/campo/course/421992"><img src="images/paper.png" class="img-fluid" width="120"></a></p>
+<p><strong>Studon Link</strong></p>
+</div>
+</div>
 <section id="lecture-1-intro-25.10.2024" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="lecture-1-intro-25.10.2024"><span class="header-section-number">1</span> Lecture 1: Intro (25.10.2024)</h2>
 <!-- @marrero2019 -->
@@ -382,8 +389,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -494,7 +499,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
