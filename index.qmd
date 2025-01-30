@@ -109,9 +109,8 @@ The miniproject will be graded and will count as 40% towards your final grade.
 
 ## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
 
-- Project presentation
+- Project presentations
 - Generative Adversarial Networks
-- Gaussian Processes 1
 
 ## Lecture 6: Gaussian Processes Introduction (17.1.2025) {#sec-lecture7}
 
