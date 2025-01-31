@@ -122,18 +122,6 @@ The miniproject will be graded and will count as 40% towards your final grade.
 - Active Learning
 - Deep Kernel Learning
 
-## Lecture 8: Inverse Imaging Problems 1: Linear Problems (31.1.2025) {#sec-lecture9}
-
-- Algorithms for linear inverse problems
-- Tomography
-- Deconvolution
-
-## Lecture 9: Inverse Imaging Problems 2: Nonlinear Problems (7.2.2025) {#sec-lecture10}
-
-- Phase Contrast Imaging
-- Superresolution Imaging
-- Inverse Problems in Electron Microscopy
-
 ## References {.unnumbered}
 
 ::: {#refs}
