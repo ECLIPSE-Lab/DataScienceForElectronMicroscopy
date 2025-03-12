@@ -1,5 +1,5 @@
 ---
-title: Lecture Data Science for Electron Microscopy Winter 2024
+title: Lecture Data Science for Electron Microscopy Winter 2024 
 author:
   - name: Philipp Pelz
     orcid: 0000-0002-8009-4515
