@@ -35,8 +35,7 @@ jupyter: python3
 
 ## Lecture 1: Intro (13.05.2025)
 
-<!-- @marrero2019 -->
-- Introduction 
+- Lecture slides: [Lecture 1: Introduction](https://pelzlab.science/public_presentations/data_science_for_em/01_intro/01_intro.html)
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
 ## Lecture 2: Regression and Sensor Fusion (20.05.2025) {#sec-lecture2}
