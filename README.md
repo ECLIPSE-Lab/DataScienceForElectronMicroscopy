@@ -1,5 +1,4 @@
-## A Quarto Manuscript Template
+## Data Science for EM lecture website
 
-This is a template repo for generating a manuscript from Quarto that accompanies the tutorial at: [Quarto Manuscripts: VS Code](https://quarto.org/docs/manuscripts/authoring/vscode.html)
-
+Lecture of the [Pelz Lab](https://pelzlab.science)
 
