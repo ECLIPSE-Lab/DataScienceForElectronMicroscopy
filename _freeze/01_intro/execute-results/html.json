@@ -1,0 +1,12 @@
+{
+  "hash": "b2258c51cdb54d4c1e323c8af2a7100a",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\nformat: \n  revealjs:\n    theme: \"night\" #[\"theme/q-theme.scss\"]\n    slide-number: c/t\n    logo: \"eclipse_logo_small.png\"\n    footer: \"[SS24 DataScience in EM](https://github.com/ECLIPSE-Lab/WS24_DataScienceForEM)\"\n    code-copy: true\n    center-title-slide: false\n    include-in-header: ../heading-meta.html\n    code-link: true\n    code-overflow: wrap\n    highlight-style: a11y\n    height: 1080\n    width: 1920\n    incremental: true\n    transition: zoom\n    # output-file: 02_preliminaries.html\nexecute: \n  eval: true\n  echo: true\n---\n\n## Intro\n\n<hr>\n<h2> Data Science in Electron Microscopy </h2>\n\n<hr>\n<hr>\n<h3> Philipp Pelz </h3>\n\n<h3> 2024 </h3>\n<br>\n\n<h3>  &nbsp; [https://github.com/ECLIPSE-Lab/WS24_DataScienceForEM](https://github.com/ECLIPSE-Lab/WS24_DataScienceForEM)\n</h3>\n\n## Intro\n:::: {.columns}\n\n::: {.column width=\"50%\"}\n![](img/inv1.png){.absolute top=200 left=0 width=\"60%\" height=\"300\"}^[IMCL 2024]\n:::\n\n::: {.column width=\"40%\"}\n\n::: {#75076d09 .cell output-location='slide' execution_count=1}\n``` {}\n#| echo: true\nimport torch\n```\n:::\n\n\n:::{#0a6a91b1 .cell .markdown}\n:::\n\n::: {.notes}\nSpeaker notes go here.\n:::\n<!-- ::: aside\nSome additional commentary of more peripheral interest.\n::: -->\n\n\n::::\n:::\n\n",
+    "supporting": [
+      "01_intro_files\\figure-html"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

@@ -1,5 +1,5 @@
 ---
-title: Lecture Data Science for Electron Microscopy Winter 2024 
+title: Lecture Data Science for Electron Microscopy SS 25
 author:
   - name: Philipp Pelz
     orcid: 0000-0002-8009-4515
@@ -33,25 +33,23 @@ jupyter: python3
 - [Link to Github folder](https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy)
 
 
+## Lecture 1: Intro (13.05.2025)
 
-
-
-## Lecture 1: Intro (25.10.2024)
 <!-- @marrero2019 -->
 - Introduction 
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
-## Lecture 2: Regression and Sensor Fusion (8.11.2024) {#sec-lecture2}
+## Lecture 2: Regression and Sensor Fusion (20.05.2025) {#sec-lecture2}
 
 - [d2l Chapter 3: Regression](https://d2l.ai/chapter_linear-regression/index.html)
 - Sensor Fusion Slides
 
-## Lecture 3: CNNs (15.11.2024) {#sec-lecture3}
+## Lecture 3: CNNs (27.05.2025) {#sec-lecture3}
 
 - [d2l Chapter 7: CNNs](https://d2l.ai/chapter_convolutional-neural-networks/index.html)
 - [d2l Chapter 8: CNNs](https://d2l.ai/chapter_convolutional-modern/index.html)
 
-## Lecture 4: Classification, Segmentation, AutoEncoders (22.11.2024) {#sec-lecture4}
+## Lecture 4: Classification, Segmentation, AutoEncoders (03.06.2025) {#sec-lecture4}
 
 - [d2l Chapter 4: Classification](https://d2l.ai/chapter_linear-classification/index.html)
 - [d2l Chapter 14.9: Segmentation](https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html)
@@ -61,7 +59,7 @@ jupyter: python3
   - Autoencoder
   - Variational Autoencoder
 
-## Miniproject (29.11. - 13.12.2024) {#sec-lecture5}
+## Miniproject (3.6. - 24.6.2025) concurrent to lectures {#sec-lecture5}
 
 In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks.
 You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results.
@@ -107,20 +105,29 @@ The miniproject will be graded and will count as 40% towards your final grade.
     Here we will try to learn this mapping from simulated data. 
     Please use the article "Multi-resolution convolutional neural networks for inverse problems" by @wang2020multi as a starting point for your implementation.
 
-## Lecture 5: Mixed Bag (10.1.2025)  {#sec-lecture6}
+## Lecture 5: Mixed Bag (24.06.2025)  {#sec-lecture6}
 
 - Project presentations
 - Generative Adversarial Networks
 
-## Lecture 6: Gaussian Processes Introduction (17.1.2025) {#sec-lecture7}
+## Lecture 6: Gaussian Processes Introduction (01.07.2025) {#sec-lecture7}
 
 - Introduction to Gaussian Processes  
 
-## Lecture 7: Gaussian Processes Applications (24.1.2025) {#sec-lecture8}
+## Lecture 7: Gaussian Processes Applications (08.07.2025) {#sec-lecture8}
 
 - Bayesian Optimization
 - Active Learning
 - Deep Kernel Learning
+
+## Lecture 8: TBD (15.07.2025) {#sec-lecture9}
+
+- TBD
+
+
+## Lecture 9: Repetition (29.07.2025) {#sec-lecture11}
+
+- Repetition and Preparation for the Exam
 
 ## References {.unnumbered}
 
