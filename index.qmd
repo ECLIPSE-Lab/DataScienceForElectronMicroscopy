@@ -28,9 +28,31 @@ citation:
 number-sections: true
 jupyter: python3
 ---
-- [Pelz Lab website](https://pelzlab.science)
-- [Studon Link](https://www.studon.fau.de/campo/course/421992)
-- [Link to Github folder](https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy)
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+[![](images/eclipse_header.png){width=300}](https://pelzlab.science)
+
+
+:::
+
+::: {.column width="25%"}
+[![](images/github.jpeg){width=120}](https://github.com/ECLIPSE-Lab/DataScienceForElectronMicroscopy/tree/main/notebooks)
+
+
+**Github Code**
+:::
+
+::: {.column width="25%"}
+[![](images/studon.jpeg){width=120}](https://www.studon.fau.de/studon/ilias.php?baseClass=ilrepositorygui&cmd=infoScreenGoto&ref_id=6252031)
+
+
+**Studon Link**
+:::
+
+::::
 
 
 ## Lecture 1: Intro (13.05.2025)
@@ -38,17 +60,18 @@ jupyter: python3
 - Lecture slides: [Lecture 1: Introduction](https://pelzlab.science/public_presentations/data_science_for_em/01_intro/01_intro.html)
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
-## Lecture 2: Regression and Sensor Fusion (20.05.2025) {#sec-lecture2}
+## Lecture 2: Optimization, Regression, Sensor Fusion (20.05.2025) {#sec-lecture2}
 
+- Lecture slides: [Lecture 2: Optimization, Regression, Sensor Fusion](https://pelzlab.science/public_presentations/data_science_for_em/02_regression/template.html#/title-slide)
 - [d2l Chapter 3: Regression](https://d2l.ai/chapter_linear-regression/index.html)
-- Sensor Fusion Slides
+- [d2l Chapter 12: Optimization](https://d2l.ai/chapter_optimization/index.html)
 
-## Lecture 3: CNNs (27.05.2025) {#sec-lecture3}
-
+## Lecture 3: CNNs (03.06.2025) {#sec-lecture3}
+- Lecture slides: [Lecture 3: CNNs](https://pelzlab.science/public_presentations/data_science_for_em/03_cnns/template.html#/title-slide)
 - [d2l Chapter 7: CNNs](https://d2l.ai/chapter_convolutional-neural-networks/index.html)
 - [d2l Chapter 8: CNNs](https://d2l.ai/chapter_convolutional-modern/index.html)
 
-## Lecture 4: Classification, Segmentation, AutoEncoders (03.06.2025) {#sec-lecture4}
+## Lecture 4: Classification, Segmentation, AutoEncoders (10.06.2025) {#sec-lecture4}
 
 - [d2l Chapter 4: Classification](https://d2l.ai/chapter_linear-classification/index.html)
 - [d2l Chapter 14.9: Segmentation](https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html)
@@ -58,7 +81,7 @@ jupyter: python3
   - Autoencoder
   - Variational Autoencoder
 
-## Miniproject (3.6. - 24.6.2025) concurrent to lectures {#sec-lecture5}
+## Miniproject (10.6. - 24.6.2025) concurrent to lectures {#sec-lecture5}
 
 In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks.
 You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results.
