@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.8.4">
+    <meta name="generator" content="quarto-1.6.36">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -20,9 +20,8 @@
         vertical-align: middle;
       }
       /* CSS for syntax highlighting */
-      html { -webkit-text-size-adjust: 100%; }
       pre > code.sourceCode { white-space: pre; position: relative; }
-      pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+      pre > code.sourceCode > span { line-height: 1.25; }
       pre > code.sourceCode > span:empty { height: 1.2em; }
       .sourceCode { overflow: visible; }
       code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -33,7 +32,7 @@
       }
       @media print {
       pre > code.sourceCode { white-space: pre-wrap; }
-      pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+      pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
       }
       pre.numberSource code
         { counter-reset: source-line 0; }
@@ -148,21 +147,20 @@
     
 <script src="../site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-c68da94286011e9302a35de07ef23a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-474c6d7e63be50eb6972897072b39b27.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6e2df58b755ef3f8b74be1daa0192757.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-e5daa5401275933e7c22e3bd6dee58ad.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
       <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script> 
         <link rel="stylesheet" href="../styles.css">
       </head>
 
-  <body class="quarto-notebook quarto-light">
+  <body class="quarto-notebook">
     <div id="quarto-embed-header" class="headroom fixed-top bg-primary">
       
       <a onclick="window.quartoBackToArticle(); return false;" class="btn btn-primary quarto-back-link" href=""><i class="bi bi-caret-left"></i> Back to Article</a>
@@ -219,7 +217,7 @@
        <div id="a622c08e" class="cell markdown">
 <p>By now, we can load datasets into tensors and manipulate these tensors with basic mathematical operations. To start building sophisticated models, we will also need a few tools from linear algebra. This section offers a gentle introduction to the most essential concepts, starting from scalar arithmetic and ramping up to matrix multiplication.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="dc36b473" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:51.529162Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:51.528467Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.438267Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.437059Z&quot;}}" data-origin_pos="3" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [2]:</pre></div><div id="dc36b473" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:51.529162Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:51.528467Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.438267Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.437059Z&quot;}" data-origin_pos="3" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <div id="e4a38674" class="cell markdown">
@@ -230,7 +228,7 @@
 <p>(<strong>Scalars are implemented as tensors that contain only one element.</strong>) Below, we assign two scalars and perform the familiar addition, multiplication, division, and exponentiation operations.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="4fc9ba1d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.442690Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.442040Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.472277Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.471491Z&quot;}}" data-origin_pos="8" data-outputid="22bb0817-05ab-4c31-f6e4-34ffddeb935b" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [4]:</pre></div><div id="4fc9ba1d" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.442690Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.442040Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.472277Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.471491Z&quot;}" data-origin_pos="8" data-outputid="22bb0817-05ab-4c31-f6e4-34ffddeb935b" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.tensor(<span class="fl">3.0</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.tensor(<span class="fl">2.0</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -246,7 +244,7 @@
 <p>Vectors are implemented as <span class="math inline">\(1^{\textrm{st}}\)</span>-order tensors. In general, such tensors can have arbitrary lengths, subject to memory limitations. Caution: in Python, as in most programming languages, vector indices start at <span class="math inline">\(0\)</span>, also known as <em>zero-based indexing</em>, whereas in linear algebra subscripts begin at <span class="math inline">\(1\)</span> (one-based indexing).</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="91cd966f" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.475759Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.475141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.481106Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.479872Z&quot;}}" data-origin_pos="13" data-outputid="32ef77fc-07a9-4ca8-8386-7c0e5a274b90" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [6]:</pre></div><div id="91cd966f" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.475759Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.475141Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.481106Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.479872Z&quot;}" data-origin_pos="13" data-outputid="32ef77fc-07a9-4ca8-8386-7c0e5a274b90" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">3</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -258,7 +256,7 @@
 <p><span class="math display">\[\mathbf{x} =\begin{bmatrix}x_{1}  \\ \vdots  \\x_{n}\end{bmatrix},\]</span> :eqlabel:<code>eq_vec_def</code></p>
 <p>Here <span class="math inline">\(x_1, \ldots, x_n\)</span> are elements of the vector. Later on, we will distinguish between such <em>column vectors</em> and <em>row vectors</em> whose elements are stacked horizontally. Recall that [<strong>we access a tensor’s elements via indexing.</strong>]</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="ba15a197" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.485066Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.484260Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.492710Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.491415Z&quot;}}" data-origin_pos="17" data-outputid="7409b087-dca0-49b2-e5f2-c788137fdce5" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [8]:</pre></div><div id="ba15a197" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.485066Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.484260Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.492710Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.491415Z&quot;}" data-origin_pos="17" data-outputid="7409b087-dca0-49b2-e5f2-c788137fdce5" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>tensor(2)</code></pre>
@@ -267,7 +265,7 @@
 <div id="02a04823" class="cell markdown">
 <p>To indicate that a vector contains <span class="math inline">\(n\)</span> elements, we write <span class="math inline">\(\mathbf{x} \in \mathbb{R}^n\)</span>. Formally, we call <span class="math inline">\(n\)</span> the <em>dimensionality</em> of the vector. [<strong>In code, this corresponds to the tensor’s length</strong>], accessible via Python’s built-in <code>len</code> function.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="871cd7e6" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.497529Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.496794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.502332Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.501510Z&quot;}}" data-origin_pos="19" data-outputid="aa04e23b-8f6e-4b94-adc6-def3f0e51c26" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [10]:</pre></div><div id="871cd7e6" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.497529Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.496794Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.502332Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.501510Z&quot;}" data-origin_pos="19" data-outputid="aa04e23b-8f6e-4b94-adc6-def3f0e51c26" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>3</code></pre>
@@ -276,7 +274,7 @@
 <div id="4e190d69" class="cell markdown">
 <p>We can also access the length via the <code>shape</code> attribute. The shape is a tuple that indicates a tensor’s length along each axis. (<strong>Tensors with just one axis have shapes with just one element.</strong>)</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="34ea04c3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.505748Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.505180Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.510136Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.509337Z&quot;}}" data-origin_pos="21" data-outputid="360baf71-f210-49fb-8443-de2c140eba17" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="34ea04c3" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.505748Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.505180Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.510136Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.509337Z&quot;}" data-origin_pos="21" data-outputid="360baf71-f210-49fb-8443-de2c140eba17" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>torch.Size([3])</code></pre>
@@ -291,7 +289,7 @@
 <p>In code, we represent a matrix <span class="math inline">\(\mathbf{A} \in \mathbb{R}^{m \times n}\)</span> by a <span class="math inline">\(2^{\textrm{nd}}\)</span>-order tensor with shape (<span class="math inline">\(m\)</span>, <span class="math inline">\(n\)</span>). [<strong>We can convert any appropriately sized <span class="math inline">\(m \times n\)</span> tensor into an <span class="math inline">\(m \times n\)</span> matrix</strong>] by passing the desired shape to <code>reshape</code>:</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="80c49751" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.513569Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.512931Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.518545Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.517740Z&quot;}}" data-origin_pos="24" data-outputid="1251aebe-06b6-435f-b1cc-87b677d3356c" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [14]:</pre></div><div id="80c49751" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.513569Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.512931Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.518545Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.517740Z&quot;}" data-origin_pos="24" data-outputid="1251aebe-06b6-435f-b1cc-87b677d3356c" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> torch.arange(<span class="dv">6</span>).reshape(<span class="dv">3</span>, <span class="dv">2</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -313,7 +311,7 @@
 \]</span></p>
 <p>In code, we can access any (<strong>matrix’s transpose</strong>) as follows:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="7ef1e23b" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.521874Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.521332Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.526566Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.525812Z&quot;}}" data-origin_pos="28" data-outputid="54b7b7d9-d211-41d8-a82b-9e066299a9dd" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [16]:</pre></div><div id="7ef1e23b" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.521874Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.521332Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.526566Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.525812Z&quot;}" data-origin_pos="28" data-outputid="54b7b7d9-d211-41d8-a82b-9e066299a9dd" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>A.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>tensor([[0, 2, 4],
@@ -323,7 +321,7 @@
 <div id="ce337753" class="cell markdown">
 <p>[<strong>Symmetric matrices are the subset of square matrices that are equal to their own transposes: <span class="math inline">\(\mathbf{A} = \mathbf{A}^\top\)</span>.</strong>] The following matrix is symmetric:</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="028e06ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.529939Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.529400Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.535337Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.534568Z&quot;}}" data-origin_pos="32" data-outputid="244f5fda-edfc-4f1d-d5dd-e76f4cef91d7" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [18]:</pre></div><div id="028e06ed" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.529939Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.529400Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.535337Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.534568Z&quot;}" data-origin_pos="32" data-outputid="244f5fda-edfc-4f1d-d5dd-e76f4cef91d7" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> torch.tensor([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">4</span>], [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]])</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">==</span> A.T</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
@@ -340,7 +338,7 @@
 <p>Tensors will become more important when we start working with images. Each image arrives as a <span class="math inline">\(3^{\textrm{rd}}\)</span>-order tensor with axes corresponding to the height, width, and <em>channel</em>. At each spatial location, the intensities of each color (red, green, and blue) are stacked along the channel. Furthermore, a collection of images is represented in code by a <span class="math inline">\(4^{\textrm{th}}\)</span>-order tensor, where distinct images are indexed along the first axis. Higher-order tensors are constructed, as were vectors and matrices, by growing the number of shape components.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="306d610e" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.538891Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.538210Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.546164Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.545027Z&quot;}}" data-origin_pos="37" data-outputid="896f3ff5-0070-4149-e155-7553411e6d3e" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="306d610e" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.538891Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.538210Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.546164Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.545027Z&quot;}" data-origin_pos="37" data-outputid="896f3ff5-0070-4149-e155-7553411e6d3e" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>torch.arange(<span class="dv">24</span>).reshape(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>tensor([[[ 0,  1,  2,  3],
@@ -358,7 +356,7 @@
 <p>Scalars, vectors, matrices, and higher-order tensors all have some handy properties. For example, elementwise operations produce outputs that have the same shape as their operands.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="53a34bc0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.550917Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.550017Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.558241Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.557366Z&quot;}}" data-origin_pos="42" data-outputid="3cb4c91b-d804-41bb-c141-9705732629db" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [22]:</pre></div><div id="53a34bc0" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.550917Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.550017Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.558241Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.557366Z&quot;}" data-origin_pos="42" data-outputid="3cb4c91b-d804-41bb-c141-9705732629db" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> torch.arange(<span class="dv">6</span>, dtype<span class="op">=</span>torch.float32).reshape(<span class="dv">2</span>, <span class="dv">3</span>)</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> A.clone()  <span class="co"># Assign a copy of A to B by allocating new memory</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>A, A <span class="op">+</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -381,7 +379,7 @@
 \end{bmatrix}.
 \]</span></p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="1e2c0645" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.561758Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.561198Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.567597Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.566714Z&quot;}}" data-origin_pos="46" data-outputid="1f522030-b95b-4189-dca5-669a95fdaf18" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="1e2c0645" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.561758Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.561198Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.567597Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.566714Z&quot;}" data-origin_pos="46" data-outputid="1f522030-b95b-4189-dca5-669a95fdaf18" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">*</span> B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>tensor([[ 0.,  1.,  4.],
@@ -391,7 +389,7 @@
 <div id="e782293c" class="cell markdown">
 <p>[<strong>Adding or multiplying a scalar and a tensor</strong>] produces a result with the same shape as the original tensor. Here, each element of the tensor is added to (or multiplied by) the scalar.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="c5c86fb1" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.571034Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.570428Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.577301Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.576396Z&quot;}}" data-origin_pos="49" data-outputid="0a76ed46-7556-4aca-9fbf-153aa227f78c" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [26]:</pre></div><div id="c5c86fb1" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.571034Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.570428Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.577301Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.576396Z&quot;}" data-origin_pos="49" data-outputid="0a76ed46-7556-4aca-9fbf-153aa227f78c" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> torch.arange(<span class="dv">24</span>).reshape(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">+</span> X, (a <span class="op">*</span> X).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -413,7 +411,7 @@
 <p>Often, we wish to calculate [<strong>the sum of a tensor’s elements.</strong>] To express the sum of the elements in a vector <span class="math inline">\(\mathbf{x}\)</span> of length <span class="math inline">\(n\)</span>, we write <span class="math inline">\(\sum_{i=1}^n x_i\)</span>. There is a simple function for it:</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [28]:</pre></div><div id="5a3c4cbd" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.580908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.580306Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.588497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.587623Z&quot;}}" data-origin_pos="54" data-outputid="13208eb0-9bbc-45bf-aa5a-fdad2483a1fd" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [28]:</pre></div><div id="5a3c4cbd" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.580908Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.580306Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.588497Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.587623Z&quot;}" data-origin_pos="54" data-outputid="13208eb0-9bbc-45bf-aa5a-fdad2483a1fd" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> torch.arange(<span class="dv">3</span>, dtype<span class="op">=</span>torch.float32)</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>x, x.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
@@ -423,7 +421,7 @@
 <div id="c4e031e9" class="cell markdown">
 <p>To express [<strong>sums over the elements of tensors of arbitrary shape</strong>], we simply sum over all its axes. For example, the sum of the elements of an <span class="math inline">\(m \times n\)</span> matrix <span class="math inline">\(\mathbf{A}\)</span> could be written <span class="math inline">\(\sum_{i=1}^{m} \sum_{j=1}^{n} a_{ij}\)</span>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="7594e574" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.593587Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.592920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.602105Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.600812Z&quot;}}" data-origin_pos="58" data-outputid="c0b185a0-e95c-457a-845d-9ee6cf649d13" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [30]:</pre></div><div id="7594e574" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.593587Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.592920Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.602105Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.600812Z&quot;}" data-origin_pos="58" data-outputid="c0b185a0-e95c-457a-845d-9ee6cf649d13" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>A.shape, A.<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>(torch.Size([2, 3]), tensor(15.))</code></pre>
@@ -432,7 +430,7 @@
 <div id="2d9a0995" class="cell markdown">
 <p>By default, invoking the sum function <em>reduces</em> a tensor along all of its axes, eventually producing a scalar. Our libraries also allow us to [<strong>specify the axes along which the tensor should be reduced.</strong>] To sum over all elements along the rows (axis 0), we specify <code>axis=0</code> in <code>sum</code>. Since the input matrix reduces along axis 0 to generate the output vector, this axis is missing from the shape of the output.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [32]:</pre></div><div id="14d191be" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.606330Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.605594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.612393Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.611227Z&quot;}}" data-origin_pos="61" data-outputid="51dce4b6-25c1-4d81-b1e3-3522d92c8b46" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [32]:</pre></div><div id="14d191be" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.606330Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.605594Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.612393Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.611227Z&quot;}" data-origin_pos="61" data-outputid="51dce4b6-25c1-4d81-b1e3-3522d92c8b46" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>A.shape, A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(torch.Size([2, 3]), torch.Size([3]))</code></pre>
@@ -441,7 +439,7 @@
 <div id="22f9f461" class="cell markdown">
 <p>Specifying <code>axis=1</code> will reduce the column dimension (axis 1) by summing up elements of all the columns.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="ee3c0559" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.615938Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.615181Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.621919Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.620799Z&quot;}}" data-origin_pos="64" data-outputid="5165282a-3eeb-4782-b3c3-a4850a255741" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [34]:</pre></div><div id="ee3c0559" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.615938Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.615181Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.621919Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.620799Z&quot;}" data-origin_pos="64" data-outputid="5165282a-3eeb-4782-b3c3-a4850a255741" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>A.shape, A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>).shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>(torch.Size([2, 3]), torch.Size([2]))</code></pre>
@@ -450,7 +448,7 @@
 <div id="a40d7419" class="cell markdown">
 <p>Reducing a matrix along both rows and columns via summation is equivalent to summing up all the elements of the matrix.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [36]:</pre></div><div id="25b99ea4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.625271Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.624779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.631897Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.630699Z&quot;}}" data-origin_pos="67" data-outputid="7179ca48-db1b-4813-b2dd-cf7ec80eec2b" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [36]:</pre></div><div id="25b99ea4" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.625271Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.624779Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.631897Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.630699Z&quot;}" data-origin_pos="67" data-outputid="7179ca48-db1b-4813-b2dd-cf7ec80eec2b" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>A.<span class="bu">sum</span>(axis<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>]) <span class="op">==</span> A.<span class="bu">sum</span>()  <span class="co"># Same as A.sum()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>tensor(True)</code></pre>
@@ -459,7 +457,7 @@
 <div id="46224eef" class="cell markdown">
 <p>[<strong>A related quantity is the <em>mean</em>, also called the <em>average</em>.</strong>] We calculate the mean by dividing the sum by the total number of elements. Because computing the mean is so common, it gets a dedicated library function that works analogously to <code>sum</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [38]:</pre></div><div id="9f41e037" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.635407Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.634799Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.642980Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.641833Z&quot;}}" data-origin_pos="71" data-outputid="f84b5815-6416-490f-98f8-0dde677600e4" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [38]:</pre></div><div id="9f41e037" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.635407Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.634799Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.642980Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.641833Z&quot;}" data-origin_pos="71" data-outputid="f84b5815-6416-490f-98f8-0dde677600e4" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>A.mean(), A.<span class="bu">sum</span>() <span class="op">/</span> A.numel()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>(tensor(2.5000), tensor(2.5000))</code></pre>
@@ -468,7 +466,7 @@
 <div id="1c73c2c9" class="cell markdown">
 <p>Likewise, the function for calculating the mean can also reduce a tensor along specific axes.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="f268d8be" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.646514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.645792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.653946Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.652643Z&quot;}}" data-origin_pos="74" data-outputid="1040c840-972e-46a8-c048-a2bbc1397047" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [40]:</pre></div><div id="f268d8be" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.646514Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.645792Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.653946Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.652643Z&quot;}" data-origin_pos="74" data-outputid="1040c840-972e-46a8-c048-a2bbc1397047" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>A.mean(axis<span class="op">=</span><span class="dv">0</span>), A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>) <span class="op">/</span> A.shape[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>(tensor([1.5000, 2.5000, 3.5000]), tensor([1.5000, 2.5000, 3.5000]))</code></pre>
@@ -481,7 +479,7 @@
 <p>Sometimes it can be useful to [<strong>keep the number of axes unchanged</strong>] when invoking the function for calculating the sum or mean. This matters when we want to use the broadcast mechanism.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="863c5aca" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.658423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.658026Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.666522Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.665397Z&quot;}}" data-origin_pos="77" data-outputid="0d15ba0a-b18e-440c-f6ac-1175b056e878" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [42]:</pre></div><div id="863c5aca" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.658423Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.658026Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.666522Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.665397Z&quot;}" data-origin_pos="77" data-outputid="0d15ba0a-b18e-440c-f6ac-1175b056e878" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sum_A <span class="op">=</span> A.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>, keepdims<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>sum_A, sum_A.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="21">
@@ -493,7 +491,7 @@
 <div id="db7e1c95" class="cell markdown">
 <p>For instance, since <code>sum_A</code> keeps its two axes after summing each row, we can (<strong>divide <code>A</code> by <code>sum_A</code> with broadcasting</strong>) to create a matrix where each row sums up to <span class="math inline">\(1\)</span>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [44]:</pre></div><div id="93d20f26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.669896Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.669623Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.675548Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.674706Z&quot;}}" data-origin_pos="80" data-outputid="6e253768-0786-4adb-8877-3a2a0a5c5739" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [44]:</pre></div><div id="93d20f26" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.669896Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.669623Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.675548Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.674706Z&quot;}" data-origin_pos="80" data-outputid="6e253768-0786-4adb-8877-3a2a0a5c5739" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">/</span> sum_A</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>tensor([[0.0000, 0.3333, 0.6667],
@@ -503,7 +501,7 @@
 <div id="d208f582" class="cell markdown">
 <p>If we want to calculate [<strong>the cumulative sum of elements of <code>A</code> along some axis</strong>], say <code>axis=0</code> (row by row), we can call the <code>cumsum</code> function. By design, this function does not reduce the input tensor along any axis.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [46]:</pre></div><div id="e2de0ae7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.678804Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.678536Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.684437Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.683619Z&quot;}}" data-origin_pos="82" data-outputid="458ccf56-32f3-43ae-800c-6d6698234532" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [46]:</pre></div><div id="e2de0ae7" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.678804Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.678536Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.684437Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.683619Z&quot;}" data-origin_pos="82" data-outputid="458ccf56-32f3-43ae-800c-6d6698234532" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>A.cumsum(axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>tensor([[0., 1., 2.],
@@ -517,7 +515,7 @@
 <p>[<del>The <em>dot product</em> of two vectors is a sum over the products of the elements at the same position</del>]</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [48]:</pre></div><div id="5575e11a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.687734Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.687178Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.696147Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.695369Z&quot;}}" data-origin_pos="86" data-outputid="cd1258c8-95e8-49cd-c065-3183d129dff4" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [48]:</pre></div><div id="5575e11a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.687734Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.687178Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.696147Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.695369Z&quot;}" data-origin_pos="86" data-outputid="cd1258c8-95e8-49cd-c065-3183d129dff4" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> torch.ones(<span class="dv">3</span>, dtype <span class="op">=</span> torch.float32)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>x, y, torch.dot(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
@@ -527,7 +525,7 @@
 <div id="ba9329e0" class="cell markdown">
 <p>Equivalently, (<strong>we can calculate the dot product of two vectors by performing an elementwise multiplication followed by a sum:</strong>)</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [50]:</pre></div><div id="b5186254" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.699396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.698843Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.704931Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.703664Z&quot;}}" data-origin_pos="91" data-outputid="b655a933-a5b1-4f14-8ab3-312a1ace87e7" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [50]:</pre></div><div id="b5186254" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.699396Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.698843Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.704931Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.703664Z&quot;}" data-origin_pos="91" data-outputid="b655a933-a5b1-4f14-8ab3-312a1ace87e7" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>torch.<span class="bu">sum</span>(x <span class="op">*</span> y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>tensor(3.)</code></pre>
@@ -568,7 +566,7 @@
 <div id="b3769117" class="cell markdown">
 <p>To express a matrix–vector product in code, we use the <code>mv</code> function. Note that the column dimension of <code>A</code> (its length along axis 1) must be the same as the dimension of <code>x</code> (its length). Python has a convenience operator <code>@</code> that can execute both matrix–vector and matrix–matrix products (depending on its arguments). Thus we can write <code>A@x</code>.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [53]:</pre></div><div id="1a99c29a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.710181Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.709041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.719479Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.718068Z&quot;}}" data-origin_pos="99" data-outputid="83332931-3c3b-45a0-ac68-04330b66826d" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [53]:</pre></div><div id="1a99c29a" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.710181Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.709041Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.719479Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.718068Z&quot;}" data-origin_pos="99" data-outputid="83332931-3c3b-45a0-ac68-04330b66826d" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>A.shape, x.shape, torch.mv(A, x), A<span class="op">@</span>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>(torch.Size([2, 3]), torch.Size([3]), tensor([ 5., 14.]), tensor([ 5., 14.]))</code></pre>
@@ -623,7 +621,7 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
 <p>[<strong>We can think of the matrix–matrix multiplication <span class="math inline">\(\mathbf{AB}\)</span> as performing <span class="math inline">\(m\)</span> matrix–vector products or <span class="math inline">\(m \times n\)</span> dot products and stitching the results together to form an <span class="math inline">\(n \times m\)</span> matrix.</strong>] In the following snippet, we perform matrix multiplication on <code>A</code> and <code>B</code>. Here,&nbsp;<code>A</code> is a matrix with two rows and three columns, and <code>B</code> is a matrix with three rows and four columns. After multiplication, we obtain a matrix with two rows and four columns.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [55]:</pre></div><div id="99535047" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.723651Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.722762Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.732227Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.731088Z&quot;}}" data-origin_pos="104" data-outputid="ee4299c4-0508-4d9c-f382-aecb507d93df" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [55]:</pre></div><div id="99535047" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.723651Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.722762Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.732227Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.731088Z&quot;}" data-origin_pos="104" data-outputid="ee4299c4-0508-4d9c-f382-aecb507d93df" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> torch.ones(<span class="dv">3</span>, <span class="dv">4</span>)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>torch.mm(A, B), A<span class="op">@</span>B</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
@@ -649,7 +647,7 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
 <p>The method <code>norm</code> calculates the <span class="math inline">\(\ell_2\)</span> norm.</p>
 </section>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [57]:</pre></div><div id="e215c544" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.735890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.735108Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.742412Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.741311Z&quot;}}" data-origin_pos="109" data-outputid="27e5cd6c-f9ab-4288-9c06-dab95a920950" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [57]:</pre></div><div id="e215c544" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.735890Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.735108Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.742412Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.741311Z&quot;}" data-origin_pos="109" data-outputid="27e5cd6c-f9ab-4288-9c06-dab95a920950" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> torch.tensor([<span class="fl">3.0</span>, <span class="op">-</span><span class="fl">4.0</span>])</span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>torch.norm(u)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
@@ -661,7 +659,7 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
 <p>(<strong><span class="math display">\[\|\mathbf{x}\|_1 = \sum_{i=1}^n \left|x_i \right|.\]</span></strong>)</p>
 <p>Compared to the <span class="math inline">\(\ell_2\)</span> norm, it is less sensitive to outliers. To compute the <span class="math inline">\(\ell_1\)</span> norm, we compose the absolute value with the sum operation.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [59]:</pre></div><div id="8a3e0562" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.746107Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.745359Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.752438Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.751302Z&quot;}}" data-origin_pos="114" data-outputid="708f0801-3e52-442e-f99b-ca708e873cf4" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [59]:</pre></div><div id="8a3e0562" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.746107Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.745359Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.752438Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.751302Z&quot;}" data-origin_pos="114" data-outputid="708f0801-3e52-442e-f99b-ca708e873cf4" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>torch.<span class="bu">abs</span>(u).<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <pre><code>tensor(7.)</code></pre>
@@ -674,7 +672,7 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
 <p>[<strong><span class="math display">\[\|\mathbf{X}\|_\textrm{F} = \sqrt{\sum_{i=1}^m \sum_{j=1}^n x_{ij}^2}.\]</span></strong>]</p>
 <p>The Frobenius norm behaves as if it were an <span class="math inline">\(\ell_2\)</span> norm of a matrix-shaped vector. Invoking the following function will calculate the Frobenius norm of a matrix.</p>
 </div>
-<div class="cell-container"><div class="cell-decorator"><pre>In [61]:</pre></div><div id="3e00a124" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.756072Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.755281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.762237Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.761172Z&quot;}}" data-origin_pos="119" data-outputid="efff4f47-941d-4d72-bde9-53c9d87e4e41" data-tab="[&quot;pytorch&quot;]">
+<div class="cell-container"><div class="cell-decorator"><pre>In [61]:</pre></div><div id="3e00a124" class="cell" data-execution="{&quot;iopub.execute_input&quot;:&quot;2023-08-18T19:41:53.756072Z&quot;,&quot;iopub.status.busy&quot;:&quot;2023-08-18T19:41:53.755281Z&quot;,&quot;iopub.status.idle&quot;:&quot;2023-08-18T19:41:53.762237Z&quot;,&quot;shell.execute_reply&quot;:&quot;2023-08-18T19:41:53.761172Z&quot;}" data-origin_pos="119" data-outputid="efff4f47-941d-4d72-bde9-53c9d87e4e41" data-tab="[&quot;pytorch&quot;]">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>torch.norm(torch.ones((<span class="dv">4</span>, <span class="dv">9</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>tensor(6.)</code></pre>
@@ -716,242 +714,236 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
 </div>
      </main>
 <!-- /main column -->  <script id="quarto-html-after-body" type="application/javascript">
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-    const icon = "";
-    const anchorJS = new window.AnchorJS();
-    anchorJS.options = {
-      placement: 'right',
-      icon: icon
-    };
-    anchorJS.add('.anchored');
-    const isCodeAnnotation = (el) => {
-      for (const clz of el.classList) {
-        if (clz.startsWith('code-annotation-')) {                     
-          return true;
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
       }
-      return false;
-    }
-    const onCopySuccess = function(e) {
-      // button target
-      const button = e.trigger;
-      // don't keep focus
-      button.blur();
-      // flash "checked"
-      button.classList.add('code-copy-button-checked');
-      var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
-      let tooltip;
-      if (window.bootstrap) {
-        button.setAttribute("data-bs-toggle", "tooltip");
-        button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
-        tooltip = new bootstrap.Tooltip(button, 
-          { trigger: "manual", 
-            customClass: "code-copy-button-tooltip",
-            offset: [0, -8]});
-        tooltip.show();    
-      }
-      setTimeout(function() {
-        if (tooltip) {
-          tooltip.hide();
-          button.removeAttribute("data-bs-title");
-          button.removeAttribute("data-bs-toggle");
-          button.removeAttribute("data-bs-placement");
-        }
-        button.setAttribute("title", currentTitle);
-        button.classList.remove('code-copy-button-checked');
-      }, 1000);
-      // clear code selection
-      e.clearSelection();
-    }
-    const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
-        }
-        return codeEl.innerText;
-    }
-    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-      text: getTextToCopy
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
     });
-    clipboard.on('success', onCopySuccess);
-    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-        text: getTextToCopy,
-        container: window.document.getElementById('quarto-embedded-source-code-modal')
-      });
-      clipboardModal.on('success', onCopySuccess);
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
-      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-      var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
-      var isInternal = (href) => {
-          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-      }
-      // Inspect non-navigation links and adorn them if external
-     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-      for (var i=0; i<links.length; i++) {
-        const link = links[i];
-        if (!isInternal(link.href)) {
-          // undo the damage that might have been done by quarto-nav.js in the case of
-          // links that we want to consider external
-          if (link.dataset.originalHref !== undefined) {
-            link.href = link.dataset.originalHref;
-          }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
         }
       }
-    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-      const config = {
-        allowHTML: true,
-        maxWidth: 500,
-        delay: 100,
-        arrow: false,
-        appendTo: function(el) {
-            return el.parentElement;
-        },
-        interactive: true,
-        interactiveBorder: 10,
-        theme: 'quarto',
-        placement: 'bottom-start',
-      };
-      if (contentFn) {
-        config.content = contentFn;
-      }
-      if (onTriggerFn) {
-        config.onTrigger = onTriggerFn;
-      }
-      if (onUntriggerFn) {
-        config.onUntrigger = onUntriggerFn;
-      }
-      window.tippy(el, config); 
     }
-    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-    for (var i=0; i<noterefs.length; i++) {
-      const ref = noterefs[i];
-      tippyHover(ref, function() {
-        // use id or data attribute instead here
-        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-        try { href = new URL(href).hash; } catch {}
-        const id = href.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note) {
-          return note.innerHTML;
-        } else {
-          return "";
-        }
-      });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
     }
-    const xrefs = window.document.querySelectorAll('a.quarto-xref');
-    const processXRef = (id, note) => {
-      // Strip column container classes
-      const stripColumnClz = (el) => {
-        el.classList.remove("page-full", "page-columns");
-        if (el.children) {
-          for (const child of el.children) {
-            stripColumnClz(child);
-          }
-        }
-      }
-      stripColumnClz(note)
-      if (id === null || id.startsWith('sec-')) {
-        // Special case sections, only their first couple elements
-        const container = document.createElement("div");
-        if (note.children && note.children.length > 2) {
-          container.appendChild(note.children[0].cloneNode(true));
-          for (let i = 1; i < note.children.length; i++) {
-            const child = note.children[i];
-            if (child.tagName === "P" && child.innerText === "") {
-              continue;
-            } else {
-              container.appendChild(child.cloneNode(true));
-              break;
-            }
-          }
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(container);
-          }
-          return container.innerHTML
-        } else {
-          if (window.Quarto?.typesetMath) {
-            window.Quarto.typesetMath(note);
-          }
-          return note.innerHTML;
-        }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
       } else {
-        // Remove any anchor links if they are present
-        const anchorLink = note.querySelector('a.anchorjs-link');
-        if (anchorLink) {
-          anchorLink.remove();
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
         }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        if (note.classList.contains("callout")) {
-          return note.outerHTML;
-        } else {
-          return note.innerHTML;
-        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
       }
     }
-    for (var i=0; i<xrefs.length; i++) {
-      const xref = xrefs[i];
-      tippyHover(xref, undefined, function(instance) {
-        instance.disable();
-        let url = xref.getAttribute('href');
-        let hash = undefined; 
-        if (url.startsWith('#')) {
-          hash = url;
-        } else {
-          try { hash = new URL(url).hash; } catch {}
-        }
-        if (hash) {
-          const id = hash.replace(/^#\/?/, "");
-          const note = window.document.getElementById(id);
-          if (note !== null) {
-            try {
-              const html = processXRef(id, note.cloneNode(true));
-              instance.setContent(html);
-            } finally {
-              instance.enable();
-              instance.show();
-            }
-          } else {
-            // See if we can fetch this
-            fetch(url.split('#')[0])
-            .then(res => res.text())
-            .then(html => {
-              const parser = new DOMParser();
-              const htmlDoc = parser.parseFromString(html, "text/html");
-              const note = htmlDoc.getElementById(id);
-              if (note !== null) {
-                const html = processXRef(id, note);
-                instance.setContent(html);
-              } 
-            }).finally(() => {
-              instance.enable();
-              instance.show();
-            });
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
           }
         } else {
-          // See if we can fetch a full url (with no hash to target)
-          // This is a special case and we should probably do some content thinning / targeting
-          fetch(url)
+          // See if we can fetch this
+          fetch(url.split('#')[0])
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.querySelector('main.content');
+            const note = htmlDoc.getElementById(id);
             if (note !== null) {
-              // This should only happen for chapter cross references
-              // (since there is no id in the URL)
-              // remove the first header
-              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-                note.children[0].remove();
-              }
-              const html = processXRef(null, note);
+              const html = processXRef(id, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -959,160 +951,184 @@ b_{k1} &amp; b_{k2} &amp; \cdots &amp; b_{km} \\
             instance.show();
           });
         }
-      }, function(instance) {
-      });
-    }
-        let selectedAnnoteEl;
-        const selectorForAnnotation = ( cell, annotation) => {
-          let cellAttr = 'data-code-cell="' + cell + '"';
-          let lineAttr = 'data-code-annotation="' +  annotation + '"';
-          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-          return selector;
-        }
-        const selectCodeLines = (annoteEl) => {
-          const doc = window.document;
-          const targetCell = annoteEl.getAttribute("data-target-cell");
-          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-          const lineIds = lines.map((line) => {
-            return targetCell + "-" + line;
-          })
-          let top = null;
-          let height = null;
-          let parent = null;
-          if (lineIds.length > 0) {
-              //compute the position of the single el (top and bottom and make a div)
-              const el = window.document.getElementById(lineIds[0]);
-              top = el.offsetTop;
-              height = el.offsetHeight;
-              parent = el.parentElement.parentElement;
-            if (lineIds.length > 1) {
-              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-              height = bottom - top;
-            }
-            if (top !== null && height !== null && parent !== null) {
-              // cook up a div (if necessary) and position it 
-              let div = window.document.getElementById("code-annotation-line-highlight");
-              if (div === null) {
-                div = window.document.createElement("div");
-                div.setAttribute("id", "code-annotation-line-highlight");
-                div.style.position = 'absolute';
-                parent.appendChild(div);
-              }
-              div.style.top = top - 2 + "px";
-              div.style.height = height + 4 + "px";
-              div.style.left = 0;
-              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-              if (gutterDiv === null) {
-                gutterDiv = window.document.createElement("div");
-                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-                gutterDiv.style.position = 'absolute';
-                const codeCell = window.document.getElementById(targetCell);
-                const gutter = codeCell.querySelector('.code-annotation-gutter');
-                gutter.appendChild(gutterDiv);
-              }
-              gutterDiv.style.top = top - 2 + "px";
-              gutterDiv.style.height = height + 4 + "px";
-            }
-            selectedAnnoteEl = annoteEl;
-          }
-        };
-        const unselectCodeLines = () => {
-          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-          elementsIds.forEach((elId) => {
-            const div = window.document.getElementById(elId);
-            if (div) {
-              div.remove();
-            }
-          });
-          selectedAnnoteEl = undefined;
-        };
-          // Handle positioning of the toggle
-      window.addEventListener(
-        "resize",
-        throttle(() => {
-          elRect = undefined;
-          if (selectedAnnoteEl) {
-            selectCodeLines(selectedAnnoteEl);
-          }
-        }, 10)
-      );
-      function throttle(fn, ms) {
-      let throttle = false;
-      let timer;
-        return (...args) => {
-          if(!throttle) { // first call gets through
-              fn.apply(this, args);
-              throttle = true;
-          } else { // all the others get throttled
-              if(timer) clearTimeout(timer); // cancel #2
-              timer = setTimeout(() => {
-                fn.apply(this, args);
-                timer = throttle = false;
-              }, ms);
-          }
-        };
-      }
-        // Attach click handler to the DT
-        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-        for (const annoteDlNode of annoteDls) {
-          annoteDlNode.addEventListener('click', (event) => {
-            const clickedEl = event.target;
-            if (clickedEl !== selectedAnnoteEl) {
-              unselectCodeLines();
-              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-              if (activeEl) {
-                activeEl.classList.remove('code-annotation-active');
-              }
-              selectCodeLines(clickedEl);
-              clickedEl.classList.add('code-annotation-active');
-            } else {
-              // Unselect the line
-              unselectCodeLines();
-              clickedEl.classList.remove('code-annotation-active');
-            }
-          });
-        }
-    const findCites = (el) => {
-      const parentEl = el.parentElement;
-      if (parentEl) {
-        const cites = parentEl.dataset.cites;
-        if (cites) {
-          return {
-            el,
-            cites: cites.split(' ')
-          };
-        } else {
-          return findCites(el.parentElement)
-        }
       } else {
-        return undefined;
-      }
-    };
-    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-    for (var i=0; i<bibliorefs.length; i++) {
-      const ref = bibliorefs[i];
-      const citeInfo = findCites(ref);
-      if (citeInfo) {
-        tippyHover(citeInfo.el, function() {
-          var popup = window.document.createElement('div');
-          citeInfo.cites.forEach(function(cite) {
-            var citeDiv = window.document.createElement('div');
-            citeDiv.classList.add('hanging-indent');
-            citeDiv.classList.add('csl-entry');
-            var biblioDiv = window.document.getElementById('ref-' + cite);
-            if (biblioDiv) {
-              citeDiv.innerHTML = biblioDiv.innerHTML;
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
             }
-            popup.appendChild(citeDiv);
-          });
-          return popup.innerHTML;
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
         });
       }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
     }
-  });
-  </script>  </div> <!-- /content --> 
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>  </div> <!-- /content --> 
   
 </body></html>
