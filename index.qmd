@@ -57,7 +57,7 @@ jupyter: python3
 
 ## Lecture 1: Intro (13.05.2025)
 
-- Lecture slides: [Lecture 1: Introduction](https://pelzlab.science/public_presentations/data_science_for_em/01_intro/01_intro.html)
+- Lecture slides: [Lecture 1: Introduction](https://pelzlab.science/public_presentations/data_science_for_em/01_intro/template.html)
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
 ## Lecture 2: Optimization, Regression, Sensor Fusion (20.05.2025) {#sec-lecture2}
@@ -73,6 +73,7 @@ jupyter: python3
 
 ## Lecture 4: Classification, Segmentation, AutoEncoders (10.06.2025) {#sec-lecture4}
 
+- Lecture slides: [Lecture 4: Classification, Segmentation, AutoEncoders](https://pelzlab.science/public_presentations/data_science_for_em/04_selfsupervised/template.html#/title-slide)
 - [d2l Chapter 4: Classification](https://d2l.ai/chapter_linear-classification/index.html)
 - [d2l Chapter 14.9: Segmentation](https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html)
 - Segmentation
@@ -128,7 +129,7 @@ The miniproject will be graded and will count as 40% towards your final grade.
     Please use the article "Multi-resolution convolutional neural networks for inverse problems" by @wang2020multi as a starting point for your implementation.
 
 ## Lecture 5: Mixed Bag (24.06.2025)  {#sec-lecture6}
-
+- Lecture slides: [Lecture 5: Advanced AutoEncoder, GANs, and more](https://pelzlab.science/public_presentations/data_science_for_em/05_gan/template.html#/title-slide)
 - Project presentations
 - Generative Adversarial Networks
 
