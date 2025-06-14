@@ -130,7 +130,7 @@ The miniproject will be graded and will count as 40% towards your final grade.
 
 ## Lecture 5: Mixed Bag (24.06.2025)  {#sec-lecture6}
 - Lecture slides: [Lecture 5: Advanced AutoEncoder, GANs, and more](https://pelzlab.science/public_presentations/data_science_for_em/05_gan/template.html#/title-slide)
-- Project presentations
+- Project presentations 
 - Generative Adversarial Networks
 
 ## Lecture 6: Gaussian Processes Introduction (01.07.2025) {#sec-lecture7}
