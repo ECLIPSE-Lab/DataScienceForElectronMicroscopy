@@ -132,20 +132,26 @@ The miniproject will be graded and will count as 40% towards your final grade.
 - Lecture slides: [Lecture 5: Advanced AutoEncoder, GANs, and more](https://pelzlab.science/public_presentations/data_science_for_em/05_gan/template.html#/title-slide)
 - Project presentations 
 - Generative Adversarial Networks
+ 
 
 ## Lecture 6: Gaussian Processes Introduction (01.07.2025) {#sec-lecture7}
-
+- Lecture slides: [Lecture 6: Gaussian Processes Introduction](https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes1/template.html)
 - Introduction to Gaussian Processes  
 
 ## Lecture 7: Gaussian Processes Applications (08.07.2025) {#sec-lecture8}
-
+- Lecture slides: [Lecture 7: Gaussian Processes Applications](https://pelzlab.science/public_presentations/data_science_for_em/07_gaussian_processes2/template.html)
 - Bayesian Optimization
 - Active Learning
 - Deep Kernel Learning
 
-## Lecture 8: TBD (15.07.2025) {#sec-lecture9}
+## Lecture 8: Imaging Inverse Problems 1 (15.07.2025) {#sec-lecture9}
+- Lecture slides: [Lecture 8: Imaging Inverse Problems 1](https://pelzlab.science/public_presentations/data_science_for_em/08_imaging_inverse_problems1/template.html)
+- Imaging Inverse Problems: Introduction
 
-- TBD
+
+## Lecture 9: Imaging Inverse Problems 2 (22.07.2025) {#sec-lecture10}
+- Lecture slides: [Lecture 9: Imaging Inverse Problems 2](https://pelzlab.science/public_presentations/data_science_for_em/09_imaging_inverse_problems2/template.html)
+- Imaging Inverse Problems: Applications
 
 
 ## Lecture 9: Repetition (29.07.2025) {#sec-lecture11}
