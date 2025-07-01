@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2025-06-14">
+<meta name="dcterms.date" content="2025-07-01">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
 <title>Lecture Data Science for Electron Microscopy SS 25</title>
@@ -53,10 +53,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-693498ab6b45a923e842f5dc1c994d9b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-e4657379a08066c5e0dc72319b218cd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
 
 <link rel="stylesheet" href="styles.css">
@@ -65,10 +65,10 @@ div.csl-indent {
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2025-06-14">
-<meta name="citation_cover_date" content="2025-06-14">
+<meta name="citation_publication_date" content="2025-07-01">
+<meta name="citation_cover_date" content="2025-07-01">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-06-14">
+<meta name="citation_online_date" content="2025-07-01">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -109,7 +109,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">June 14, 2025</p>
+              <p class="date">July 1, 2025</p>
             </div>
           </div>
           
@@ -150,8 +150,9 @@ div.csl-indent {
   <li><a href="#sec-lecture6" id="toc-sec-lecture6" class="nav-link" data-scroll-target="#sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (24.06.2025)</a></li>
   <li><a href="#sec-lecture7" id="toc-sec-lecture7" class="nav-link" data-scroll-target="#sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (01.07.2025)</a></li>
   <li><a href="#sec-lecture8" id="toc-sec-lecture8" class="nav-link" data-scroll-target="#sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (08.07.2025)</a></li>
-  <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 8: TBD (15.07.2025)</a></li>
-  <li><a href="#sec-lecture11" id="toc-sec-lecture11" class="nav-link" data-scroll-target="#sec-lecture11"><span class="header-section-number">10</span> Lecture 9: Repetition (29.07.2025)</a></li>
+  <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (15.07.2025)</a></li>
+  <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (22.07.2025)</a></li>
+  <li><a href="#sec-lecture11" id="toc-sec-lecture11" class="nav-link" data-scroll-target="#sec-lecture11"><span class="header-section-number">11</span> Lecture 9: Repetition (29.07.2025)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks/X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks/X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks/X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
@@ -250,25 +251,35 @@ div.csl-indent {
 <section id="sec-lecture7" class="level2" data-number="7">
 <h2 data-number="7" class="anchored" data-anchor-id="sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (01.07.2025)</h2>
 <ul>
+<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes1/template.html">Lecture 6: Gaussian Processes</a></li>
 <li>Introduction to Gaussian Processes</li>
 </ul>
 </section>
 <section id="sec-lecture8" class="level2" data-number="8">
 <h2 data-number="8" class="anchored" data-anchor-id="sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (08.07.2025)</h2>
 <ul>
+<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes1/template.html">Lecture 6: Gaussian Processes</a></li>
 <li>Bayesian Optimization</li>
 <li>Active Learning</li>
 <li>Deep Kernel Learning</li>
 </ul>
 </section>
 <section id="sec-lecture9" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="sec-lecture9"><span class="header-section-number">9</span> Lecture 8: TBD (15.07.2025)</h2>
+<h2 data-number="9" class="anchored" data-anchor-id="sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (15.07.2025)</h2>
 <ul>
-<li>TBD</li>
+<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/08_imaging_inverse_problems1/template.html">Lecture 8: Imaging Inverse Problems 1</a></li>
+<li>Imaging Inverse Problems: Introduction</li>
 </ul>
 </section>
-<section id="sec-lecture11" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="sec-lecture11"><span class="header-section-number">10</span> Lecture 9: Repetition (29.07.2025)</h2>
+<section id="sec-lecture10" class="level2" data-number="10">
+<h2 data-number="10" class="anchored" data-anchor-id="sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (22.07.2025)</h2>
+<ul>
+<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/09_imaging_inverse_problems2/template.html">Lecture 9: Imaging Inverse Problems 2</a></li>
+<li>Imaging Inverse Problems: Applications</li>
+</ul>
+</section>
+<section id="sec-lecture11" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="sec-lecture11"><span class="header-section-number">11</span> Lecture 9: Repetition (29.07.2025)</h2>
 <ul>
 <li>Repetition and Preparation for the Exam</li>
 </ul>
@@ -294,15 +305,15 @@ Wang, Feng, Alberto Eljarrat, Johannes Müller, Trond R Henninen, Rolf Erni, and
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pelz2025,
   author = {Pelz, Philipp},
   title = {Lecture {Data} {Science} for {Electron} {Microscopy} {SS} 25},
-  date = {2025-06-14},
+  date = {2025-07-01},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2025. <span>“Lecture Data Science for Electron Microscopy
-SS 25.”</span> Friedrich-Alexander Universitaet Erlangen-Nuernberg. June
-14, 2025.
+SS 25.”</span> Friedrich-Alexander Universitaet Erlangen-Nuernberg. July
+1, 2025.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
