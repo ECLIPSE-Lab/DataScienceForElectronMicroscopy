@@ -1,5 +1,5 @@
 ---
-title: Lecture Data Science for Electron Microscopy SS 25
+title: Lecture Data Science for Electron Microscopy WS 25
 author:
   - name: Philipp Pelz
     orcid: 0000-0002-8009-4515
@@ -55,23 +55,23 @@ jupyter: python3
 ::::
 
 
-## Lecture 1: Intro (13.05.2025)
+## Lecture 1: Intro (17.10.2025)
 
 - Lecture slides: [Lecture 1: Introduction](https://pelzlab.science/public_presentations/data_science_for_em/01_intro/template.html)
 - [d2l Chapter 2: Preliminaries](https://d2l.ai/chapter_preliminaries/index.html)
 
-## Lecture 2: Optimization, Regression, Sensor Fusion (20.05.2025) {#sec-lecture2}
+## Lecture 2: Optimization, Regression, Sensor Fusion (24.10.2025) {#sec-lecture2}
 
 - Lecture slides: [Lecture 2: Optimization, Regression, Sensor Fusion](https://pelzlab.science/public_presentations/data_science_for_em/02_regression/template.html#/title-slide)
 - [d2l Chapter 3: Regression](https://d2l.ai/chapter_linear-regression/index.html)
 - [d2l Chapter 12: Optimization](https://d2l.ai/chapter_optimization/index.html)
 
-## Lecture 3: CNNs (03.06.2025) {#sec-lecture3}
+## Lecture 3: CNNs (31.10.2025) {#sec-lecture3}
 - Lecture slides: [Lecture 3: CNNs](https://pelzlab.science/public_presentations/data_science_for_em/03_cnns/template.html#/title-slide)
 - [d2l Chapter 7: CNNs](https://d2l.ai/chapter_convolutional-neural-networks/index.html)
 - [d2l Chapter 8: CNNs](https://d2l.ai/chapter_convolutional-modern/index.html)
 
-## Lecture 4: Classification, Segmentation, AutoEncoders (10.06.2025) {#sec-lecture4}
+## Lecture 4: Classification, Segmentation, AutoEncoders (07.11.2025) {#sec-lecture4}
 
 - Lecture slides: [Lecture 4: Classification, Segmentation, AutoEncoders](https://pelzlab.science/public_presentations/data_science_for_em/04_selfsupervised/template.html#/title-slide)
 - [d2l Chapter 4: Classification](https://d2l.ai/chapter_linear-classification/index.html)
@@ -82,7 +82,7 @@ jupyter: python3
   - Autoencoder
   - Variational Autoencoder
 
-## Miniproject (10.6. - 24.6.2025) concurrent to lectures {#sec-lecture5}
+## Miniproject (14.11. - 28.11.2025) concurrent to lectures {#sec-lecture5}
 
 In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks.
 You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results.
@@ -128,35 +128,37 @@ The miniproject will be graded and will count as 40% towards your final grade.
     Here we will try to learn this mapping from simulated data. 
     Please use the article "Multi-resolution convolutional neural networks for inverse problems" by @wang2020multi as a starting point for your implementation.
 
-## Lecture 5: Mixed Bag (24.06.2025)  {#sec-lecture6}
+## Lecture 5: Mixed Bag (05.12.2025)  {#sec-lecture6}
 - Lecture slides: [Lecture 5: Advanced AutoEncoder, GANs, and more](https://pelzlab.science/public_presentations/data_science_for_em/05_gan/template.html#/title-slide)
 - Project presentations 
 - Generative Adversarial Networks
  
 
-## Lecture 6: Gaussian Processes Introduction (01.07.2025) {#sec-lecture7}
+## Lecture 6: Gaussian Processes Introduction (12.12.2025) {#sec-lecture7}
 - Lecture slides: [Lecture 6: Gaussian Processes Introduction](https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes1/template.html)
 - Introduction to Gaussian Processes  
 
-## Lecture 7: Gaussian Processes Applications (08.07.2025) {#sec-lecture8}
+## Lecture 7: Gaussian Processes Applications (09.01.2026) {#sec-lecture8}
 - Lecture slides: [Lecture 7: Gaussian Processes Applications](https://pelzlab.science/public_presentations/data_science_for_em/07_gaussian_processes2/template.html)
 - Bayesian Optimization
 - Active Learning
 - Deep Kernel Learning
 
-## Lecture 8: Imaging Inverse Problems 1 (15.07.2025) {#sec-lecture9}
+## Lecture 8: Imaging Inverse Problems 1 (16.01.2026) {#sec-lecture9}
 - Lecture slides: [Lecture 8: Imaging Inverse Problems 1](https://pelzlab.science/public_presentations/data_science_for_em/08_imaging_inverse_problems1/template.html)
 - Imaging Inverse Problems: Introduction
 
 
-## Lecture 9: Imaging Inverse Problems 2 (22.07.2025) {#sec-lecture10}
+## Lecture 9: Imaging Inverse Problems 2 (23.01.2026) {#sec-lecture10}
 - Lecture slides: [Lecture 9: Imaging Inverse Problems 2](https://pelzlab.science/public_presentations/data_science_for_em/09_imaging_inverse_problems2/template.html)
 - Imaging Inverse Problems: Applications
 
 
-## Lecture 9: Repetition (29.07.2025) {#sec-lecture11}
+## Lecture 9: TBD (30.01.2026) {#sec-lecture11}
 
 - Repetition and Preparation for the Exam
+
+## Lecture 10: Repetition (06.02.2026) {#sec-lecture12}
 
 ## References {.unnumbered}
 
