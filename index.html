@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.7.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Philipp Pelz">
-<meta name="dcterms.date" content="2025-07-02">
+<meta name="dcterms.date" content="2025-09-07">
 <meta name="keywords" content="Data Science, Electron Microscopy">
 
-<title>Lecture Data Science for Electron Microscopy SS 25</title>
+<title>Lecture Data Science for Electron Microscopy WS 25</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -53,22 +53,22 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e4657379a08066c5e0dc72319b218cd3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-693498ab6b45a923e842f5dc1c994d9b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 
 
 <link rel="stylesheet" href="styles.css">
-<meta name="citation_title" content="Lecture Data Science for Electron Microscopy SS 25">
+<meta name="citation_title" content="Lecture Data Science for Electron Microscopy WS 25">
 <meta name="citation_abstract" content="This is the website for the Data Science for Electron Microscopy Lecture
 ">
 <meta name="citation_keywords" content="Data Science,Electron Microscopy">
 <meta name="citation_author" content="Philipp Pelz">
-<meta name="citation_publication_date" content="2025-07-02">
-<meta name="citation_cover_date" content="2025-07-02">
+<meta name="citation_publication_date" content="2025-09-07">
+<meta name="citation_cover_date" content="2025-09-07">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-07-02">
+<meta name="citation_online_date" content="2025-09-07">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Friedrich-Alexander Universitaet Erlangen-Nuernberg">
 <meta name="citation_reference" content="citation_title=Strategies for the development of volcanic hazard maps in monogenetic volcanic fields: The example of La Palma (Canary Islands);,citation_author=José Marrero;,citation_author=Alicia García;,citation_author=Manuel Berrocoso;,citation_author=Ángeles Llinares;,citation_author=Antonio Rodríguez-Losada;,citation_author=R. Ortiz;,citation_publication_date=2019-07;,citation_cover_date=2019-07;,citation_year=2019;,citation_doi=10.1186/s13617-019-0085-5;,citation_volume=8;,citation_journal_title=Journal of Applied Volcanology;">
@@ -83,7 +83,7 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Lecture Data Science for Electron Microscopy SS 25</h1>
+      <h1 class="title">Lecture Data Science for Electron Microscopy WS 25</h1>
           </div>
 
     
@@ -109,7 +109,7 @@ div.csl-indent {
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">July 2, 2025</p>
+              <p class="date">September 7, 2025</p>
             </div>
           </div>
           
@@ -142,16 +142,18 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#lecture-1-intro-13.05.2025" id="toc-lecture-1-intro-13.05.2025" class="nav-link active" data-scroll-target="#lecture-1-intro-13.05.2025"><span class="header-section-number">1</span> Lecture 1: Intro (13.05.2025)</a></li>
-  <li><a href="#sec-lecture2" id="toc-sec-lecture2" class="nav-link" data-scroll-target="#sec-lecture2"><span class="header-section-number">2</span> Lecture 2: Optimization, Regression, Sensor Fusion (20.05.2025)</a></li>
-  <li><a href="#sec-lecture3" id="toc-sec-lecture3" class="nav-link" data-scroll-target="#sec-lecture3"><span class="header-section-number">3</span> Lecture 3: CNNs (03.06.2025)</a></li>
-  <li><a href="#sec-lecture4" id="toc-sec-lecture4" class="nav-link" data-scroll-target="#sec-lecture4"><span class="header-section-number">4</span> Lecture 4: Classification, Segmentation, AutoEncoders (10.06.2025)</a></li>
-  <li><a href="#sec-lecture5" id="toc-sec-lecture5" class="nav-link" data-scroll-target="#sec-lecture5"><span class="header-section-number">5</span> Miniproject (10.6. - 24.6.2025) concurrent to lectures</a></li>
-  <li><a href="#sec-lecture6" id="toc-sec-lecture6" class="nav-link" data-scroll-target="#sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (24.06.2025)</a></li>
-  <li><a href="#sec-lecture7" id="toc-sec-lecture7" class="nav-link" data-scroll-target="#sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (01.07.2025)</a></li>
-  <li><a href="#sec-lecture8" id="toc-sec-lecture8" class="nav-link" data-scroll-target="#sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (08.07.2025)</a></li>
-  <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (15.07.2025)</a></li>
-  <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (22.07.2025)</a></li>
+  <li><a href="#lecture-1-intro-17.10.2025" id="toc-lecture-1-intro-17.10.2025" class="nav-link active" data-scroll-target="#lecture-1-intro-17.10.2025"><span class="header-section-number">1</span> Lecture 1: Intro (17.10.2025)</a></li>
+  <li><a href="#sec-lecture2" id="toc-sec-lecture2" class="nav-link" data-scroll-target="#sec-lecture2"><span class="header-section-number">2</span> Lecture 2: Optimization, Regression, Sensor Fusion (24.10.2025)</a></li>
+  <li><a href="#sec-lecture3" id="toc-sec-lecture3" class="nav-link" data-scroll-target="#sec-lecture3"><span class="header-section-number">3</span> Lecture 3: CNNs (31.10.2025)</a></li>
+  <li><a href="#sec-lecture4" id="toc-sec-lecture4" class="nav-link" data-scroll-target="#sec-lecture4"><span class="header-section-number">4</span> Lecture 4: Classification, Segmentation, AutoEncoders (07.11.2025)</a></li>
+  <li><a href="#sec-lecture5" id="toc-sec-lecture5" class="nav-link" data-scroll-target="#sec-lecture5"><span class="header-section-number">5</span> Miniproject (14.11. - 28.11.2025) concurrent to lectures</a></li>
+  <li><a href="#sec-lecture6" id="toc-sec-lecture6" class="nav-link" data-scroll-target="#sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (05.12.2025)</a></li>
+  <li><a href="#sec-lecture7" id="toc-sec-lecture7" class="nav-link" data-scroll-target="#sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (12.12.2025)</a></li>
+  <li><a href="#sec-lecture8" id="toc-sec-lecture8" class="nav-link" data-scroll-target="#sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (09.01.2026)</a></li>
+  <li><a href="#sec-lecture9" id="toc-sec-lecture9" class="nav-link" data-scroll-target="#sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (16.01.2026)</a></li>
+  <li><a href="#sec-lecture10" id="toc-sec-lecture10" class="nav-link" data-scroll-target="#sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (23.01.2026)</a></li>
+  <li><a href="#sec-lecture11" id="toc-sec-lecture11" class="nav-link" data-scroll-target="#sec-lecture11"><span class="header-section-number">11</span> Lecture 9: TBD (30.01.2026)</a></li>
+  <li><a href="#sec-lecture12" id="toc-sec-lecture12" class="nav-link" data-scroll-target="#sec-lecture12"><span class="header-section-number">12</span> Lecture 10: Repetition (06.02.2026)</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="quarto-alternate-notebooks"><h2>Notebooks</h2><ul><li><a href="notebooks/01_ndarray-preview.html"><i class="bi bi-journal-code"></i>01.1 Data Manipulation</a></li><li><a href="notebooks/01_linear_algebra-preview.html"><i class="bi bi-journal-code"></i>01.2 Linear Algebra</a></li><li><a href="notebooks/01_autograd-preview.html"><i class="bi bi-journal-code"></i>01.3 Automatic Differentiation</a></li><li><a href="notebooks/02_optimization-preview.html"><i class="bi bi-journal-code"></i>02.1 Optimization &amp; Linear Neural Networks</a></li><li><a href="notebooks/X1_segmentation-preview.html"><i class="bi bi-journal-code"></i>X1 Segmentation</a></li><li><a href="notebooks/X2_VAE-preview.html"><i class="bi bi-journal-code"></i>X2 Dimensionality Reduction</a></li><li><a href="notebooks/X3_denoising-preview.html"><i class="bi bi-journal-code"></i>X3 Denoising</a></li><li><a href="notebooks/X4_Img2Img-preview.html"><i class="bi bi-journal-code"></i>X4 Image to Image Translation</a></li></ul></div></nav>
@@ -176,15 +178,15 @@ div.csl-indent {
 <p><strong>Studon Link</strong></p>
 </div>
 </div>
-<section id="lecture-1-intro-13.05.2025" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="lecture-1-intro-13.05.2025"><span class="header-section-number">1</span> Lecture 1: Intro (13.05.2025)</h2>
+<section id="lecture-1-intro-17.10.2025" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="lecture-1-intro-17.10.2025"><span class="header-section-number">1</span> Lecture 1: Intro (17.10.2025)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/01_intro/template.html">Lecture 1: Introduction</a></li>
 <li><a href="https://d2l.ai/chapter_preliminaries/index.html">d2l Chapter 2: Preliminaries</a></li>
 </ul>
 </section>
 <section id="sec-lecture2" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="sec-lecture2"><span class="header-section-number">2</span> Lecture 2: Optimization, Regression, Sensor Fusion (20.05.2025)</h2>
+<h2 data-number="2" class="anchored" data-anchor-id="sec-lecture2"><span class="header-section-number">2</span> Lecture 2: Optimization, Regression, Sensor Fusion (24.10.2025)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/02_regression/template.html#/title-slide">Lecture 2: Optimization, Regression, Sensor Fusion</a></li>
 <li><a href="https://d2l.ai/chapter_linear-regression/index.html">d2l Chapter 3: Regression</a></li>
@@ -192,7 +194,7 @@ div.csl-indent {
 </ul>
 </section>
 <section id="sec-lecture3" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="sec-lecture3"><span class="header-section-number">3</span> Lecture 3: CNNs (03.06.2025)</h2>
+<h2 data-number="3" class="anchored" data-anchor-id="sec-lecture3"><span class="header-section-number">3</span> Lecture 3: CNNs (31.10.2025)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/03_cnns/template.html#/title-slide">Lecture 3: CNNs</a></li>
 <li><a href="https://d2l.ai/chapter_convolutional-neural-networks/index.html">d2l Chapter 7: CNNs</a></li>
@@ -200,7 +202,7 @@ div.csl-indent {
 </ul>
 </section>
 <section id="sec-lecture4" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="sec-lecture4"><span class="header-section-number">4</span> Lecture 4: Classification, Segmentation, AutoEncoders (10.06.2025)</h2>
+<h2 data-number="4" class="anchored" data-anchor-id="sec-lecture4"><span class="header-section-number">4</span> Lecture 4: Classification, Segmentation, AutoEncoders (07.11.2025)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/04_selfsupervised/template.html#/title-slide">Lecture 4: Classification, Segmentation, AutoEncoders</a></li>
 <li><a href="https://d2l.ai/chapter_linear-classification/index.html">d2l Chapter 4: Classification</a></li>
@@ -215,7 +217,7 @@ div.csl-indent {
 </ul>
 </section>
 <section id="sec-lecture5" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Miniproject (10.6. - 24.6.2025) concurrent to lectures</h2>
+<h2 data-number="5" class="anchored" data-anchor-id="sec-lecture5"><span class="header-section-number">5</span> Miniproject (14.11. - 28.11.2025) concurrent to lectures</h2>
 <p>In the miniproject, you will test multiple deep neural network architectures on one of four microscopy-related tasks. You should summarize your results in a short presentation (5 minutes + 2 minutes discussion) and deliver a Jupyter Notebook with your code and results. The miniproject will be graded and will count as 40% towards your final grade.</p>
 <ol type="1">
 <li><p>Segmentation Task</p>
@@ -240,24 +242,22 @@ div.csl-indent {
 </ol>
 </section>
 <section id="sec-lecture6" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (24.06.2025)</h2>
+<h2 data-number="6" class="anchored" data-anchor-id="sec-lecture6"><span class="header-section-number">6</span> Lecture 5: Mixed Bag (05.12.2025)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/05_gan/template.html#/title-slide">Lecture 5: Advanced AutoEncoder, GANs, and more</a></li>
 <li>Project presentations</li>
-<li>Generative Adversarial Networks <a href="https://d2l.ai/chapter_generative-adversarial-networks/index.html">d2l Chapter 20: Generative Adversarial Networks</a></li>
+<li>Generative Adversarial Networks</li>
 </ul>
 </section>
 <section id="sec-lecture7" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (01.07.2025)</h2>
+<h2 data-number="7" class="anchored" data-anchor-id="sec-lecture7"><span class="header-section-number">7</span> Lecture 6: Gaussian Processes Introduction (12.12.2025)</h2>
 <ul>
-<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes/template.html">Lecture 6: Gaussian Processes Introduction</a></li>
-<li>Introduction to Gaussian Processes<br>
-</li>
-<li><a href="https://d2l.ai/chapter_gaussian-processes/index.html">d2l Chapter 18: Gaussian Processes</a></li>
+<li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/06_gaussian_processes1/template.html">Lecture 6: Gaussian Processes Introduction</a></li>
+<li>Introduction to Gaussian Processes</li>
 </ul>
 </section>
 <section id="sec-lecture8" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (08.07.2025)</h2>
+<h2 data-number="8" class="anchored" data-anchor-id="sec-lecture8"><span class="header-section-number">8</span> Lecture 7: Gaussian Processes Applications (09.01.2026)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/07_gaussian_processes2/template.html">Lecture 7: Gaussian Processes Applications</a></li>
 <li>Bayesian Optimization</li>
@@ -266,18 +266,27 @@ div.csl-indent {
 </ul>
 </section>
 <section id="sec-lecture9" class="level2" data-number="9">
-<h2 data-number="9" class="anchored" data-anchor-id="sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (15.07.2025)</h2>
+<h2 data-number="9" class="anchored" data-anchor-id="sec-lecture9"><span class="header-section-number">9</span> Lecture 8: Imaging Inverse Problems 1 (16.01.2026)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/08_imaging_inverse_problems1/template.html">Lecture 8: Imaging Inverse Problems 1</a></li>
 <li>Imaging Inverse Problems: Introduction</li>
 </ul>
 </section>
 <section id="sec-lecture10" class="level2" data-number="10">
-<h2 data-number="10" class="anchored" data-anchor-id="sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (22.07.2025)</h2>
+<h2 data-number="10" class="anchored" data-anchor-id="sec-lecture10"><span class="header-section-number">10</span> Lecture 9: Imaging Inverse Problems 2 (23.01.2026)</h2>
 <ul>
 <li>Lecture slides: <a href="https://pelzlab.science/public_presentations/data_science_for_em/09_imaging_inverse_problems2/template.html">Lecture 9: Imaging Inverse Problems 2</a></li>
 <li>Imaging Inverse Problems: Applications</li>
 </ul>
+</section>
+<section id="sec-lecture11" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="sec-lecture11"><span class="header-section-number">11</span> Lecture 9: TBD (30.01.2026)</h2>
+<ul>
+<li>Repetition and Preparation for the Exam</li>
+</ul>
+</section>
+<section id="sec-lecture12" class="level2" data-number="12">
+<h2 data-number="12" class="anchored" data-anchor-id="sec-lecture12"><span class="header-section-number">12</span> Lecture 10: Repetition (06.02.2026)</h2>
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
@@ -299,16 +308,16 @@ Wang, Feng, Alberto Eljarrat, Johannes Müller, Trond R Henninen, Rolf Erni, and
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{pelz2025,
   author = {Pelz, Philipp},
-  title = {Lecture {Data} {Science} for {Electron} {Microscopy} {SS} 25},
-  date = {2025-07-02},
+  title = {Lecture {Data} {Science} for {Electron} {Microscopy} {WS} 25},
+  date = {2025-09-07},
   langid = {en},
   abstract = {This is the website for the Data Science for Electron
     Microscopy Lecture}
 }
 </code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-pelz2025" class="csl-entry quarto-appendix-citeas" role="listitem">
 Pelz, Philipp. 2025. <span>“Lecture Data Science for Electron Microscopy
-SS 25.”</span> Friedrich-Alexander Universitaet Erlangen-Nuernberg. July
-2, 2025.
+WS 25.”</span> Friedrich-Alexander Universitaet Erlangen-Nuernberg.
+September 7, 2025.
 </div></div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
