@@ -9,7 +9,9 @@ format:
     css: styles.css
     fontsize: 14pt
     email-obfuscation: javascript
-    theme: darkly  
+    theme:
+      - darkly
+      - custom.scss
     toc: true
     comments:
       hypothesis: false

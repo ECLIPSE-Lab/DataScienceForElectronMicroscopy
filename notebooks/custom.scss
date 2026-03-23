@@ -1,0 +1,159 @@
+/*-- scss:defaults --*/
+$body-bg: #0b0f19;
+$body-color: #94a3b8;
+$primary: #3b82f6; 
+$secondary: #8b5cf6; 
+
+$h1-color: #f8fafc;
+$h2-color: #f1f5f9;
+$h3-color: #e2e8f0;
+$headings-color: #f8fafc;
+
+$link-color: $primary;
+
+$font-family-sans-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: "Outfit", sans-serif;
+$headings-font-weight: 600;
+
+/*-- scss:rules --*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap');
+
+body {
+  background-image: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.08), transparent 25%), radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08), transparent 25%);
+  background-attachment: fixed;
+}
+
+.navbar {
+  background: rgba(11, 15, 25, 0.8) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-outline-secondary {
+  border: 1px solid rgba(255,255,255,0.2) !important;
+  color: #e2e8f0 !important;
+  background: transparent !important;
+  transition: all 0.3s ease;
+}
+.btn-outline-secondary:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(255,255,255,0.4) !important;
+}
+
+/* Style the columns in index as cards */
+.columns {
+  display: flex !important;
+  flex-wrap: nowrap !important; /* Force single row on desktop */
+  align-items: stretch !important;
+  gap: 1rem !important; /* Smaller gap */
+}
+
+.columns > .column {
+  width: 33.333% !important; /* Force evenly distributed thirds */
+  flex: 1 1 0 !important; 
+  background: rgba(20, 25, 40, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 1.25rem; /* Reduced padding from 2rem */
+  margin: 0 !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem; /* Slightly smaller text */
+}
+
+/* On mobile screens, allow wrapping but only under 768px */
+@media (max-width: 768px) {
+  .columns {
+    flex-wrap: wrap !important;
+  }
+  .columns > .column {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+}
+
+/* Quarto wraps the markdown into a <section> tag based on the headers */
+.columns > .column > section {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.columns > .column > section > p:last-child {
+  margin-top: auto; /* Pushes the buttons to the bottom */
+  margin-bottom: 0;
+}
+
+.columns > .column:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.1);
+}
+
+h1, h2, h3, h4, h5, h6, .lead {
+  color: #f8fafc;
+}
+
+.hero2 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #cbd5e1;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 3rem auto;
+}
+
+.page-footer {
+  background: #070a10 !important;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Slider Overlays */
+.splide__slide {
+  position: relative;
+}
+
+.splide__slide > div {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(11, 15, 25, 0.85); /* Dark semi-transparent background */
+  backdrop-filter: blur(8px);
+  padding: 1.5rem;
+  z-index: 10;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.splide__slide > div > a {
+  color: #f8fafc;
+  font-family: "Outfit", sans-serif;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.splide__slide > div > a:hover {
+  color: #a5b4fc;
+  text-decoration: none;
+}
