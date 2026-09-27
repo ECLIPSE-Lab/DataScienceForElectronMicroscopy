@@ -141,11 +141,7 @@ Lectures are on Fridays; rooms are announced on StudOn.
 - Notebook: [`week13_ptychography.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week13_ptychography.ipynb) (open in Colab)
 - Ptychography and multislice; gradient-descent reconstruction; GAN and diffusion priors; physics constraints; course synthesis and exam preparation.
 
-## Buffer (05.02.2027) {#sec-buffer}
-
-- Catch-up and miniproject Q&A
-
-## Exam revision (12.02.2027) {#sec-revision}
+## Exam revision (05.02.2027) {#sec-revision}
 
 - Repetition and preparation for the exam, based on the must-know list
 
