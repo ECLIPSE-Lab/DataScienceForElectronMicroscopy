@@ -63,89 +63,89 @@ Lectures are on Fridays; rooms are announced on StudOn.
 
 **Assessment:** miniproject (40%, reproducible notebook + short report) and written exam (60%).
 
-## Week 1: Python crash course & the EM data deluge (16.10.2026) {#sec-week01}
+## Week 1: Python crash course & the EM data deluge (23.10.2026) {#sec-week01}
 
 - Slides: [Week 1: Python crash course & the EM data deluge](https://pelzlab.science/public_presentations/data_science_for_em/01_python_crash/01_intro.html)
 - Notebook: [`week01_python_numpy.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week01_python_numpy.ipynb) (open in Colab)
 - Python & NumPy for EM data; the CRISP-DM workflow; why modern detectors make automated analysis unavoidable; course logistics.
 
-## Week 2: Learning from EM data: signal formation, noise & loss (23.10.2026) {#sec-week02}
+## Week 2: Learning from EM data: signal formation, noise & loss (30.10.2026) {#sec-week02}
 
 - Slides: [Week 2: Learning from EM data: signal formation, noise & loss](https://pelzlab.science/public_presentations/data_science_for_em/02_em_data_formation/01_intro.html)
 - Notebook: [`week02_poisson_noise.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week02_poisson_noise.ipynb) (open in Colab)
 - Learning vs classical analysis; detectors, dose, sampling and aliasing; Poisson/Gaussian noise; how the noise model determines the loss; data quality and metadata.
 
-## Week 3: Linear algebra, PCA & spectral unmixing (30.10.2026) {#sec-week03}
+## Week 3: Linear algebra, PCA & spectral unmixing (06.11.2026) {#sec-week03}
 
 - Slides: [Week 3: Linear algebra, PCA & spectral unmixing](https://pelzlab.science/public_presentations/data_science_for_em/03_linear_algebra_spectral/01_intro.html)
 - Notebook: [`week03_pca_nmf_eels.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week03_pca_nmf_eels.ipynb) (open in Colab)
 - SVD and PCA; conditioning; NMF, MCR-ALS and endmember unmixing; the EELS/EDS preprocessing pipeline.
 
-## Week 4: Regression, optimisation & honest validation (06.11.2026) {#sec-week04}
+## Week 4: Regression, optimisation & honest validation (13.11.2026) {#sec-week04}
 
 - Slides: [Week 4: Regression, optimisation & honest validation](https://pelzlab.science/public_presentations/data_science_for_em/04_regression_validation/01_intro.html)
 - Notebook: [`week04_leakage_demo.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week04_leakage_demo.ipynb) (open in Colab)
 - Loss minimisation, gradient descent and optimisers; bias–variance and regularisation; splits by specimen, leakage taxonomy and metrics.
 
-## Week 5: From images to features: descriptors & tree ensembles (13.11.2026) {#sec-week05}
+## Week 5: From images to features: descriptors & tree ensembles (20.11.2026) {#sec-week05}
 
 - Slides: [Week 5: From images to features: descriptors & tree ensembles](https://pelzlab.science/public_presentations/data_science_for_em/05_features_trees/01_intro.html)
 - Notebook: [`week05_features_trees.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week05_features_trees.ipynb) (open in Colab)
 - Particle and grain descriptors; atom-column finding and local-environment descriptors; random forests and gradient boosting; permutation importance and SHAP.
 
-## Week 6: Neural networks & backpropagation (20.11.2026) {#sec-week06}
+## Week 6: Neural networks & backpropagation (27.11.2026) {#sec-week06}
 
 - Slides: [Week 6: Neural networks & backpropagation](https://pelzlab.science/public_presentations/data_science_for_em/06_neural_networks/01_intro.html)
 - Notebook: [`week06_tiny_mlp.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week06_tiny_mlp.ipynb) (open in Colab)
 - MLPs, softmax and cross-entropy; autograd and backpropagation; initialisation, normalisation and training diagnostics.
 
-## Week 7: CNNs & U-Nets for microscopy (27.11.2026) {#sec-week07}
+## Week 7: CNNs & U-Nets for microscopy (04.12.2026) {#sec-week07}
 
 - Slides: [Week 7: CNNs & U-Nets for microscopy](https://pelzlab.science/public_presentations/data_science_for_em/07_cnns_for_microscopy/01_intro.html)
 - Notebook: [`week07_cnn_segmentation.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week07_cnn_segmentation.ipynb) (open in Colab)
 - Convolution and receptive fields; VGG to ResNet; U-Net segmentation; invariance vs equivariance; saliency, Grad-CAM and shortcut learning.
 
-## Week 8: Small data: augmentation, transfer & self-supervision (04.12.2026) {#sec-week08}
+## Week 8: Small data: augmentation, transfer & self-supervision (11.12.2026) {#sec-week08}
 
 - Slides: [Week 8: Small data: augmentation, transfer & self-supervision](https://pelzlab.science/public_presentations/data_science_for_em/08_small_data_self_supervised/01_intro.html)
 - Notebook: [`week08_embeddings_transfer.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week08_embeddings_transfer.ipynb) (open in Colab)
 - Physics-respecting augmentation; transfer learning and sim-to-real; SimCLR, MAE, DINO; foundation models (SAM, µSAM); linear probes.
 
-## Week 9: Unsupervised learning, autoencoders & latent spaces (11.12.2026) {#sec-week09}
+## Week 9: Unsupervised learning, autoencoders & latent spaces (18.12.2026) {#sec-week09}
 
 - Slides: [Week 9: Unsupervised learning, autoencoders & latent spaces](https://pelzlab.science/public_presentations/data_science_for_em/09_unsupervised_latent/01_intro.html)
 - Notebook: [`week09_autoencoder_vae.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week09_autoencoder_vae.ipynb) (open in Colab)
 - k-means and GMMs; autoencoders and VAEs; rVAE for atomic-resolution images; t-SNE/UMAP and how latent spaces mislead.
 
-## Week 10: Attention, transformers & graph networks for EM (18.12.2026) {#sec-week10}
+## Week 10: Attention, transformers & graph networks for EM (08.01.2027) {#sec-week10}
 
 - Slides: [Week 10: Attention, transformers & graph networks for EM](https://pelzlab.science/public_presentations/data_science_for_em/10_transformers_graphs/01_intro.html)
 - Notebook: [`week10_attention_gnn.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week10_attention_gnn.ipynb) (open in Colab)
 - Self-attention and vision transformers; tokenising diffraction patterns and spectra; atom-column graphs and message passing.
 
-## Week 11: Uncertainty, Gaussian processes & autonomous EM (08.01.2027) {#sec-week11}
+## Week 11: Uncertainty, Gaussian processes & autonomous EM (15.01.2027) {#sec-week11}
 
 - Slides: [Week 11: Uncertainty, Gaussian processes & autonomous EM](https://pelzlab.science/public_presentations/data_science_for_em/11_uncertainty_autonomous_em/01_intro.html)
 - Notebook: [`week11_gp_bo.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week11_gp_bo.ipynb) (open in Colab)
 - Aleatoric vs epistemic uncertainty; ensembles, calibration and conformal prediction; Gaussian processes, Bayesian optimisation and automated 4D-STEM.
 
-## Week 12: Inverse problems I: regularisation, tomography & sensor fusion (15.01.2027) {#sec-week12}
+## Week 12: Inverse problems I: regularisation, tomography & sensor fusion (22.01.2027) {#sec-week12}
 
 - Slides: [Week 12: Inverse problems I: regularisation, tomography & sensor fusion](https://pelzlab.science/public_presentations/data_science_for_em/12_inverse_problems_1/01_intro.html)
 - Notebook: [`week12_inverse_deblurring.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week12_inverse_deblurring.ipynb) (open in Colab)
 - Forward models and ill-posedness; Tikhonov, TV and plug-and-play; tomography and the Fourier-slice theorem; HAADF + EDS sensor fusion.
 
-## Week 13: Inverse problems II: ptychography, generative priors & synthesis (22.01.2027) {#sec-week13}
+## Week 13: Inverse problems II: ptychography, generative priors & synthesis (29.01.2027) {#sec-week13}
 
 - Slides: [Week 13: Inverse problems II: ptychography, generative priors & synthesis](https://pelzlab.science/public_presentations/data_science_for_em/13_inverse_problems_2_generative/01_intro.html)
 - Notebook: [`week13_ptychography.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week13_ptychography.ipynb) (open in Colab)
 - Ptychography and multislice; gradient-descent reconstruction; GAN and diffusion priors; physics constraints; course synthesis and exam preparation.
 
-## Buffer (29.01.2027) {#sec-buffer}
+## Buffer (05.02.2027) {#sec-buffer}
 
 - Catch-up and miniproject Q&A
 
-## Exam revision (05.02.2027) {#sec-revision}
+## Exam revision (12.02.2027) {#sec-revision}
 
 - Repetition and preparation for the exam, based on the must-know list
 
