@@ -61,7 +61,7 @@ One 90-minute lecture per week plus one self-study Jupyter notebook per week (ru
 Electron microscopy is the application thread throughout: every method is introduced on EM images, spectra, diffraction data or tilt series.
 Lectures are on Fridays; rooms are announced on StudOn.
 
-**Assessment:** miniproject (40%, reproducible notebook + short report) and written exam (60%).
+**Assessment:** one written exam.
 
 ## Week 1: Python crash course & the EM data deluge (23.10.2026) {#sec-week01}
 
@@ -144,20 +144,6 @@ Lectures are on Fridays; rooms are announced on StudOn.
 ## Exam revision (05.02.2027) {#sec-revision}
 
 - Repetition and preparation for the exam, based on the must-know list
-
-## Miniproject {#sec-miniproject}
-
-Apply the full pipeline from the course (data → model → uncertainty → explainability) to an electron-microscopy or materials-characterisation dataset, as a fully reproducible notebook plus a 4–6 page report.
-Choose one of five options:
-
-A. STEM/SEM image segmentation (U-Net or foundation-model features)
-B. Spectral denoising and phase clustering (PCA / NMF / VAE)
-C. Materials property regression with honest validation and uncertainty
-D. A small imaging inverse problem (deblurring or limited-angle tomography)
-E. Atom-column descriptors and defect classification (tree ensembles, optionally a GNN)
-
-Milestones: topic selection from Week 1, proposal around Week 6, progress check-in around Week 10, final submission in the exam period.
-The full task descriptions and grading rubric are on StudOn.
 
 ## Archive: SS 25 lectures {.unnumbered}
 
