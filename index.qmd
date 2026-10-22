@@ -46,7 +46,7 @@ jupyter: python3
 :::
 
 ::: {.column width="25%"}
-[![](images/studon.jpeg){width=120}](https://www.studon.fau.de/studon/ilias.php?baseClass=ilrepositorygui&cmd=infoScreenGoto&ref_id=6252031)
+[![](images/studon.jpeg){width=120}](https://www.studon.fau.de/studon/ilias.php?baseClass=ilrepositorygui&cmd=infoScreenGoto&ref_id=7067066)
 
 
 **Studon Link**
@@ -59,9 +59,9 @@ jupyter: python3
 
 One 90-minute lecture per week plus one self-study Jupyter notebook per week (runs on a laptop CPU or in Google Colab).
 Electron microscopy is the application thread throughout: every method is introduced on EM images, spectra, diffraction data or tilt series.
-Lectures are on Fridays; rooms are announced on StudOn.
+Lectures are on Fridays, 08:15–09:45, in room 0.68 (Seminarraum). There is no lecture on 25.12.2026 and 01.01.2027.
 
-**Assessment:** one written exam.
+**Assessment:** one graded exam: oral if fewer than 5 students take it, written if 5 or more.
 
 ## Week 1: Python crash course & the EM data deluge (23.10.2026) {#sec-week01}
 
