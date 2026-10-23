@@ -67,7 +67,7 @@ Lectures are on Fridays, 08:15–09:45, in room 0.68 (Seminarraum). There is no 
 
 - Slides: [Week 1: Python crash course & the EM data deluge](https://pelzlab.science/public_presentations/data_science_for_em/01_python_crash/01_intro.html)
 - Notebook: [`week01_python_numpy.ipynb`](https://colab.research.google.com/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/week01_python_numpy.ipynb) (open in Colab)
-- molab notebook: [PyTorch tensors & automatic differentiation](https://molab.marimo.io/notebooks/nb_HfBG8fdwrfDXSmmmSmJsMH) (open in molab, done in the lecture)
+- molab notebook: [PyTorch tensors & automatic differentiation](https://molab.marimo.io/github/ECLIPSE-Lab/public_presentations/blob/main/data_science_for_em/notebooks/unit01_tensors_autograd.py) (open in molab, done in the lecture; sign in and click Fork for an editable copy)
 - Python & NumPy for EM data; the CRISP-DM workflow; why modern detectors make automated analysis unavoidable; course logistics.
 
 ## Week 2: Learning from EM data: signal formation, noise & loss (30.10.2026) {#sec-week02}
